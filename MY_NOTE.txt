@@ -1,0 +1,6 @@
+-API Recaptcha Google Account Dede.Irawan1213@gmail.com masih localhost
+
+-API Rajaongkir 
+	user : dede1213
+	pass : 280693
+Note : Sewaktu waktu dapat mati dan berdampak pada sistem
