@@ -1,0 +1,136 @@
+<?php
+if (!defined('BASEPATH')) exit('No direct script access allowed');
+?>
+<!-- AJAX JS -->
+
+<script>
+    var base_url = '<?php echo base_url();?>';
+</script>
+
+<script src="<?php echo base_url(); ?>assets/js_ajax/dashboard.js" type="text/javascript"></script>
+<!-- End AJAX JS -->
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            <?php echo $page_title; ?>
+            <small></small>
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active"><a href="dashboard"><i class="fa fa-dashboard"></i><?php echo $page_title;?></a></li>
+            <li class="active"><a href="#">Data</a></li>
+            <!--
+            <li><a href="#">Tables</a></li>
+            <li class="active">Data tables</li>
+            -->
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <!-- general form elements disabled -->
+
+
+                    <div class="box-body">
+                        <form>
+
+                            <fieldset>
+                                <legend>OFFLINE</legend>
+                            <!-- text input -->
+                            <div class="form-group">
+                                <label>Nomor Form</label>
+                               <input type="text" name="title" id="title" class="form-control" placeholder="please write something">
+                            </div>
+                            <div class="form-group">
+                                <label>Tanggal Order</label>
+                                <input type="date" name="title" id="title" class="form-control" placeholder="please write something">
+                            </div>
+                            <div class="form-group">
+                                <label>Upload File Photo/Scaner </label>
+                                <input type="file" name="title" id="title" class="form-control" placeholder="please write something">
+                            </div>
+                            </fieldset>
+                            <br>
+                            <fieldset>
+                                <legend>PROJECT</legend>
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <label>Input Nomor Kontrak</label>
+                                    <input type="text" name="title" id="title" class="form-control" placeholder="please write something" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Upload Foto Kontrak</label>
+                                    <input type="file" name="title" id="title" class="form-control" placeholder="please write something" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Kesepakatan DP (%) </label>
+                                    <input type="text" name="title" id="title" class="form-control" placeholder="please write something" readonly>
+                                </div>
+                            </fieldset>
+
+
+                            <br>
+                            <fieldset>
+                                <legend>GROUP SALES</legend>
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <label>Sales Type</label>
+                                    <select class="form-control">
+                                        <option>Cash</option>
+                                        <option>Credit</option>
+                                        <option>Project</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>SO Outlet</label>
+                                    <select class="form-control">
+                                        <option>Dede</option>
+                                        <option>Tosa</option>
+                                        <option>Franky</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Showroom</label>
+                                    <select class="form-control">
+                                        <option>Jakarta</option>
+                                        <option>Bogor</option>
+                                        <option>Depok</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Exhibition</label>
+                                    <select class="form-control">
+                                        <option>Jakarta</option>
+                                        <option>Bogor</option>
+                                        <option>Depok</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Warehouse</label>
+                                    <select class="form-control">
+                                        <option>Jakarta</option>
+                                        <option>Bogor</option>
+                                        <option>Depok</option>
+                                    </select>
+                                </div>
+                            </fieldset>
+
+
+
+
+                            <a href="<?php echo base_url('dashboard/detail_product')?>"><button type="button" class="btn btn-primary btn-block btn-flat">Save</button></a>
+                        </form>
+                        <span class="loading"></span>
+                    </div><!-- /.box-body -->
+
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+</div><!-- /.row -->
+</section><!-- /.content -->
+</div><!-- /.content-wrapper -->
+
