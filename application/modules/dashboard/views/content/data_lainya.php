@@ -31,6 +31,9 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
+
+                <?php $this->load->view('part/navigation_tab');?>
+
                 <div class="box">
                     <!-- general form elements disabled -->
 

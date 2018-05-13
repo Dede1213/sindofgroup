@@ -31,6 +31,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
+                <?php $this->load->view('part/navigation_tab');?>
                 <div class="box">
                     <!-- general form elements disabled -->
 
@@ -79,19 +80,11 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 <!-- text input -->
                                 <div class="form-group">
                                     <label>Sales Type</label>
-                                    <select class="form-control">
-                                        <option>Cash</option>
-                                        <option>Credit</option>
-                                        <option>Project</option>
-                                    </select>
+                                    <input type="text" value="Cash" name="title" id="title" class="form-control" placeholder="please write something" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>SO Outlet</label>
-                                    <select class="form-control">
-                                        <option>Dede</option>
-                                        <option>Tosa</option>
-                                        <option>Franky</option>
-                                    </select>
+                                    <input type="text" value="A" name="title" id="title" class="form-control" placeholder="please write something" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>Showroom</label>
@@ -103,20 +96,15 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 </div>
                                 <div class="form-group">
                                     <label>Exhibition</label>
-                                    <select class="form-control">
-                                        <option>Jakarta</option>
-                                        <option>Bogor</option>
-                                        <option>Depok</option>
-                                    </select>
+                                    <input type="text" value="Jakarta" name="title" id="title" class="form-control" placeholder="please write something" readonly>
                                 </div>
+
                                 <div class="form-group">
                                     <label>Warehouse</label>
-                                    <select class="form-control">
-                                        <option>Jakarta</option>
-                                        <option>Bogor</option>
-                                        <option>Depok</option>
-                                    </select>
+                                    <input type="text" value="Jakarta" name="title" id="title" class="form-control" placeholder="please write something" readonly>
                                 </div>
+
+
                             </fieldset>
 
 

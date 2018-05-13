@@ -22,6 +22,7 @@
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
+                <?php $this->load->view('part/navigation_tab');?>
                 <div class="box">
                 <div class="box-body">
                 <div class="table-responsive"> <!-- table responsive -->
@@ -71,11 +72,11 @@
                         </tr>
                         <tr>
                             <td colspan="8">PPN</td>
-                            <td>10.000</td>
+                            <td>31.500</td>
                         </tr>
                         <tr>
                             <td colspan="8">Total Harga</td>
-                            <td>305.000</td>
+                            <td>283.500</td>
                         </tr>
                         <tr style="border-bottom: 1pt solid darkgray;">
                             <td colspan="8">Uang Muka</td>
@@ -83,7 +84,7 @@
                         </tr>
                         <tr >
                             <td colspan="8">Sisa</td>
-                            <td>305.000</td>
+                            <td>283.500</td>
                         </tr>
 
                     </table>
@@ -92,7 +93,8 @@
                 </div><!-- table responsive -->
                     <br>
                     <div class="col-md-2">
-                        <a href="<?php echo base_url('#');?>" class="btn btn-block btn-primary">Add Product</a>
+
+                        <a href="<?php echo base_url('dashboard/add_product');?>" class="btn btn-block btn-primary">Add Product</a>
                     </div>
                     <div class="col-md-2">
                         <a href="<?php echo base_url('dashboard/data_customer');?>" class="btn btn-block btn-primary">Finish</a>
@@ -104,6 +106,8 @@
         </div><!-- /.row -->
     </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
+
+
 
 
 

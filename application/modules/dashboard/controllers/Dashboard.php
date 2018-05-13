@@ -33,19 +33,30 @@ class Dashboard extends My_Controller
     public function data_formulir()
     {
         $this->data['page_title'] = 'Data formulir';
+        $this->data['menu_tab'] = '1';
         $this->data['main_view'] = 'content/data_formulir';
         $this->load->view('template_content', $this->data);
     }
 
     public function detail_product()
     {
+        $this->data['menu_tab'] = '2';
         $this->data['page_title'] = 'Detail Product';
         $this->data['main_view'] = 'content/detail_product';
         $this->load->view('template_content', $this->data);
     }
 
+    public function add_product()
+    {
+        $this->data['menu_tab'] = '2';
+        $this->data['page_title'] = 'Add Product';
+        $this->data['main_view'] = 'content/add_product';
+        $this->load->view('template_content', $this->data);
+    }
+
     public function data_customer()
     {
+        $this->data['menu_tab'] = '3';
         $this->data['page_title'] = 'Data Customer';
         $this->data['main_view'] = 'content/data_customer';
         $this->load->view('template_content', $this->data);
@@ -53,13 +64,23 @@ class Dashboard extends My_Controller
 
     public function data_customer_terpilih()
     {
+        $this->data['menu_tab'] = '3';
         $this->data['page_title'] = 'Data Detail Customer';
         $this->data['main_view'] = 'content/data_customer_terpilih';
         $this->load->view('template_content', $this->data);
     }
 
+    public function data_pengiriman()
+    {
+        $this->data['menu_tab'] = '4';
+        $this->data['page_title'] = 'Data Pengiriman';
+        $this->data['main_view'] = 'content/data_pengiriman';
+        $this->load->view('template_content', $this->data);
+    }
+
     public function data_lainya()
     {
+        $this->data['menu_tab'] = '5';
         $this->data['page_title'] = 'Data Lainya';
         $this->data['main_view'] = 'content/data_lainya';
         $this->load->view('template_content', $this->data);

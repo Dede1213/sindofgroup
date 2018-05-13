@@ -31,6 +31,9 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
+
+                <?php $this->load->view('part/navigation_tab');?>
+
                 <div class="box">
                     <!-- general form elements disabled -->
 
@@ -85,7 +88,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 
                             <div class="col-md-2">
-                                <a href="<?php echo base_url('dashboard/data_lainya')?>"><button type="button" class="btn btn-primary btn-block btn-flat">Submit</button></a>
+                                <a href="<?php echo base_url('dashboard/data_pengiriman')?>"><button type="button" class="btn btn-primary btn-block btn-flat">Submit</button></a>
                             </div>
                             <div class="col-md-2">
                                 <a href="#"><button type="button" class="btn btn-warning btn-block btn-flat">Edit Data</button></a>

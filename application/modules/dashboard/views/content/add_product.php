@@ -33,43 +33,28 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
         <div class="row">
         <div class="col-xs-12">
-
-            <?php $this->load->view('part/navigation_tab');?>
-
             <div class="box">
                 <div class="box-body">
                     <div class="table-responsive"> <!-- table responsive -->
                         <table class="table table-bordered table-striped" id="t_datatable">
                             <thead>
                             <tr>
-                                <th width="5%">No</th>
-                                <th>No KTP</th>
-                                <th>Nama</th>
-                                <th>No Handphone</th>
+                                <th width="5%">Picture</th>
+                                <th>Brand</th>
+                                <th>Kategori</th>
+                                <th>Product Code</th>
+                                <th>Nama Barang</th>
                                 <th width="10%">Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td>1</td>
-                                <td>999999828287373</td>
-                                <td>Dede Irawan</td>
-                                <td>089630622361</td>
-                                <td width=""><a href="<?php echo base_url('dashboard/data_customer_terpilih');?>"> <button type="button"><i class="fa fa-check"></i> Pilih</button></a></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>234565434567</td>
-                                <td>Tosa Narindra</td>
-                                <td>085323456789</td>
-                                <td width=""><button type="button"><i class="fa fa-check"></i> Pilih</button></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>9876543456</td>
-                                <td>Franky</td>
-                                <td>08456325544</td>
-                                <td width=""><button type="button"><i class="fa fa-check"></i> Pilih</button></td>
+                                <td><img src="<?php echo base_url();?>/assets/images/product/brand1.jpeg" width="100px"></td>
+                                <td>A</td>
+                                <td>A1</td>
+                                <td>A001</td>
+                                <td>Top Cover For PF 150</td>
+                                <td width=""><a href="<?php echo base_url();?>/dashboard/detail_product"><button type="button" data-dismiss="modal"><i class="fa fa-plus"> Add</i></button></a></td>
                             </tr>
                             </tbody>
                         </table>
@@ -77,7 +62,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                     </div><!-- table responsive -->
                     <br>
                     <div class="col-md-2">
-                        <a href="#" class="btn btn-block btn-primary">Add Customer</a>
+<!--                        <a href="#" class="btn btn-block btn-primary">Add Customer</a>-->
                     </div>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
