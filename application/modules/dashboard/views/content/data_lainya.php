@@ -125,7 +125,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 
                             <div class="col-sm-3">
-                            <a href="<?php echo base_url('dashboard/detail_product')?>"><button type="button" class="btn btn-primary btn-block btn-flat">Submit</button></a>
+                            <a href="<?php echo base_url('dashboard/form_pemesanan')?>"><button type="button" class="btn btn-primary btn-block btn-flat">Submit</button></a>
                             </div>
                         </form>
                         <span class="loading"></span>

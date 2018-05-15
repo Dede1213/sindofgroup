@@ -86,6 +86,14 @@ class Dashboard extends My_Controller
         $this->load->view('template_content', $this->data);
     }
 
+    public function form_pemesanan()
+    {
+        $this->data['menu_tab'] = '5';
+        $this->data['page_title'] = 'Form Pemesanan';
+        $this->data['main_view'] = 'content/form_pemesanan';
+        $this->load->view('template_content', $this->data);
+    }
+
     public function customer()
     {
         $this->data['page_title'] = 'Customer';
@@ -97,6 +105,22 @@ class Dashboard extends My_Controller
     {
         $this->data['page_title'] = 'Payment';
         $this->data['main_view'] = 'content/payment';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function printout($cat = false)
+    {
+        $this->data['page_title'] = 'Print Out';
+        $this->data['cat'] = $cat;
+        $this->data['main_view'] = 'content/print_out';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function upload($cat = false)
+    {
+        $this->data['page_title'] = 'Print Out';
+        $this->data['cat'] = $cat;
+        $this->data['main_view'] = 'content/upload';
         $this->load->view('template_content', $this->data);
     }
 

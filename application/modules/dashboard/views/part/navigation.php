@@ -38,7 +38,13 @@
               <li><a href="<?php echo base_url('dashboard/data_formulir') ; ?>"><i class="fa fa-shopping-cart"></i> <span>Sales Order</span></a></li>
               <li><a href="<?php echo base_url('dashboard/customer') ; ?>"><i class="fa fa-user"></i> <span>Customer ID</span></a></li>
               <li><a href="<?php echo base_url('dashboard/payment') ; ?>"><i class="fa fa-money"></i> <span>Payment</span></a></li>
-
+             <li class="treeview">
+                  <a href="#"><i class="fa fa-print"></i> <span>Print Out</span> <i class="fa fa-angle-left pull-right"></i></a>
+                  <ul class="treeview-menu">
+                      <li><a href="<?php echo base_url() ; ?>dashboard/printout"><i class="fa fa-file"></i> <span>Print</span></a></li>
+                      <li><a href="<?php echo base_url() ; ?>dashboard/upload"><i class="fa fa-file"></i> <span>Upload</span></a></li>
+                  </ul>
+              </li>
           </ul><!-- /.sidebar-menu -->
         </section>
         <!-- /.sidebar -->
