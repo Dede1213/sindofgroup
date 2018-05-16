@@ -108,18 +108,27 @@ class Dashboard extends My_Controller
         $this->load->view('template_content', $this->data);
     }
 
-    public function printout($cat = false)
+    public function printout($cat = false,$jenis = false)
     {
         $this->data['page_title'] = 'Print Out';
         $this->data['cat'] = $cat;
+        $this->data['jenis'] = $jenis;
         $this->data['main_view'] = 'content/print_out';
         $this->load->view('template_content', $this->data);
     }
 
-    public function upload($cat = false)
+    public function print_cetak()
     {
         $this->data['page_title'] = 'Print Out';
-        $this->data['cat'] = $cat;
+
+        $this->data['main_view'] = 'content/print_cetak';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function upload($invoice = false)
+    {
+        $this->data['page_title'] = 'Print Out';
+        $this->data['invoice'] = $invoice;
         $this->data['main_view'] = 'content/upload';
         $this->load->view('template_content', $this->data);
     }

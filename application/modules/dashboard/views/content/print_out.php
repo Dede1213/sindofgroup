@@ -36,7 +36,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             <div class="box">
                 <div class="box-body">
             <?php
-               if(!$cat) {
+               if(!$cat && !$jenis) {
                    ?>
                    <div class="form-group">
                        <label>Pilih Category</label>
@@ -54,7 +54,23 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                     ?>
 
                     <?php
-                    if($cat){
+                    if($jenis && $cat) {
+                        ?>
+                        <div class="form-group">
+                            <label>File yang akan di print</label><br>
+                            <input type="checkbox" name="vehicle" value="Bike" checked> Sales Order<br>
+                            <input type="checkbox" name="vehicle" value="Car" checked> Terima Uang<br>
+                            <input type="checkbox" name="vehicle" value="Car" checked> Kwitansi Pembayaran<br>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="<?php echo base_url('dashboard/print_cetak');?>" class="btn btn-block btn-primary">Submit</a>
+                        </div>
+                    <?php
+                    }
+                    ?>
+
+                    <?php
+                    if($cat && !$jenis){
                     ?>
 
                     <div class="table-responsive"> <!-- table responsive -->
@@ -78,7 +94,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 <td>SI A</td>
                                 <td>3</td>
                                 <td>1,000,000</td>
-                                <td width=""><a href="<?php echo base_url('dashboard/data_customer_terpilih');?>"> <button type="button"><i class="fa fa-check"></i> Pilih</button></a></td>
+                                <td width=""><a href="<?php echo base_url('dashboard/printout/cash/sales');?>"> <button type="button"><i class="fa fa-check"></i> Pilih</button></a></td>
                             </tr>
                             <tr>
                                 <td>2</td>

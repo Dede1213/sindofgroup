@@ -41,8 +41,8 @@
              <li class="treeview">
                   <a href="#"><i class="fa fa-print"></i> <span>Print Out</span> <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                      <li><a href="<?php echo base_url() ; ?>dashboard/printout"><i class="fa fa-file"></i> <span>Print</span></a></li>
-                      <li><a href="<?php echo base_url() ; ?>dashboard/upload"><i class="fa fa-file"></i> <span>Upload</span></a></li>
+                      <li><a href="<?php echo base_url() ; ?>dashboard/printout"><i class="fa fa-print"></i> <span>Print</span></a></li>
+                      <li><a href="<?php echo base_url() ; ?>dashboard/upload"><i class="fa fa-upload"></i> <span>Upload</span></a></li>
                   </ul>
               </li>
           </ul><!-- /.sidebar-menu -->
