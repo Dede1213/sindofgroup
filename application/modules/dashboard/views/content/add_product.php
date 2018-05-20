@@ -39,7 +39,6 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         <table class="table table-bordered table-striped" id="t_datatable">
                             <thead>
                             <tr>
-                                <th width="5%">Picture</th>
                                 <th>Brand</th>
                                 <th>Kategori</th>
                                 <th>Product Code</th>
@@ -49,7 +48,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             </thead>
                             <tbody>
                             <tr>
-                                <td><img src="<?php echo base_url();?>/assets/images/product/brand1.jpeg" width="100px"></td>
+
                                 <td>A</td>
                                 <td>A1</td>
                                 <td>A001</td>

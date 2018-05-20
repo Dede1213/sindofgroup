@@ -43,7 +43,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <thead>
                             <tr>
                                 <th width="5%">No</th>
-                                <th>No KTP</th>
+                                <th>No KTP/NPWP/Passport</th>
                                 <th>Nama</th>
                                 <th>No Handphone</th>
                                 <th width="10%">Action</th>

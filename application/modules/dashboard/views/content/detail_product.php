@@ -38,13 +38,15 @@
                                 <th rowspan="2"><center>Pricelist</center></th>
                                 <th rowspan="2"><center>Disc(%)</center></th>
                                 <th rowspan="2"><center>Harga Netto</center></th>
+                                <th rowspan="2"><center>Di bawa langsung</center></th>
+                                <th rowspan="2"><center>Action</center></th>
                         </tr>
 
                         <tr style="background-color: #E0E0E0">
 
                                 <th><center>Merek</center></th>
                                 <th><center>Type</center></th>
-                                <th><center>PO/Indent</center></th>
+                                <th><center>Product</center></th>
 
                         </tr>
 
@@ -59,6 +61,8 @@
                         <td>345.000</td>
                         <td>10%</td>
                         <td>315.000</td>
+                        <td><input type="checkbox"></td>
+                        <td><i class="fa fa-edit"></i> | <i class="fa fa-trash"></i> </td>
                     </tr>
 
 
@@ -97,7 +101,7 @@
                         <a href="<?php echo base_url('dashboard/add_product');?>" class="btn btn-block btn-primary">Add Product</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="<?php echo base_url('dashboard/data_customer');?>" class="btn btn-block btn-primary">Finish</a>
+                        <a href="<?php echo base_url('dashboard/data_pengiriman');?>" class="btn btn-block btn-primary">Submit</a>
                     </div>
                 </div><!-- /.box-body -->
                 </div><!-- /.box -->

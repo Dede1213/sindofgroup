@@ -42,6 +42,14 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 <legend>Sales Person</legend>
                             <!-- text input -->
                             <div class="form-group">
+                                <label>Nomor FP</label>
+                                <div class="input-group">
+                                    <input id="email" type="text" class="form-control" name="email" placeholder="Nomor FP">
+                                    <span class="input-group-addon"><a href="#"><i class="glyphicon glyphicon-search"> Search</i></a></span>
+                                </div>
+                            </div>
+                                <div style="clear: both;"></div>
+                            <div class="form-group">
                                 <label>Jenis Pembayaran</label>
                                 <select class="form-control">
                                     <option>DP</option>
@@ -76,7 +84,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
-        </div><!-- /.col -->
+        
 </div><!-- /.row -->
 </section><!-- /.content -->
 </div><!-- /.content-wrapper -->

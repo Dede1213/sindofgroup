@@ -41,21 +41,21 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                             <fieldset>
                                 <legend>OFFLINE</legend>
-                            <!-- text input -->
-                            <div class="form-group">
-                                <label>Nomor Form</label>
-                               <input type="text" name="title" id="title" class="form-control" placeholder="please write something">
-                            </div>
-                            <div class="form-group">
-                                <label>Tanggal Order</label>
-                                <input type="date" name="title" id="title" class="form-control" placeholder="please write something">
-                            </div>
-                            <div class="form-group">
-                                <label>Upload File Photo/Scaner </label>
-                                <input type="file" name="title" id="title" class="form-control" placeholder="please write something">
-                            </div>
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <label>Nomor Form</label>
+                                    <input type="text" name="title" id="title" class="form-control" placeholder="please write something">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tanggal Order</label>
+                                    <input type="date" name="title" id="title" class="form-control" placeholder="please write something">
+                                </div>
+                                <div class="form-group">
+                                    <label>Upload File Photo/Scaner FP</label>
+                                    <input type="file" name="title" id="title" class="form-control" placeholder="please write something">
+                                </div>
                             </fieldset>
-                            <br>
+                            <br><br>
                             <fieldset>
                                 <legend>PROJECT</legend>
                                 <!-- text input -->
@@ -64,17 +64,32 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     <input type="text" name="title" id="title" class="form-control" placeholder="please write something" readonly>
                                 </div>
                                 <div class="form-group">
-                                    <label>Upload Foto Kontrak</label>
+                                    <label>Upload Photo/Scaner Kontrak</label>
                                     <input type="file" name="title" id="title" class="form-control" placeholder="please write something" readonly>
                                 </div>
                                 <div class="form-group">
-                                    <label>Kesepakatan DP (%) </label>
+                                    <label> Downpayment (%) </label>
                                     <input type="text" name="title" id="title" class="form-control" placeholder="please write something" readonly>
                                 </div>
+                                <div class="form-group">
+                                    <label>Retensi (%)</label>
+                                    <input type="text" name="title" id="title" class="form-control" >
+                                </div>
                             </fieldset>
+                            <br><br>
+                            <fieldset>
+                                <legend>Purchase Order</legend>
+                                <div class="form-group">
+                                    <label>Nomor PO </label>
+                                    <input type="text" name="title" id="title" class="form-control" placeholder="please write something">
+                                </div>
+                                <div class="form-group">
+                                    <label>Upload File Photo/Scaner Dokumen PO </label>
+                                    <input type="file" name="title" id="title" class="form-control" placeholder="please write something">
+                                </div>
 
-
-                            <br>
+                            </fieldset>
+                            <br><br>
                             <fieldset>
                                 <legend>GROUP SALES</legend>
                                 <!-- text input -->
@@ -106,11 +121,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 
                             </fieldset>
-
-
-
-
-                            <a href="<?php echo base_url('dashboard/detail_product')?>"><button type="button" class="btn btn-primary btn-block btn-flat">Save</button></a>
+                            <a href="<?php echo base_url('dashboard/detail_product')?>"><button type="button" class="btn btn-primary btn-block btn-flat">Finish</button></a>
                         </form>
                         <span class="loading"></span>
                     </div><!-- /.box-body -->
@@ -121,4 +132,3 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 </div><!-- /.row -->
 </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
-
