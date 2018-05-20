@@ -43,32 +43,47 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <thead>
                             <tr>
                                 <th width="5%">No</th>
-                                <th>No KTP/NPWP/Passport</th>
+                                <th colspan="2">No ID Pelanggan</th>
+                                <th>No KTP/Passport</th>
+                                <th>NPWP</th>
                                 <th>Nama</th>
                                 <th>No Handphone</th>
+                                <th>Sisa Limit(*Credit)</th>
                                 <th width="10%">Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <td>1</td>
+                                <td>989898-00</td>
+                                <td></td>
                                 <td>999999828287373</td>
+                                <td>2345678</td>
                                 <td>Dede Irawan</td>
                                 <td>089630622361</td>
+                                <td></td>
                                 <td width=""><a href="<?php echo base_url('dashboard/data_customer_terpilih');?>"> <button type="button"><i class="fa fa-check"></i> Pilih</button></a></td>
                             </tr>
                             <tr>
                                 <td>2</td>
+                                <td>989898-00</td>
+                                <td></td>
                                 <td>234565434567</td>
+                                <td>2345678</td>
                                 <td>Tosa Narindra</td>
                                 <td>085323456789</td>
+                                <td>100.000.000</td>
                                 <td width=""><button type="button"><i class="fa fa-check"></i> Pilih</button></td>
                             </tr>
                             <tr>
                                 <td>3</td>
+                                <td>989898-00</td>
+                                <td>989898-01</td>
                                 <td>9876543456</td>
+                                <td>2345678</td>
                                 <td>Franky</td>
                                 <td>08456325544</td>
+                                <td>100.000.000</td>
                                 <td width=""><button type="button"><i class="fa fa-check"></i> Pilih</button></td>
                             </tr>
                             </tbody>

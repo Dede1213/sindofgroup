@@ -57,12 +57,12 @@
                         <td>A</td>
                         <td>TRIM KIT FOR MICROWAVE MW</td>
                         <td>PO</td>
-                        <td>1</td>
+                        <td>1 <a href="#"><i class="fa fa-edit"></i></a>  </td>
                         <td>345.000</td>
                         <td>10%</td>
                         <td>315.000</td>
                         <td><input type="checkbox"></td>
-                        <td><i class="fa fa-edit"></i> | <i class="fa fa-trash"></i> </td>
+                        <td><a href="#"><i class="fa fa-trash"></i></a> </td>
                     </tr>
 
 

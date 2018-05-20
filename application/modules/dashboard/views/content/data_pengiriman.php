@@ -74,7 +74,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                             <div class="form-group">
                                 <label>Alamat Kirim</label><br>
-                                <input type = "checkbox"> Sesuai Domisili
+                                <input type = "checkbox"> Sesuai Domisili <br>
+                                <input type = "checkbox"> Sesuai Tujuan
                             </div>
 
                             <fieldset>
@@ -111,6 +112,11 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             </div>
                             <br><br>
                             <fieldset><legend>Project & Credit</legend></fieldset>
+                            <div class="form-group">
+                                <label>Alamat Kirim</label><br>
+                                <input type = "checkbox"> Sesuai Domisili <br>
+                                <input type = "checkbox"> Sesuai Tujuan
+                            </div>
                             <div class="form-group">
                                 <label>PIC</label>
                                 <input type="text" name="title" id="title" class="form-control" placeholder="please write something">

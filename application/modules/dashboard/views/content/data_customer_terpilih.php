@@ -44,6 +44,14 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                             <!-- text input -->
                             <div class="form-group">
+                                <label>ID Pelanggan Induk</label>
+                                <input type="text" name="title" id="title" class="form-control" value="Dede Irawan" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>ID Pelanggan Sub</label>
+                                <input type="text" name="title" id="title" class="form-control" value="Dede Irawan" readonly>
+                            </div>
+                            <div class="form-group">
                                 <label>Nama</label>
                                 <input type="text" name="title" id="title" class="form-control" value="Dede Irawan" readonly>
                             </div>
@@ -59,7 +67,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             </div>
 
                             <div class="form-group">
-                                <label>Wilayah</label>
+                                <label>Provinsi</label>
                                 <input type="text" name="title" id="title" class="form-control" value="Jakarta" readonly>
                             </div>
 

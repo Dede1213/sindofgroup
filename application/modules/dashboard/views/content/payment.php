@@ -56,15 +56,6 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     <option>Full</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label>Jumlah Pembayaran</label>
-                                <input type="text" name="title" id="title" class="form-control" >
-                            </div>
-                                <div class="form-group">
-                                    <label>Nomor Struk Pembayaran</label>
-                                    <input type="text" name="title" id="title" class="form-control"  >
-                                </div>
-
                                 <div class="form-group">
                                     <label>Cara Pembayaran</label>
                                     <select class="form-control">
@@ -73,6 +64,34 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                         <option>Transfer</option>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label>Termin Pembayaran</label>
+                                    <select class="form-control">
+                                        <option>Normal</option>
+                                    </select>
+                                </div>
+                            <div class="form-group">
+                                <label>Jumlah Pembayaran</label>
+                                <input type="text" name="title" id="title" class="form-control" >
+                            </div>
+                                <div class="form-group">
+                                    <label>Sisa Pembayaran</label>
+                                    <input type="text" name="title" id="title" class="form-control" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nomor Kartu</label>
+                                    <input type="text" name="title" id="title" class="form-control"  >
+                                </div>
+                                <div class="form-group">
+                                    <label>Nomor Struk Pembayaran</label>
+                                    <input type="text" name="title" id="title" class="form-control"  >
+                                </div>
+                                <div class="form-group">
+                                    <label>Bukti Pembayaran</label>
+                                    <input type="file" name="title" id="title" class="form-control"  >
+                                </div>
+
+
                             </fieldset>
 
                             <div class="col-sm-3">

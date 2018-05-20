@@ -76,7 +76,7 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <th colspan="2" style="background-color: #E0E0E0;text-align: center;">CONTRACT DOCUMENT</th>
+                            <th colspan="2" style="background-color: #E0E0E0;text-align: center;">CONTRACT PROJECT</th>
 
                             <td>SO Outlet</td>
                             <td></td>
@@ -94,27 +94,20 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td>DP%</td>
+                            <td>DP(%)</td>
                             <td></td>
                             <td>Warehouse</td>
                             <td></td>
                         </tr>
+                        <tr>
+                            <td>Retensi(%)</td>
+                            <td colspan="3"></td>
 
-
-                    </table>
-
-                        <br>
-                    <table border="" width="80%">
-                        <tr style="background-color: #E0E0E0">
-                            <th colspan="4" style="text-align: center;">DELIVERY DATA</th>
                         </tr>
-                        <tr><td width="25%">DATE</td><td width="25%"></td><td width="25%">Delivery Via</td><td></td></tr>
-                        <tr><td>Order</td><td></td><td>Delivery Address</td><td></td></tr>
-                        <tr><td colspan="4">Delivery</td></tr>
-                        <tr><td></td><td></td><td>Recipient's Name</td><td></td></tr>
-                        <tr><td></td><td></td><td>Contact Number</td><td></td></tr>
+
 
                     </table>
+
 
                     <br>
 
@@ -147,9 +140,9 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>Wilayah</td>
+                                <td>Provinsi</td>
                                 <td></td>
-                                <td>2</td>
+                                <td>Handphone 2</td>
                                 <td></td>
                             </tr>
                             <tr>
@@ -167,6 +160,19 @@
                         </table>
 
                     <br>
+
+                    <table border="" width="80%">
+                        <tr style="background-color: #E0E0E0">
+                            <th colspan="4" style="text-align: center;">DELIVERY DATA</th>
+                        </tr>
+                        <tr><td width="25%">DATE</td><td width="25%"></td><td width="25%">Delivery Address</td><td></td></tr>
+                        <tr><td>Delivery</td><td></td><td>Recipient's Name</td><td></td></tr>
+
+                        <tr><td></td><td></td><td>Contact Number</td><td></td></tr>
+                        
+                    </table>
+                    <br>
+
                     <font style="text-align: center">
                         <table border='1' width="100%" class="">
                             <tr style="background-color: #E0E0E0">
@@ -176,7 +182,7 @@
                                 <th rowspan="2"><center>NO</center></th>
                                 <th rowspan="2"><center>KODE</center></th>
                                 <th colspan="2"><center>Deskripsi</center></th>
-                                <th><center>Status</center></th>
+
                                 <th rowspan="2"><center>Qty</center></th>
                                 <th rowspan="2"><center>Pricelist</center></th>
                                 <th rowspan="2"><center>Disc(%)</center></th>
@@ -187,7 +193,7 @@
 
                                 <th><center>Merek</center></th>
                                 <th><center>Type</center></th>
-                                <th><center>PO/Indent</center></th>
+
 
                             </tr>
 
@@ -197,7 +203,7 @@
                                 <td>MWKM</td>
                                 <td>A</td>
                                 <td>TRIM KIT FOR MICROWAVE MW</td>
-                                <td>PO</td>
+
                                 <td>1</td>
                                 <td>345.000</td>
                                 <td>10%</td>
