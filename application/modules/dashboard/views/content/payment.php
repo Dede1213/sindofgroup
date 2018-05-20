@@ -84,7 +84,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
-        
+
 </div><!-- /.row -->
 </section><!-- /.content -->
 </div><!-- /.content-wrapper -->

@@ -121,7 +121,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 
                             </fieldset>
-                            <a href="<?php echo base_url('dashboard/detail_product')?>"><button type="button" class="btn btn-primary btn-block btn-flat">Finish</button></a>
+                            <a href="<?php echo base_url('dashboard/form_pemesanan')?>"><button type="button" class="btn btn-primary btn-block btn-flat">Finish</button></a>
                         </form>
                         <span class="loading"></span>
                     </div><!-- /.box-body -->
