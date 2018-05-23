@@ -74,10 +74,10 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                             <div class="form-group">
                                 <label>Alamat Kirim</label><br>
-                                <input type = "checkbox"> Sesuai Domisili <br>
-                                <input type = "checkbox"> Sesuai Tujuan
+                                <input type = "checkbox" name="sesuai_domisili_kirim" id="sesuai_domisili_kirim" value="sesuai_domisili_kirim"> Sesuai Domisili <br>
+                                <input type = "checkbox" name="sesuai_tujuan_kirim" id="sesuai_tujuan_kirim" value="sesuai_tujuan_kirim"> Sesuai Tujuan
                             </div>
-
+                        <div class="kirim">
                             <fieldset>
                                 <legend>Sesuai Tujuan</legend>
                                 <div class="form-group">
@@ -110,13 +110,19 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 <label>No HP Penerima*</label>
                                 <input type="text" name="title" id="title" class="form-control" placeholder="please write something">
                             </div>
+                    </div>
                             <br><br>
                             <fieldset><legend>Project & Credit</legend></fieldset>
+
+
                             <div class="form-group">
                                 <label>Alamat Kirim</label><br>
-                                <input type = "checkbox"> Sesuai Domisili <br>
-                                <input type = "checkbox"> Sesuai Tujuan
+                                <input type = "checkbox" name="sesuai_domisili_pc" id="sesuai_domisili_pc" value="sesuai_domisili_pc"> Sesuai Domisili <br>
+                                <input type = "checkbox" name="sesuai_tujuan_pc" id="sesuai_tujuan_pc" value="sesuai_tujuan_pc"> Sesuai Tujuan
                             </div>
+
+                    <div class="p_c">
+
                             <div class="form-group">
                                 <label>PIC</label>
                                 <input type="text" name="title" id="title" class="form-control" placeholder="please write something">
@@ -145,6 +151,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 <label>Kode Pos</label>
                                 <input type="text" name="title" id="title" class="form-control" placeholder="please write something">
                             </div>
+
+                    </div>
                             </fieldset>
                             <br><br>
                             <fieldset>

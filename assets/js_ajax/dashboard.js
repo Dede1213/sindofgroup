@@ -257,6 +257,35 @@ $(document).ready(function() {
         });
     });
 
+    /*----------------------------- event 2018 ------------------------- */
+    $(".p_c").hide();
+
+    $("#sesuai_tujuan_pc").change(function() {
+        if(this.checked) {
+            $(".p_c").show();
+        }
+    });
+
+    $("#sesuai_domisili_pc").change(function() {
+        if(this.checked) {
+            $(".p_c").hide();
+        }
+    });
+
+    $(".kirim").hide();
+
+    $("#sesuai_tujuan_kirim").change(function() {
+        if(this.checked) {
+            $(".kirim").show();
+        }
+    });
+
+    $("#sesuai_domisili_kirim").change(function() {
+        if(this.checked) {
+            $(".kirim").hide();
+        }
+    });
+
 //    ++++++++++++++++++++++++++++++++++LOAD DATA TABLE++++++++++++++++++++++++++++++++++++++++++++++
     $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings)
     {
@@ -364,5 +393,7 @@ $(document).ready(function() {
 
     /*fungsi delegate adalah event untuk menangkap parameter yang baru ada setelah di load ajax*/
     //$(document).delegate('.fa-trash-o', 'click', function() { });
+
+
 
 });
