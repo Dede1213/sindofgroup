@@ -133,6 +133,50 @@ class Dashboard extends My_Controller
         $this->load->view('template_content', $this->data);
     }
 
+    public function so_progress()
+    {
+        $this->data['page_title'] = 'Report SO Progress';
+        $this->data['main_view'] = 'content/so_progress';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function sellout()
+    {
+        $this->data['menu_tab'] = '2';
+        $this->data['page_title'] = 'Report Sell Out';
+        $this->data['main_view'] = 'content/sellout';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function cust_progress()
+    {
+        $this->data['page_title'] = 'Report New Customer Progress';
+        $this->data['main_view'] = 'content/cust_progress';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function draft()
+    {
+        $this->data['page_title'] = 'SO Draft';
+        $this->data['main_view'] = 'content/draft';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function list_customer()
+    {
+        $this->data['page_title'] = 'List Customer';
+        $this->data['main_view'] = 'content/list_customer';
+        $this->load->view('template_content', $this->data);
+    }
+
+
+    public function data_customer_sellout()
+    {
+        $this->data['menu_tab'] = '1';
+        $this->data['page_title'] = 'Data Customer';
+        $this->data['main_view'] = 'content/data_customer_sellout';
+        $this->load->view('template_content', $this->data);
+    }
 
 
 

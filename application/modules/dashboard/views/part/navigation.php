@@ -24,27 +24,81 @@
             <!-- Optionally, you can add icons to the links -->
 
 
-              <li><a href="<?php echo base_url('dashboard') ; ?>"><i class="fa fa-home"></i> <span>Home</span></a></li>
+<!--              <li><a href="--><?php //echo base_url('dashboard') ; ?><!--"><i class="fa fa-home"></i> <span>Home</span></a></li>-->
 
-<!--            <li class="treeview">-->
-<!--              <a href="#"><i class="fa fa-shopping-cart"></i> <span>Sales Order</span> <i class="fa fa-angle-left pull-right"></i></a>-->
-<!--              <ul class="treeview-menu">-->
-<!--                <li><a href="--><?php //echo base_url() ; ?><!--dashboard/data_formulir"><i class="fa fa-file"></i> <span>Data Formulir</span></a></li>-->
-<!--                <li><a href="--><?php //echo base_url() ; ?><!--dashboard/detail_product"><i class="fa fa-file"></i> <span>Detail Product</span></a></li>-->
-<!--                <li><a href="--><?php //echo base_url() ; ?><!--dashboard/data_customer"><i class="fa fa-file"></i> <span>Data Customer</span></a></li>-->
-<!--                  <li><a href="--><?php //echo base_url() ; ?><!--dashboard/data_lainya"><i class="fa fa-file"></i> <span>Data Lainya</span></a></li>-->
-<!--              </ul>-->
-<!--            </li>-->
-              <li><a href="<?php echo base_url('dashboard/data_customer') ; ?>"><i class="fa fa-shopping-cart"></i> <span>Sales Order</span></a></li>
-              <li><a href="<?php echo base_url('dashboard/customer') ; ?>"><i class="fa fa-user"></i> <span>Customer ID</span></a></li>
-              <li><a href="<?php echo base_url('dashboard/payment') ; ?>"><i class="fa fa-money"></i> <span>Payment</span></a></li>
-             <li class="treeview">
-                  <a href="#"><i class="fa fa-print"></i> <span>Print Out</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-home"></i> <span>Home</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="<?php echo base_url('dashboard/so_progress') ; ?>"><i class="fa fa-file"></i> <span>Report SO Progress</span></a></li>
+                <li><a href="<?php echo base_url('dashboard/sellout') ; ?>"><i class="fa fa-file"></i> <span>Report Sell Out</span></a></li>
+                <li><a href="<?php echo base_url('dashboard/cust_progress') ; ?>"><i class="fa fa-file"></i> <span>Report New Customer Progress</span></a></li>
+
+              </ul>
+            </li>
+
+              <li class="treeview">
+                  <a href="#"><i class="fa fa-folder"></i> <span>Sales Order</span> <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                      <li><a href="<?php echo base_url() ; ?>dashboard/printout"><i class="fa fa-print"></i> <span>Print</span></a></li>
-                      <li><a href="<?php echo base_url() ; ?>dashboard/upload"><i class="fa fa-upload"></i> <span>Upload</span></a></li>
+                      <li class="treeview">
+                          <a href="<?php echo base_url('#') ; ?>"><i class="fa fa-folder"></i> <span>Created New Order</span><i class="fa fa-angle-left pull-right"></i></a>
+                          <ul class="treeview-menu">
+                              <li><a href="<?php echo base_url('dashboard/data_customer') ; ?>"><i class="fa fa-shopping-cart"></i> <span>Sales Order</span></a></li>
+                              <li><a href="<?php echo base_url('dashboard/data_customer_sellout') ; ?>"><i class="fa fa-file"></i> <span>Consignment / Sell Out</span></a></li>
+                          </ul>
+                      </li>
+                      <li class=""><a href="<?php echo base_url('dashboard/draft') ; ?>"><i class="fa fa-folder"></i> <span>SO Draft</span></a></li>
+
                   </ul>
               </li>
+
+              <li class="treeview">
+                  <a href="#"><i class="fa fa-user"></i> <span>Customer ID</span> <i class="fa fa-angle-left pull-right"></i></a>
+                  <ul class="treeview-menu">
+                      <li class=""><a href="<?php echo base_url('#') ; ?>"><i class="fa fa-plus"></i> <span>Created New Customer</span></a> </li>
+                      <li class=""><a href="<?php echo base_url('dashboard/list_customer') ; ?>"><i class="fa fa-list"></i> <span>List Data Customer</span></a></li>
+
+                  </ul>
+              </li>
+
+              <li class="treeview">
+                  <a href="#"><i class="fa fa-money"></i> <span>Payment</span><i class="fa fa-angle-left pull-right"></i></a>
+                  <ul class="treeview-menu">
+                      <li class=""><a href="<?php echo base_url('dashboard/payment') ; ?>"><i class="fa fa-file"></i> <span>Input Payment</span></a> </li>
+                  </ul>
+              </li>
+
+
+              <li class="treeview">
+                  <a href="#"><i class="fa fa-print"></i> <span>Print & Upload</span> <i class="fa fa-angle-left pull-right"></i></a>
+                  <ul class="treeview-menu">
+                      <li class="treeview">
+                          <a href="<?php echo base_url('#') ; ?>"><i class="fa fa-print"></i> <span>Print</span><i class="fa fa-angle-left pull-right"></i></a>
+                          <ul class="treeview-menu">
+                              <li><a href="<?php echo base_url('dashboard/printout') ; ?>"><i class="fa fa-shopping-cart"></i> <span>Sales Order</span></a></li>
+                              <li><a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>Sell Out</span></a></li>
+                              <li><a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>Form Verifikasi</span></a></li>
+                          </ul>
+                      </li>
+                      <li class="treeview">
+                          <a href="<?php echo base_url('#') ; ?>"><i class="fa fa-upload"></i> <span>Upload</span><i class="fa fa-angle-left pull-right"></i></a>
+                          <ul class="treeview-menu">
+                              <li><a href="<?php echo base_url('dashboard/upload') ; ?>"><i class="fa fa-shopping-cart"></i> <span>Sales Order</span></a></li>
+                              <li><a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>New Customer</span></a></li>
+                          </ul>
+                      </li>
+
+                  </ul>
+              </li>
+
+              <li class="treeview">
+                  <a href="#"><i class="fa fa-money"></i> <span>Data Final</span><i class="fa fa-angle-left pull-right"></i></a>
+                  <ul class="treeview-menu">
+                      <li class=""><a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>Report SO</span></a> </li>
+                      <li class=""><a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>Sell Out</span></a> </li>
+                  </ul>
+              </li>
+
+
           </ul><!-- /.sidebar-menu -->
         </section>
         <!-- /.sidebar -->

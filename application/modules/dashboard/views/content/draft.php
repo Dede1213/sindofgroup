@@ -22,7 +22,6 @@
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
-                <?php $this->load->view('part/navigation_tab');?>
                 <div class="box">
                 <div class="box-body">
                 <div class="table-responsive"> <!-- table responsive -->
@@ -97,14 +96,7 @@
                 </div><!-- table responsive -->
                     <br>
                     <div class="col-md-2">
-
-                        <a href="<?php echo base_url('dashboard/add_product');?>" class="btn btn-block btn-primary">Add Product</a>
-                    </div>
-                    <div class="col-md-2">
-                        <a href="<?php echo base_url('dashboard/data_pengiriman');?>" class="btn btn-block btn-success">Submit</a>
-                    </div>
-                    <div class="col-md-2">
-                        <a href="<?php echo base_url('dashboard/data_pengiriman');?>" class="btn btn-block btn-warning">Save As Draft</a>
+                        <a href="<?php echo base_url('dashboard/detail_product');?>" class="btn btn-block btn-primary">Lanjutkan</a>
                     </div>
                 </div><!-- /.box-body -->
                 </div><!-- /.box -->
