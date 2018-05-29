@@ -286,6 +286,42 @@ $(document).ready(function() {
         }
     });
 
+    $(".sewa").hide();
+
+    $("#status_rumah").change(function() {
+        //$(".sewa").show();
+        var val = $('#status_rumah').val();
+            if(val == 'Sewa'){
+                $(".sewa").show();
+            }else{
+                $(".sewa").hide();
+            }
+    });
+
+    $(".sewa_toko").hide();
+
+    $("#status_toko").change(function() {
+        //$(".sewa").show();
+        var val = $('#status_toko').val();
+        if(val == 'Sewa'){
+            $(".sewa_toko").show();
+        }else{
+            $(".sewa_toko").hide();
+        }
+    });
+
+    $(".outlet").hide();
+
+    $("#status_outlet").change(function() {
+        //$(".sewa").show();
+        var val = $('#status_outlet').val();
+        if(val == 'Ya'){
+            $(".outlet").show();
+        }else{
+            $(".outlet").hide();
+        }
+    });
+
 //    ++++++++++++++++++++++++++++++++++LOAD DATA TABLE++++++++++++++++++++++++++++++++++++++++++++++
     $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings)
     {

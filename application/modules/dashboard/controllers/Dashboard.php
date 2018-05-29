@@ -125,6 +125,22 @@ class Dashboard extends My_Controller
         $this->load->view('template_content', $this->data);
     }
 
+    public function print_sellout()
+    {
+        $this->data['page_title'] = 'Print Sellout';
+
+        $this->data['main_view'] = 'content/sellout_print';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function print_verifikasi()
+    {
+        $this->data['page_title'] = 'Print Verifikasi';
+
+        $this->data['main_view'] = 'content/verifikasi_print';
+        $this->load->view('template_content', $this->data);
+    }
+
     public function upload($invoice = false)
     {
         $this->data['page_title'] = 'Print Out';
@@ -175,6 +191,31 @@ class Dashboard extends My_Controller
         $this->data['menu_tab'] = '1';
         $this->data['page_title'] = 'Data Customer';
         $this->data['main_view'] = 'content/data_customer_sellout';
+        $this->load->view('template_content', $this->data);
+    }
+
+
+    public function add_customer()
+    {
+        $this->data['menu_tab'] = '1';
+        $this->data['page_title'] = 'Create New Customer';
+        $this->data['main_view'] = 'content/add_customer';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function data_verifikasi1()
+    {
+        $this->data['menu_tab'] = '2';
+        $this->data['page_title'] = 'Create New Customer';
+        $this->data['main_view'] = 'content/data_verifikasi1';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function data_verifikasi2()
+    {
+        $this->data['menu_tab'] = '3';
+        $this->data['page_title'] = 'Create New Customer';
+        $this->data['main_view'] = 'content/data_verifikasi2';
         $this->load->view('template_content', $this->data);
     }
 
