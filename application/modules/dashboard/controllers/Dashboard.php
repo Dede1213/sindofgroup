@@ -25,9 +25,9 @@ class Dashboard extends My_Controller
     #+++++++++++++++++++++++++++++ CORE Content To Next Project ++++++++++++++++++++++++++#
     public function index()
     {
-        $x = $this->session->userdata('id_level');
-        echo $x;
-        exit;
+//        $x = $this->session->userdata('id_level');
+//        echo $x;
+//        exit;
         $this->load->view('template_home', $this->data);
     }
 
