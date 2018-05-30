@@ -22,11 +22,14 @@
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
-                <?php $this->load->view('part/navigation_tab_sellout');?>
+<!--                --><?php //$this->load->view('part/navigation_tab_sellout');?>
 
                 <div class="box">
                     <div class="box-body">
-                        <img src="<?php echo base_url();?>/assets/images/img/mulia.png">
+
+                        <?php if($param){?>
+
+                        <img src="<?php echo base_url();?>/assets/images/img/muliax.png">
                         <center><h2>FORM SELLOUT</h2></center>
                         <b>NAMA OUTLET </b> : <br>
                             <b>LOKASI OUTLET </b> : <br>
@@ -52,6 +55,20 @@
                         <div class="col-sm-2" style="float: right">
                             <a href="<?php echo base_url('dashboard/data_formulir');?>" class="btn btn-block btn-danger">Tidak Ada Penjualan</a>
                         </div>
+
+                        <?php }else{?>
+                            <div class="form-group">
+                                <label>Pilih Outlet</label>
+                                <select>
+                                    <option>Mitra 10</option>
+                                    <option>Ace Hardware</option>
+                                </select>
+                            </div>
+
+                            <a href="<?php echo base_url('dashboard/sellout/param')?>"><button type="button" class="btn btn-primary btn-block btn-flat">Submit</button></a>
+
+
+                        <?php } ?>
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
 

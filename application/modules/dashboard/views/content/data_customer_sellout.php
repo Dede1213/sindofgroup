@@ -34,66 +34,94 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
         <div class="row">
         <div class="col-xs-12">
 
-            <?php $this->load->view('part/navigation_tab_sellout');?>
+
 
             <div class="box">
                 <div class="box-body">
-                    <div class="table-responsive"> <!-- table responsive -->
-                        <table class="table table-bordered table-striped" id="t_datatable">
-                            <thead>
-                            <tr>
-                                <th width="5%">No</th>
-                                <th colspan="2">No ID Pelanggan</th>
-                                <th>No KTP/Passport</th>
-                                <th>NPWP</th>
-                                <th>Nama</th>
-                                <th>No Handphone</th>
-                                <th>Sisa Limit(*Credit)</th>
-                                <th width="10%">Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>989898-00</td>
-                                <td></td>
-                                <td>999999828287373</td>
-                                <td>2345678</td>
-                                <td>Dede Irawan</td>
-                                <td>089630622361</td>
-                                <td></td>
-                                <td width=""><a href="<?php echo base_url('dashboard/sellout');?>"> <button type="button"><i class="fa fa-check"></i> Pilih</button></a></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>989898-00</td>
-                                <td></td>
-                                <td>234565434567</td>
-                                <td>2345678</td>
-                                <td>Tosa Narindra</td>
-                                <td>085323456789</td>
-                                <td>100.000.000</td>
-                                <td width=""><button type="button"><i class="fa fa-check"></i> Pilih</button></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>989898-00</td>
-                                <td>989898-01</td>
-                                <td>9876543456</td>
-                                <td>2345678</td>
-                                <td>Franky</td>
-                                <td>08456325544</td>
-                                <td>100.000.000</td>
-                                <td width=""><button type="button"><i class="fa fa-check"></i> Pilih</button></td>
-                            </tr>
-                            </tbody>
-                        </table>
 
-                    </div><!-- table responsive -->
-                    <br>
-                    <div class="col-md-2">
-<!--                        <a href="#" class="btn btn-block btn-primary">Add Customer</a>-->
-                    </div>
+                    <form>
+
+
+                        <!-- text input -->
+
+                        <div class="form-group">
+                            <label>Nama Outlet</label>
+                            <select>
+                                <option>Mitra 10</option>
+                                <option>ACE Hardware</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Lokasi Outlet</label>
+                            <input type="text" name="title" id="title" class="form-control" value="" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tanggal Order</label>
+                            <input type="date" name="title" id="title" class="form-control" value="">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tipe Barang</label>
+                            <input type="date" name="title" id="title" class="form-control" value="">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Quantity</label>
+                            <input type="date" name="title" id="title" class="form-control" value="">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Kode Promo</label>
+                            <select>
+                                <option>A1132</option>
+                                <option>B123123</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Sell Out Price</label>
+                            <input type="text" name="title" id="title" class="form-control" value="" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Struk Bayar / Remark</label>
+                            <input type="text" name="title" id="title" class="form-control" value="">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nama Konsumen</label>
+                            <input type="text" name="title" id="title" class="form-control" value="">
+                        </div>
+
+                        <div class="form-group">
+                            <label>No HP</label>
+                            <input type="text" name="title" id="title" class="form-control" value="">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Konsumen</label>
+                            <input type="text" name="title" id="title" class="form-control" value="">
+                        </div>
+
+
+
+
+
+
+                        <hr>
+
+
+                        <div class="col-md-2">
+                            <a href="<?php echo base_url('#')?>"><button type="button" class="btn btn-primary btn-block btn-flat">Submit</button></a>
+                        </div>
+
+
+
+
+                    </form>
+
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
 

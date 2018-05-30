@@ -25,6 +25,10 @@
 
 
 <!--              <li><a href="--><?php //echo base_url('dashboard') ; ?><!--"><i class="fa fa-home"></i> <span>Home</span></a></li>-->
+<?php
+ if($this->session->userdata('id_level') == '1' )
+ {
+     ?>
 
             <li class="treeview">
               <a href="#"><i class="fa fa-home"></i> <span>Home</span> <i class="fa fa-angle-left pull-right"></i></a>
@@ -98,6 +102,13 @@
                   </ul>
               </li>
 
+<?php
+ }
+ ?>
+              <?php
+              if($this->session->userdata('id_level') == '2' )
+              {
+              ?>
 
               <li class="treeview">
                   <a href="#"><i class="fa fa-folder"></i> <span>Data In Progress</span> <i class="fa fa-angle-left pull-right"></i></a>
@@ -168,6 +179,9 @@
 
                   </ul>
               </li>
+              <?php
+              }
+              ?>
 
           </ul><!-- /.sidebar-menu -->
         </section>

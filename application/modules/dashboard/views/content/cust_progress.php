@@ -36,54 +36,38 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             <div class="box">
                 <div class="box-body">
                     <div class="table-responsive"> <!-- table responsive -->
-                        <table class="table table-bordered table-striped" id="t_datatable">
-                            <thead>
+                        <table border="1" width="100%">
                             <tr>
-                                <th width="5%">No</th>
-                                <th colspan="2">No ID Pelanggan</th>
-                                <th>No KTP/Passport</th>
-                                <th>NPWP</th>
-                                <th>Nama</th>
-                                <th>No Handphone</th>
-                                <th>Sisa Limit(*Credit)</th>
-
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>989898-00</td>
-                                <td></td>
-                                <td>999999828287373</td>
-                                <td>2345678</td>
-                                <td>Dede Irawan</td>
-                                <td>089630622361</td>
-                                <td></td>
-
+                                <th rowspan="2"><center>No</center></th>
+                                <th rowspan="2"><center>Tanggal Pembuatan</center></th>
+                                <th rowspan="2"><center>Nomor Form Verifikasi</center></th>
+                                <th rowspan="2"><center>Nama Toko</center></th>
+                                <th rowspan="2"><center>Nama Pribadi</center></th>
+                                <th rowspan="2"><center>Chanel</center></th>
+                                <th colspan="3"><center>Verifikasi</center></th>
+                                <th colspan="2"><center>Persetujuan</center></th>
                             </tr>
                             <tr>
-                                <td>2</td>
-                                <td>989898-00</td>
-                                <td></td>
-                                <td>234565434567</td>
-                                <td>2345678</td>
-                                <td>Tosa Narindra</td>
-                                <td>085323456789</td>
-                                <td>100.000.000</td>
-
+                                <td><center>Tanggal</center></td>
+                                <td><center>Status</center></td>
+                                <td><center>Doc</center></td>
+                                <td><center>Tanggal</center></td>
+                                <td><center>Status</center></td>
                             </tr>
                             <tr>
-                                <td>3</td>
-                                <td>989898-00</td>
-                                <td>989898-01</td>
-                                <td>9876543456</td>
-                                <td>2345678</td>
-                                <td>Franky</td>
-                                <td>08456325544</td>
-                                <td>100.000.000</td>
+                                <td><center>1</center></td>
+                                <td><center>29-may-2018</center></td>
+                                <td><center>2020202020</center></td>
+                                <td><center>Toko Jaya</center></td>
+                                <td><center>Jaya</center></td>
+                                <td><center>Outlet</center></td>
+                                <td><center>30-may-2018</center></td>
+                                <td><center>Done</center></td>
+                                <td><center>Vp.pdf</center></td>
 
+                                <td><center></center></td>
+                                <td><center>In Progress</center></td>
                             </tr>
-                            </tbody>
                         </table>
 
                     </div><!-- table responsive -->

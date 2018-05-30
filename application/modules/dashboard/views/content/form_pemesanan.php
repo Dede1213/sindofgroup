@@ -182,8 +182,9 @@
                                 <th rowspan="2"><center>NO</center></th>
                                 <th rowspan="2"><center>KODE</center></th>
                                 <th colspan="2"><center>Deskripsi</center></th>
-
+                                <th><center>Status</center></th>
                                 <th rowspan="2"><center>Qty</center></th>
+
                                 <th rowspan="2"><center>Pricelist</center></th>
                                 <th rowspan="2"><center>Disc(%)</center></th>
                                 <th rowspan="2"><center>Harga Netto</center></th>
@@ -193,6 +194,7 @@
 
                                 <th><center>Merek</center></th>
                                 <th><center>Type</center></th>
+                                <th><center>Produk</center></th>
 
 
                             </tr>
@@ -204,6 +206,7 @@
                                 <td>A</td>
                                 <td>TRIM KIT FOR MICROWAVE MW</td>
 
+                                <td>PO</td>
                                 <td>1</td>
                                 <td>345.000</td>
                                 <td>10%</td>

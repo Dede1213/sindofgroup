@@ -125,18 +125,20 @@ class Dashboard extends My_Controller
         $this->load->view('template_content', $this->data);
     }
 
-    public function print_sellout()
+    public function print_sellout($param = false)
     {
         $this->data['page_title'] = 'Print Sellout';
+
+        $this->data['param'] = $param;
 
         $this->data['main_view'] = 'content/sellout_print';
         $this->load->view('template_content', $this->data);
     }
 
-    public function print_verifikasi()
+    public function print_verifikasi($param = false)
     {
         $this->data['page_title'] = 'Print Verifikasi';
-
+        $this->data['param'] = $param;
         $this->data['main_view'] = 'content/verifikasi_print';
         $this->load->view('template_content', $this->data);
     }
@@ -156,8 +158,9 @@ class Dashboard extends My_Controller
         $this->load->view('template_content', $this->data);
     }
 
-    public function sellout()
+    public function sellout($param = false)
     {
+        $this->data['param'] = $param;
         $this->data['menu_tab'] = '2';
         $this->data['page_title'] = 'Report Sell Out';
         $this->data['main_view'] = 'content/sellout';
