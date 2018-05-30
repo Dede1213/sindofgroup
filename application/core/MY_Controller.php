@@ -30,7 +30,7 @@ class MY_Controller extends CI_Controller
 
     function cekLoginAdmin(){
 
-        if ($this->session->userdata('login') == 'admin')
+        if ($this->session->userdata('login') == FALSE)
         {
             redirect('dpanel');
         }

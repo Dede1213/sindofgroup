@@ -19,12 +19,15 @@ class Dashboard extends My_Controller
         $this->load->model('dashboard_model','dashboard');
         $this->load->helper(array('role_form_helper','xss_helper'));
         $this->load->library('datatables');
-       // $this->cekLoginAdmin();
+        $this->cekLoginAdmin();
     }
 
     #+++++++++++++++++++++++++++++ CORE Content To Next Project ++++++++++++++++++++++++++#
     public function index()
     {
+        $x = $this->session->userdata('id_level');
+        echo $x;
+        exit;
         $this->load->view('template_home', $this->data);
     }
 

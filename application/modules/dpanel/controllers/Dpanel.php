@@ -39,6 +39,7 @@ class Dpanel extends CI_Controller
                 if($this->login->cek_login($username,$password))
                 {
                     $this->data['gagal_login'] = '';
+
                     redirect('dashboard');
                 }else{
                     $this->data['gagal_login'] = 'username atau password salah';
