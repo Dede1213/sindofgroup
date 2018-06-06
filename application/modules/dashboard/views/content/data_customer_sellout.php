@@ -46,15 +46,10 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                         <div class="form-group">
                             <label>Nama Outlet</label>
-                            <select>
+                            <select class="form-group">
                                 <option>Mitra 10</option>
                                 <option>ACE Hardware</option>
                             </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Lokasi Outlet</label>
-                            <input type="text" name="title" id="title" class="form-control" value="" readonly>
                         </div>
 
                         <div class="form-group">
@@ -63,18 +58,19 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         </div>
 
                         <div class="form-group">
-                            <label>Tipe Barang</label>
-                            <input type="date" name="title" id="title" class="form-control" value="">
+                            <label>Kode Barang</label>
+                            <input type="text" name="title" id="title" class="form-control" value="">
                         </div>
 
                         <div class="form-group">
                             <label>Quantity</label>
-                            <input type="date" name="title" id="title" class="form-control" value="">
+                            <input type="text" name="title" id="title" class="form-control" value="">
                         </div>
 
                         <div class="form-group">
                             <label>Kode Promo</label>
-                            <select>
+                            <select class="form-control" readonly>
+                                <option>-</option>
                                 <option>A1132</option>
                                 <option>B123123</option>
                             </select>
@@ -82,12 +78,12 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                         <div class="form-group">
                             <label>Sell Out Price</label>
-                            <input type="text" name="title" id="title" class="form-control" value="" readonly>
+                            <input type="text" name="title" id="title" class="form-control" value="">
                         </div>
 
                         <div class="form-group">
                             <label>Struk Bayar / Remark</label>
-                            <input type="text" name="title" id="title" class="form-control" value="">
+                            <input type="file" name="title" id="title" class="form-control" value="" disabled>
                         </div>
 
                         <div class="form-group">
@@ -103,6 +99,13 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         <div class="form-group">
                             <label>Email Konsumen</label>
                             <input type="text" name="title" id="title" class="form-control" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>Status Produk</label>
+                            <select class="form-control">
+                                <option>Beli Putus</option>
+                                <option>Konsinyasi</option>
+                            </select>
                         </div>
 
 

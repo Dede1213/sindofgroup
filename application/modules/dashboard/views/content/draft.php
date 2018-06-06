@@ -57,7 +57,7 @@
                         <td>TRIM KIT FOR MICROWAVE MW</td>
                         <td>PO</td>
                         <td>1 <a href="#"><i class="fa fa-edit"></i></a>  </td>
-                        <td>345.000</td>
+                        <td>350.000</td>
                         <td>10%</td>
                         <td>315.000</td>
                         <td><input type="checkbox"></td>
@@ -69,17 +69,19 @@
                     </font>
                     <br>
                     <table style="float: right;font-size: large;font-weight: bold;" width="22%">
+                        
                         <tr >
                             <td colspan="8">Subtotal</td>
-                            <td>315.000</td>
+                            <td>286.364</td>
                         </tr>
                         <tr>
+                            <td><input type = "checkbox" name ="exclude">Exc.</td>
                             <td colspan="8">PPN</td>
-                            <td>31.500</td>
+                            <td>28.636</td>
                         </tr>
                         <tr>
                             <td colspan="8">Total Harga</td>
-                            <td>283.500</td>
+                            <td>315.000</td>
                         </tr>
                         <tr style="border-bottom: 1pt solid darkgray;">
                             <td colspan="8">Uang Muka</td>
@@ -87,7 +89,7 @@
                         </tr>
                         <tr >
                             <td colspan="8">Sisa</td>
-                            <td>283.500</td>
+                            <td>315.000</td>
                         </tr>
 
                     </table>

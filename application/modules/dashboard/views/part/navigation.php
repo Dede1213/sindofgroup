@@ -30,27 +30,23 @@
  {
      ?>
 
-            <li class="treeview">
-              <a href="#"><i class="fa fa-home"></i> <span>Home</span> <i class="fa fa-angle-left pull-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="<?php echo base_url('dashboard/so_progress') ; ?>"><i class="fa fa-file"></i> <span>Report SO Progress</span></a></li>
-                <li><a href="<?php echo base_url('dashboard/sellout') ; ?>"><i class="fa fa-file"></i> <span>Report Sell Out</span></a></li>
-                <li><a href="<?php echo base_url('dashboard/cust_progress') ; ?>"><i class="fa fa-file"></i> <span>Report New Customer Progress</span></a></li>
-
-              </ul>
-            </li>
+              <li class="treeview">
+                  <a href="#"><i class="fa fa-home"></i> <span>Home</span><i class="fa fa-angle-left pull-right"></i></a>
+                  <ul class="treeview-menu">
+                      <li class=""><a href="<?php echo base_url('dashboard/absensi') ; ?>"><i class="fa fa-file"></i> <span>Absensi</span></a> </li>
+                      <li class=""><a href="<?php echo base_url('dashboard/schedule_plan') ; ?>"><i class="fa fa-file"></i> <span>Schedule Plan</span></a> </li>
+                      <li class=""><a href="<?php echo base_url('dashboard/call_plan') ; ?>"><i class="fa fa-file"></i> <span>Call Plan</span></a> </li>
+                  </ul>
+              </li>
 
               <li class="treeview">
                   <a href="#"><i class="fa fa-folder"></i> <span>Sales Order</span> <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
                       <li class="treeview">
-                          <a href="<?php echo base_url('#') ; ?>"><i class="fa fa-folder"></i> <span>Created New Order</span><i class="fa fa-angle-left pull-right"></i></a>
-                          <ul class="treeview-menu">
                               <li><a href="<?php echo base_url('dashboard/data_customer') ; ?>"><i class="fa fa-shopping-cart"></i> <span>Sales Order</span></a></li>
-                              <li><a href="<?php echo base_url('dashboard/data_customer_sellout') ; ?>"><i class="fa fa-file"></i> <span>Consignment / Sell Out</span></a></li>
-                          </ul>
+                              <!--<li><a href="<?php echo base_url('dashboard/data_consigment') ; ?>"><i class="fa fa-shopping-cart"></i> <span>Consigment</span></a></li>-->
+                              <li><a href="<?php echo base_url('dashboard/data_customer_sellout') ; ?>"><i class="fa fa-file"></i> <span>Sell Out</span></a></li>
                       </li>
-                      <li class=""><a href="<?php echo base_url('dashboard/draft') ; ?>"><i class="fa fa-folder"></i> <span>SO Draft</span></a></li>
 
                   </ul>
               </li>
@@ -93,14 +89,33 @@
 
                   </ul>
               </li>
-
-              <li class="treeview">
-                  <a href="#"><i class="fa fa-folder"></i> <span>Data Final SO</span><i class="fa fa-angle-left pull-right"></i></a>
+              
+            <li class="treeview">
+                  <a href="#"><i class="fa fa-folder"></i> <span>Report</span> <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                      <li class=""><a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>Report SO</span></a> </li>
-                      <li class=""><a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>Sell Out</span></a> </li>
+                      <li class="treeview">
+                          <a href="<?php echo base_url('#') ; ?>"><i class="fa fa-folder"></i> <span>Progress</span><i class="fa fa-angle-left pull-right"></i></a>
+                          <ul class="treeview-menu">
+                            <li><a href="<?php echo base_url('dashboard/so_progress') ; ?>"><i class="fa fa-file"></i> <span>Report SO</span></a></li>
+                            <li><a href="<?php echo base_url('dashboard/sellout') ; ?>"><i class="fa fa-file"></i> <span>Report Sell Out</span></a></li>
+                            <li><a href="<?php echo base_url('dashboard/cust_progress') ; ?>"><i class="fa fa-file"></i> <span>Report New Customer</span></a></li>
+                            <li class=""><a href="<?php echo base_url('dashboard/draft') ; ?>"><i class="fa fa-folder"></i> <span>SO Draft</span></a></li>
+                          </ul>
+                      </li>
+                      <li class="treeview">
+                          <a href="<?php echo base_url('#') ; ?>"><i class="fa fa-folder"></i> <span>Final</span><i class="fa fa-angle-left pull-right"></i></a>
+                          <ul class="treeview-menu">
+                              <li><a href="<?php echo base_url('dashboard/report_absensi') ; ?>"><i class="fa fa-file"></i> <span>Report Absensi</span></a></li>
+                              <li><a href="<?php echo base_url('dashboard/report_plan') ; ?>"><i class="fa fa-file"></i> <span>Schedule & call Plan</span></a></li>
+                            <li><a href="<?php echo base_url('dashboard/so_progress') ; ?>"><i class="fa fa-file"></i> <span>Report SO</span></a></li>
+                            <li><a href="<?php echo base_url('dashboard/sellout') ; ?>"><i class="fa fa-file"></i> <span>Report Sell Out</span></a></li>
+                            <li><a href="#"><i class="fa fa-file"></i> <span>Report Komisi</span></a></li>
+                          </ul>
+                      </li>
+
                   </ul>
               </li>
+
 
 <?php
  }

@@ -37,6 +37,7 @@
                                 <th rowspan="2"><center>Qty</center></th>
                                 <th rowspan="2"><center>Pricelist</center></th>
                                 <th rowspan="2"><center>Disc(%)</center></th>
+                                <th rowspan="2"><center>Ket Add Disc</center></th>
                                 <th rowspan="2"><center>Harga Netto</center></th>
                                 <th rowspan="2"><center>Di bawa langsung</center></th>
                                 <th rowspan="2"><center>Action</center></th>
@@ -56,17 +57,50 @@
                         <td>MWKM</td>
                         <td>A</td>
                         <td>TRIM KIT FOR MICROWAVE MW</td>
-                        <td>PO</td>
+                        <td>R/I</td>
                         <td>1 <a href="#"><i class="fa fa-edit"></i></a>  </td>
                         <td>350.000</td>
                         <td>10%</td>
+                        <td>PWP</td>
                         <td>315.000</td>
                         <td><input type="checkbox"></td>
                         <td><a href="#"><i class="fa fa-trash"></i></a> </td>
                     </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>MWKMC</td>
+                            <td>A</td>
+                            <td>KOMPOR TANAM GOG</td>
+                            <td>R/I</td>
+                            <td>1 <a href="#"><i class="fa fa-edit"></i></a>  </td>
+                            <td>350.000</td>
+                            <td>10%</td>
+                            <td>PWP</td>
+                            <td>315.000</td>
+                            <td><input type="checkbox"></td>
+                            <td><a href="#"><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>MWKMK</td>
+                            <td>A</td>
+                            <td>MESIN PENGERING</td>
+                            <td>R/I</td>
+                            <td>1 <a href="#"><i class="fa fa-edit"></i></a>  </td>
+                            <td>350.000</td>
+                            <td>10%</td>
+                            <td>PWP</td>
+                            <td>315.000</td>
+                            <td><input type="checkbox"></td>
+                            <td><a href="#"><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                    <tr>
+                        <td colspan="12">PWP Program Periode 1-9 Maret 2019</td>
+                    </tr>
 
 
                     </table>
+
                     </font>
                     <br>
                     <table style="float: right;font-size: large;font-weight: bold;" width="22%">
@@ -75,6 +109,7 @@
                             <td>286.364</td>
                         </tr>
                         <tr>
+                            <td><input type = "checkbox" name ="exclude">Exc.</td>
                             <td colspan="8">PPN</td>
                             <td>28.636</td>
                         </tr>
@@ -88,9 +123,29 @@
                         </tr>
                         <tr >
                             <td colspan="8">Sisa</td>
-                            <td>283.500</td>
+                            <td>315.000</td>
                         </tr>
 
+                    </table>
+                    <br><br><br><br><br><br><br><br>
+
+                    <table style="float: left;text-align: center;margin-left: 53%;" width="22%" border="1">
+                        <tr >
+                            <td colspan="8"><b>Keteranan Add Discount total</b></td>
+                        </tr>
+                        <tr>
+                            <td>Permintaan Pelanggan</td>
+                        </tr>
+                    </table>
+
+
+                    <table style="float: right;text-align: center;" width="22%" border="1">
+                        <tr >
+                            <td colspan="8"><b>Info Total Discount</b></td>
+                        </tr>
+                        <tr>
+                            <td>31%</td>
+                        </tr>
                     </table>
 
 

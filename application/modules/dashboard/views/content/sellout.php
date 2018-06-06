@@ -29,6 +29,28 @@
 
                         <?php if($param){?>
 
+                            <br><br>
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label>Periode</label>
+                                    <input type="date" name="title" id="title" class="form-control" value="">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>s/d</label>
+                                    <input type="date" name="title" id="title" class="form-control" value="">
+                                </div>
+                                <div class="form-group">
+                                    <a href="<?php echo base_url('#');?>"><button type="button" class="btn btn-primary btn-block btn-flat">Submit</button></a>
+                                </div>
+
+                            </form>
+
+
+
+                            <br>
+                            <hr>
+
                         <img src="<?php echo base_url();?>/assets/images/img/muliax.png">
                         <center><h2>FORM SELLOUT</h2></center>
                         <b>NAMA OUTLET </b> : <br>
@@ -40,9 +62,17 @@
                             <font style="text-align: center">
                                 <table border="1" width="100%" style="text-align: center;">
                                     <tr style="background-color: #E0E0E0">
-                                    <th><center>No</center></th><th><center>Tanggal</center></th><th><center>Tipe Barang</center></th><th><center>Qty</center></th><th><center>Kode Promo</center></th><th><center>Sell-Out Price</center></th><th><center>Struk Bayar/Remark</center></th><th><center>Nama Konsumen</center></th><th><center>No HP</center></th><th><center>Email Konsumen</center></th><th><center>User</center></th><th><center>Nomor Dokumen Crosscheck</center></th><th></th>
+                                    <th><center>No</center></th><th><center>Tanggal</center></th><th><center>Jam</center></th><th><center>Kode Barang</center></th><th><center>Qty</center></th>
+                                    <th><center>Kode Promo</center></th><th><center>Sell-Out Price</center></th><th><center>Struk Bayar/Remark</center></th>
+                                    <th><center>Nama Konsumen</center></th><th><center>No HP</center></th><th><center>Email Konsumen</center></th><th><center>User</center></th>
+                                    <th><center>Nomor Dokumen Crosscheck</center></th><th>Status Produk</th><th></th>
                                     </tr>
-                                    <tr><td>1</td><td>dd/mm/yy</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td><td><input type="checkbox"></td></tr>
+                                    <tr><td>1</td><td>10/05/2018</td><td>08:30</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td>
+                                    <td>Konsinyasi</td>
+                                    <td><input type="checkbox"></td></tr>
+                                    <tr><td>2</td><td>10/05/2018</td><td>09:00</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td>
+                                    <td>Konsinyasi</td>
+                                    <td><input type="checkbox"></td></tr>
                                 </table>
                             </font>
                         </div><!-- table responsive -->
@@ -54,6 +84,10 @@
 
                         <div class="col-sm-2" style="float: right">
                             <a href="<?php echo base_url('dashboard/data_formulir');?>" class="btn btn-block btn-danger">Tidak Ada Penjualan</a>
+                        </div>
+                        
+                        <div class="col-sm-2" style="float: right">
+                            <a href="#" class="btn btn-block btn-warning">Beli Putus</a>
                         </div>
 
                         <?php }else{?>

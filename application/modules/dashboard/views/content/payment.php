@@ -67,7 +67,10 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 <div class="form-group">
                                     <label>Termin Pembayaran</label>
                                     <select class="form-control">
-                                        <option>Normal</option>
+                                        <option>6 Bulan</option>
+                                        <option>12 Bulan</option>
+                                        <option>18 Bulan</option>
+                                        <option>24 Bulan</option>
                                     </select>
                                 </div>
                             <div class="form-group">

@@ -38,6 +38,21 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
             <div class="box">
                 <div class="box-body">
+<br>
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label>Search</label>
+                            <input type="text" name="title" id="title" class="form-control" value="">
+                        </div>
+                        <div class="form-group">
+                        <a href="<?php echo base_url('dashboard/data_customer/param');?>"><button type="button" class="btn btn-warning btn-block btn-flat">Submit</button></a>
+                        </div>
+
+                    </form>
+
+                    <br>
+                    <hr>
+                    <?php if($param){?>
                     <div class="table-responsive"> <!-- table responsive -->
                         <table class="table table-bordered table-striped" id="t_datatable">
                             <thead>
@@ -90,10 +105,15 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         </table>
 
                     </div><!-- table responsive -->
+
+
                     <br>
                     <div class="col-md-2">
                         <a href="#" class="btn btn-block btn-primary">Add Customer</a>
                     </div>
+
+                    <?php } ?>
+
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
 

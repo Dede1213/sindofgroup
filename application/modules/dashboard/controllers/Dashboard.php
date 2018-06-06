@@ -41,6 +41,14 @@ class Dashboard extends My_Controller
         $this->load->view('template_content', $this->data);
     }
 
+    public function data_consigment()
+    {
+        $this->data['page_title'] = 'Data formulir';
+        $this->data['menu_tab'] = '1';
+        $this->data['main_view'] = 'content/data_consigment';
+        $this->load->view('template_content', $this->data);
+    }
+
     public function detail_product()
     {
         $this->data['menu_tab'] = '2';
@@ -57,8 +65,9 @@ class Dashboard extends My_Controller
         $this->load->view('template_content', $this->data);
     }
 
-    public function data_customer()
+    public function data_customer($param = false)
     {
+        $this->data['param'] = $param;
         $this->data['menu_tab'] = '3';
         $this->data['page_title'] = 'Data Customer';
         $this->data['main_view'] = 'content/data_customer';
@@ -225,6 +234,46 @@ class Dashboard extends My_Controller
         $this->load->view('template_content', $this->data);
     }
 
+    public function absensi()
+    {
+
+        $this->data['page_title'] = 'Absensi';
+        $this->data['main_view'] = 'content/absensi';
+        $this->load->view('template_content', $this->data);
+    }
+
+
+    public function schedule_plan($param = false)
+    {
+        $this->data['param'] = $param;
+        $this->data['page_title'] = 'Schedule Plan';
+        $this->data['main_view'] = 'content/schedule_plan';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function call_plan($param = false)
+    {
+        $this->data['param'] = $param;
+        $this->data['page_title'] = 'Call Plan';
+        $this->data['main_view'] = 'content/call_plan';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function report_absensi($param = false)
+    {
+        $this->data['param'] = $param;
+        $this->data['page_title'] = 'Report Absensi';
+        $this->data['main_view'] = 'content/report_absensi';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function report_plan($param = false)
+    {
+        $this->data['param'] = $param;
+        $this->data['page_title'] = 'Report Schedule and Call Plan';
+        $this->data['main_view'] = 'content/report_plan';
+        $this->load->view('template_content', $this->data);
+    }
 
 
 
