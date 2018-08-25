@@ -75,8 +75,16 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <div class="form-group">
                                 <label>Alamat Kirim</label><br>
                                 <input type = "checkbox" name="sesuai_domisili_kirim" id="sesuai_domisili_kirim" value="sesuai_domisili_kirim"> Sesuai Domisili <br>
-                                <input type = "checkbox" name="sesuai_tujuan_kirim" id="sesuai_tujuan_kirim" value="sesuai_tujuan_kirim"> Sesuai Tujuan
+                                <input type = "checkbox" name="sesuai_tujuan_kirim" id="sesuai_tujuan_kirim" value="sesuai_tujuan_kirim"> Sesuai Tujuan<br>
                             </div>
+                            
+                            <div class="form-group">
+                                <label>Pengiriman Via</label><br>
+                                <input type = "checkbox" name="kurir" id="kurir" value="kurir"> Kurir<br>
+                                <input type = "checkbox" name="armada" id="armada" value="armada"> Armada <br>
+                            </div>
+                            
+
                         <div class="kirim">
                             <fieldset>
                                 <legend>Sesuai Tujuan</legend>
@@ -118,8 +126,9 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <div class="form-group">
                                 <label>Alamat Kirim</label><br>
                                 <input type = "checkbox" name="sesuai_domisili_pc" id="sesuai_domisili_pc" value="sesuai_domisili_pc"> Sesuai Domisili <br>
-                                <input type = "checkbox" name="sesuai_tujuan_pc" id="sesuai_tujuan_pc" value="sesuai_tujuan_pc"> Sesuai Tujuan
+                                <input type = "checkbox" name="sesuai_gudang_pc" id="sesuai_gudang_pc" value="sesuai_gudang_pc"> Sesuai Gudang / Lokasi Proyek <br>
                             </div>
+                            
 
                     <div class="p_c">
 
@@ -172,10 +181,12 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Note </label>
+                                    <label>Informasi Tambahan </label>
                                     <input type="text" name="title" id="title" class="form-control" placeholder="please write something">
                                 </div>
+                                
                             </fieldset>
+                            
 
 
                             <a href="<?php echo base_url('dashboard/data_formulir')?>"><button type="button" class="btn btn-primary btn-block btn-flat">Submit</button></a>

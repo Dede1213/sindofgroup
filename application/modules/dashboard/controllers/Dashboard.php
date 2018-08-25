@@ -25,8 +25,9 @@ class Dashboard extends My_Controller
     #+++++++++++++++++++++++++++++ CORE Content To Next Project ++++++++++++++++++++++++++#
     public function index()
     {
-//        $x = $this->session->userdata('id_level');
-//        echo $x;
+//        $x = $this->session->userdata();
+//       // echo $x;
+//        print_r($x);
 //        exit;
         $this->load->view('template_home', $this->data);
     }
@@ -109,7 +110,7 @@ class Dashboard extends My_Controller
     public function customer()
     {
         $this->data['page_title'] = 'Customer';
-        $this->data['main_view'] = 'content/customer';
+        $this->data['main_view'] = 'content/sales';
         $this->load->view('template_content', $this->data);
     }
 
@@ -136,6 +137,8 @@ class Dashboard extends My_Controller
         $this->data['main_view'] = 'content/print_cetak';
         $this->load->view('template_content', $this->data);
     }
+    
+    
 
     public function print_sellout($param = false)
     {
@@ -152,6 +155,14 @@ class Dashboard extends My_Controller
         $this->data['page_title'] = 'Print Verifikasi';
         $this->data['param'] = $param;
         $this->data['main_view'] = 'content/verifikasi_print';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function print_kwitansi($param = false)
+    {
+        $this->data['page_title'] = 'Print Verifikasi';
+        $this->data['param'] = $param;
+        $this->data['main_view'] = 'content/print_kwitansi';
         $this->load->view('template_content', $this->data);
     }
 
@@ -277,8 +288,105 @@ class Dashboard extends My_Controller
 
 
 
+	public function f_kategori_cash()
+    {
+        $this->data['page_title'] = 'List Kstegori Cash';
+        $this->data['main_view'] = 'content/f_kategori_cash';
+        $this->load->view('template_content', $this->data);
+    }
 
+    public function f_kategori_project()
+    {
+        $this->data['page_title'] = 'List Kstegori Project';
+        $this->data['main_view'] = 'content/f_kategori_project';
+        $this->load->view('template_content', $this->data);
+    }
 
+    public function d_soinfo()
+    {
+        $this->data['page_title'] = 'Sales Order Information';
+        $this->data['main_view'] = 'content/d_soinfo';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function d_viewsoinfo()
+    {
+        $this->data['page_title'] = 'View Order';
+        $this->data['main_view'] = 'content/d_viewsoinfo';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function d_schedule()
+    {
+        $this->data['page_title'] = 'Confirmation Schedule';
+        $this->data['main_view'] = 'content/d_schedule';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function d_callcustomer($reschedule = false)
+    {
+        $this->data['page_title'] = 'Confirmation Schedule / NO SO123';
+        $this->data['main_view'] = 'content/d_callcustomer';
+        $this->data['reschedule'] = $reschedule;
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function d_packinglist($add = false)
+    {
+        $this->data['page_title'] = 'List Surat Jalan';
+        $this->data['main_view'] = 'content/d_packinglist';
+        $this->data['add'] = $add;
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function d_viewproduct()
+    {
+        $this->data['page_title'] = 'View Product';
+        $this->data['main_view'] = 'content/d_viewproduct';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function d_viewpackinglist()
+    {
+        $this->data['page_title'] = 'View Packing List';
+        $this->data['main_view'] = 'content/d_viewpackinglist';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function d_viewpackinglistdetail()
+    {
+        $this->data['page_title'] = 'View Packing List';
+        $this->data['main_view'] = 'content/d_viewpackinglistdetail';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function hist_sales_cash()
+    {
+        $this->data['page_title'] = 'History Sales Cash';
+        $this->data['main_view'] = 'content/s_hist_sales_cash';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function hist_sales_credit()
+    {
+        $this->data['page_title'] = 'History Sales Credit';
+        $this->data['main_view'] = 'content/s_hist_sales_credit';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function pricelist()
+    {
+        $this->data['page_title'] = 'Pricelist';
+        $this->data['main_view'] = 'content/s_pricelist';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function product()
+    {
+        $this->data['page_title'] = 'Product';
+        $this->data['main_view'] = 'content/s_product';
+        $this->load->view('template_content', $this->data);
+    }
 
 
 

@@ -100,6 +100,9 @@
                     <div class="col-md-2">
                         <a href="<?php echo base_url('dashboard/detail_product');?>" class="btn btn-block btn-primary">Lanjutkan</a>
                     </div>
+                    <div class="col-md-2">
+                        <a href="<?php echo base_url('dashboard/detail_product');?>" class="btn btn-block btn-danger">Tidak Lanjut</a>
+                    </div>
                 </div><!-- /.box-body -->
                 </div><!-- /.box -->
 

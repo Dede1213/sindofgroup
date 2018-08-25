@@ -81,6 +81,26 @@ function act_delete(data_id,data_table) {
 
 $(document).ready(function() {
 
+    $("#tambah_data_penjualan").click(function () {
+        $.ajax({
+            type: "POST",
+            dataType: "JSON",
+            url: base_url + "dashboard/act_edit_user",
+            data: $('#dataverifikasi1').serialize(),
+            beforeSend: function () {
+                $('#tambah_data_penjualan').button('loading');
+            },
+            success: function (response) {
+                if (response.error == false) {
+                    sweet(response.title, response.pesan, 'true.jpg', base_url + 'dashboard/user');
+                } else {
+                    $('#edit_user_admin').button('reset');
+                    sweet(response.title, response.pesan, 'false.jpg', '#');
+                }
+            }
+        });
+    });
+
     $("#edit_user_admin").click(function () {
         $.ajax({
             type: "POST",

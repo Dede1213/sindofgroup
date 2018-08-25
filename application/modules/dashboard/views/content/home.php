@@ -17,9 +17,26 @@
 <!-- Main content -->
 <section class="content">
 <!-- Small boxes (Stat box) -->
+<?php
+ if($this->session->userdata('id_level') == '1' )
+ {
+?>
 <div class="row">
-    <center><h1>Welcome Sales Application</h1></center>
+    <center><h1>Welcome to Information System</h1></center>
 </div><!-- /.row -->
+    <center>
+        <img src = "<?php echo base_url('assets/images/img/tabel2.jpg'); ?>">
+        <img src = "<?php echo base_url('assets/images/img/tabel3.jpg'); ?>">
+        <img src = "<?php echo base_url('assets/images/img/tabel4.jpg'); ?>">
+    </center>
+<?php
+}else{
+?>
+<div class="row">
+    <center><h1>Welcome to Information System</h1></center>
+</div><!-- /.row -->
+<?php } ?>
+
 <!-- Main row -->
 <div class="row">
 <!-- Left col -->

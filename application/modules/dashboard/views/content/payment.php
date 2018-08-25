@@ -39,40 +39,54 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         <form>
 
                             <fieldset>
-                                <legend>Sales Person</legend>
                             <!-- text input -->
                             <div class="form-group">
-                                <label>Nomor FP</label>
+                                <label>Nomor Sales Order</label>
                                 <div class="input-group">
-                                    <input id="email" type="text" class="form-control" name="email" placeholder="Nomor FP">
+                                    <input id="email" type="text" class="form-control" name="email" placeholder="Nomor Sales Order">
                                     <span class="input-group-addon"><a href="#"><i class="glyphicon glyphicon-search"> Search</i></a></span>
                                 </div>
                             </div>
                                 <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label>Nama Customer</label>
+                                    <input type="text" name="title" id="title" class="form-control" readonly>
+                                </div>
+                                <div style="clear: both;"></div>
                             <div class="form-group">
                                 <label>Jenis Pembayaran</label>
                                 <select class="form-control">
-                                    <option>DP</option>
                                     <option>Full</option>
+                                    <option>DP</option>
                                 </select>
                             </div>
                                 <div class="form-group">
                                     <label>Cara Pembayaran</label>
                                     <select class="form-control">
-                                        <option>Cash</option>
+                                        <option>Cash / Debit</option>
                                         <option>Kartu Kredit</option>
                                         <option>Transfer</option>
+                                        <option>Referensi Sales Order (khusus manager)</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Termin Pembayaran</label>
                                     <select class="form-control">
+                                        <option>-</option>
                                         <option>6 Bulan</option>
                                         <option>12 Bulan</option>
                                         <option>18 Bulan</option>
                                         <option>24 Bulan</option>
                                     </select>
                                 </div>
+                            <div class="form-group">
+                                <label>Referensi Sales Order (khusus manager) (muncul ketika cara pembayaran Referensi Sales Order dan isinya SO  yang sudah di stop)</label>
+                                <input type="text" name="title" id="title" class="form-control" >
+                            </div>
+                            <div class="form-group">
+                                <label>Jumlah Pembayaran Sales Order Lama (khusus manager) (muncul ketika cara pembayaran Referensi Sales Order)</label>
+                                <input type="text" name="title" id="title" class="form-control" readonly>
+                            </div>
                             <div class="form-group">
                                 <label>Jumlah Pembayaran</label>
                                 <input type="text" name="title" id="title" class="form-control" >
@@ -93,12 +107,23 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     <label>Bukti Pembayaran</label>
                                     <input type="file" name="title" id="title" class="form-control"  >
                                 </div>
-
+                                <div class="form-group">
+                                    <label>Catatan</label>
+                                    <input type="text" name="title" id="title" class="form-control"  >
+                                </div>
 
                             </fieldset>
+                            <div class="form-group">
+                                <label>Cetak Kwitansi</label>
+                                <select class="form-control">
+                                    <option>Tidak Cetak Kwitansi</option>
+                                    <option>Cetak Kwitansi</option>
+                                </select>
+                            </div>
+
 
                             <div class="col-sm-3">
-                            <a href="<?php echo base_url('dashboard/detail_product')?>"><button type="button" class="btn btn-primary btn-block btn-flat">Submit</button></a>
+                            <a href="<?php echo base_url('dashboard')?>"><button type="button" class="btn btn-primary btn-block btn-flat">Submit</button></a>
                             </div>
                         </form>
                         <span class="loading"></span>

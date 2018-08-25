@@ -14,7 +14,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <?php echo $page_title; ?>
+            <?php echo "Upload"; ?>
             <small></small>
         </h1>
         <ol class="breadcrumb">

@@ -9,7 +9,7 @@
             <div class="pull-left image">
               <img src="<?php echo base_url() ; ?>assets/admin/dist/img/avatar5.png" class="img-circle" alt="User Image">
             </div>
-            <div class="pull-left info">
+            <div class="pull-left info">c
               <p><?php echo substr($this->session->userdata('username'),0,15);?>...</p>
               <!-- Status -->
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
@@ -24,179 +24,14 @@
             <!-- Optionally, you can add icons to the links -->
 
 
-<!--              <li><a href="--><?php //echo base_url('dashboard') ; ?><!--"><i class="fa fa-home"></i> <span>Home</span></a></li>-->
-<?php
- if($this->session->userdata('id_level') == '1' )
- {
-     ?>
+            <?php
 
-              <li class="treeview">
-                  <a href="#"><i class="fa fa-home"></i> <span>Home</span><i class="fa fa-angle-left pull-right"></i></a>
-                  <ul class="treeview-menu">
-                      <li class=""><a href="<?php echo base_url('dashboard/absensi') ; ?>"><i class="fa fa-file"></i> <span>Absensi</span></a> </li>
-                      <li class=""><a href="<?php echo base_url('dashboard/schedule_plan') ; ?>"><i class="fa fa-file"></i> <span>Schedule Plan</span></a> </li>
-                      <li class=""><a href="<?php echo base_url('dashboard/call_plan') ; ?>"><i class="fa fa-file"></i> <span>Call Plan</span></a> </li>
-                  </ul>
-              </li>
-
-              <li class="treeview">
-                  <a href="#"><i class="fa fa-folder"></i> <span>Sales Order</span> <i class="fa fa-angle-left pull-right"></i></a>
-                  <ul class="treeview-menu">
-                      <li class="treeview">
-                              <li><a href="<?php echo base_url('dashboard/data_customer') ; ?>"><i class="fa fa-shopping-cart"></i> <span>Sales Order</span></a></li>
-                              <!--<li><a href="<?php echo base_url('dashboard/data_consigment') ; ?>"><i class="fa fa-shopping-cart"></i> <span>Consigment</span></a></li>-->
-                              <li><a href="<?php echo base_url('dashboard/data_customer_sellout') ; ?>"><i class="fa fa-file"></i> <span>Sell Out</span></a></li>
-                      </li>
-
-                  </ul>
-              </li>
-
-              <li class="treeview">
-                  <a href="#"><i class="fa fa-user"></i> <span>Customer ID</span> <i class="fa fa-angle-left pull-right"></i></a>
-                  <ul class="treeview-menu">
-                      <li class=""><a href="<?php echo base_url('dashboard/add_customer') ; ?>"><i class="fa fa-plus"></i> <span>Created New Customer</span></a> </li>
-                      <li class=""><a href="<?php echo base_url('dashboard/list_customer') ; ?>"><i class="fa fa-list"></i> <span>Data Customer</span></a></li>
-
-                  </ul>
-              </li>
-
-              <li class="treeview">
-                  <a href="#"><i class="fa fa-money"></i> <span>Payment</span><i class="fa fa-angle-left pull-right"></i></a>
-                  <ul class="treeview-menu">
-                      <li class=""><a href="<?php echo base_url('dashboard/payment') ; ?>"><i class="fa fa-file"></i> <span>Input Payment</span></a> </li>
-                  </ul>
-              </li>
+            get_instance()->load->helper('menu_helper');
+            echo getMenu();
+            ?>
 
 
-              <li class="treeview">
-                  <a href="#"><i class="fa fa-print"></i> <span>Print & Upload</span> <i class="fa fa-angle-left pull-right"></i></a>
-                  <ul class="treeview-menu">
-                      <li class="treeview">
-                          <a href="<?php echo base_url('#') ; ?>"><i class="fa fa-print"></i> <span>Print</span><i class="fa fa-angle-left pull-right"></i></a>
-                          <ul class="treeview-menu">
-                              <li><a href="<?php echo base_url('dashboard/printout/cash') ; ?>"><i class="fa fa-shopping-cart"></i> <span>Sales Order</span></a></li>
-                              <li><a href="<?php echo base_url('dashboard/print_sellout') ; ?>"><i class="fa fa-file"></i> <span>Sell Out</span></a></li>
-                              <li><a href="<?php echo base_url('dashboard/print_verifikasi') ; ?>"><i class="fa fa-file"></i> <span>Form Verifikasi</span></a></li>
-                          </ul>
-                      </li>
-                      <li class="treeview">
-                          <a href="<?php echo base_url('#') ; ?>"><i class="fa fa-upload"></i> <span>Upload</span><i class="fa fa-angle-left pull-right"></i></a>
-                          <ul class="treeview-menu">
-                              <li><a href="<?php echo base_url('dashboard/upload') ; ?>"><i class="fa fa-shopping-cart"></i> <span>Sales Order</span></a></li>
-                              <li><a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>New Customer</span></a></li>
-                          </ul>
-                      </li>
 
-                  </ul>
-              </li>
-              
-            <li class="treeview">
-                  <a href="#"><i class="fa fa-folder"></i> <span>Report</span> <i class="fa fa-angle-left pull-right"></i></a>
-                  <ul class="treeview-menu">
-                      <li class="treeview">
-                          <a href="<?php echo base_url('#') ; ?>"><i class="fa fa-folder"></i> <span>Progress</span><i class="fa fa-angle-left pull-right"></i></a>
-                          <ul class="treeview-menu">
-                            <li><a href="<?php echo base_url('dashboard/so_progress') ; ?>"><i class="fa fa-file"></i> <span>Report SO</span></a></li>
-                            <li><a href="<?php echo base_url('dashboard/sellout') ; ?>"><i class="fa fa-file"></i> <span>Report Sell Out</span></a></li>
-                            <li><a href="<?php echo base_url('dashboard/cust_progress') ; ?>"><i class="fa fa-file"></i> <span>Report New Customer</span></a></li>
-                            <li class=""><a href="<?php echo base_url('dashboard/draft') ; ?>"><i class="fa fa-folder"></i> <span>SO Draft</span></a></li>
-                          </ul>
-                      </li>
-                      <li class="treeview">
-                          <a href="<?php echo base_url('#') ; ?>"><i class="fa fa-folder"></i> <span>Final</span><i class="fa fa-angle-left pull-right"></i></a>
-                          <ul class="treeview-menu">
-                              <li><a href="<?php echo base_url('dashboard/report_absensi') ; ?>"><i class="fa fa-file"></i> <span>Report Absensi</span></a></li>
-                              <li><a href="<?php echo base_url('dashboard/report_plan') ; ?>"><i class="fa fa-file"></i> <span>Schedule & call Plan</span></a></li>
-                            <li><a href="<?php echo base_url('dashboard/so_progress') ; ?>"><i class="fa fa-file"></i> <span>Report SO</span></a></li>
-                            <li><a href="<?php echo base_url('dashboard/sellout') ; ?>"><i class="fa fa-file"></i> <span>Report Sell Out</span></a></li>
-                            <li><a href="#"><i class="fa fa-file"></i> <span>Report Komisi</span></a></li>
-                          </ul>
-                      </li>
-
-                  </ul>
-              </li>
-
-
-<?php
- }
- ?>
-              <?php
-              if($this->session->userdata('id_level') == '2' )
-              {
-              ?>
-
-              <li class="treeview">
-                  <a href="#"><i class="fa fa-folder"></i> <span>Data In Progress</span> <i class="fa fa-angle-left pull-right"></i></a>
-                  <ul class="treeview-menu">
-                      <li class="treeview">
-                          <a href="<?php echo base_url('#') ; ?>"><i class="fa fa-folder"></i> <span>List Pembayaran</span><i class="fa fa-angle-left pull-right"></i></a>
-                          <ul class="treeview-menu">
-                              <li><a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>Kategori Cash</span></a></li>
-                              <li><a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>Kategori project</span></a></li>
-                          </ul>
-                      </li>
-                      <li class="treeview">
-                          <a href="<?php echo base_url('#') ; ?>"><i class="fa fa-folder"></i> <span>Buku Pembayaran</span><i class="fa fa-angle-left pull-right"></i></a>
-                          <ul class="treeview-menu">
-                              <li>
-                                  <a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>Kategori Cash</span><i class="fa fa-angle-left pull-right"></i></a>
-                                  <ul class="treeview-menu">
-                                      <li><a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>Buku Penampung</span></a></li>
-                                      <li><a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>Buku Cash</span></a></li>
-                                  </ul>
-                              </li>
-                              <li><a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>Kategori project</span></a></li>
-                          </ul>
-                      </li>
-                      <li class="treeview">
-                          <a href="<?php echo base_url('#') ; ?>"><i class="fa fa-folder"></i> <span>List Kredit</span><i class="fa fa-angle-left pull-right"></i></a>
-                          <ul class="treeview-menu">
-                              <li>
-                                  <a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>Kategori Kredit</span></a>
-                              </li>
-                              <li><a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>Kategori project</span></a></li>
-                          </ul>
-                      </li>
-
-                  </ul>
-              </li>
-
-
-              <li class="treeview">
-                  <a href="#"><i class="fa fa-folder"></i> <span>Data Final Finance</span> <i class="fa fa-angle-left pull-right"></i></a>
-                  <ul class="treeview-menu">
-                      <li class="treeview">
-                          <a href="<?php echo base_url('#') ; ?>"><i class="fa fa-folder"></i> <span>List Pembayaran</span><i class="fa fa-angle-left pull-right"></i></a>
-                          <ul class="treeview-menu">
-                              <li><a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>Kategori Cash</span></a></li>
-                              <li><a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>Kategori project</span></a></li>
-                          </ul>
-                      </li>
-                      <li class="treeview">
-                          <a href="<?php echo base_url('#') ; ?>"><i class="fa fa-folder"></i> <span>Buku Pembayaran</span><i class="fa fa-angle-left pull-right"></i></a>
-                          <ul class="treeview-menu">
-                              <li>
-                                  <a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>Kategori Cash</span></a>
-
-                              </li>
-                         </ul>
-                      </li>
-                      <li class="treeview">
-                          <a href="<?php echo base_url('#') ; ?>"><i class="fa fa-folder"></i> <span>Buku Pembayaran</span><i class="fa fa-angle-left pull-right"></i></a>
-                          <ul class="treeview-menu">
-                              <ul class="treeview-menu">
-                                  <li><a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>Buku Penampung</span></a></li>
-                                  <li><a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>Buku Cash</span></a></li>
-                              </ul>
-                              <li><a href="<?php echo base_url('#') ; ?>"><i class="fa fa-file"></i> <span>Kategori project</span></a></li>
-                          </ul>
-                      </li>
-
-                  </ul>
-              </li>
-              <?php
-              }
-              ?>
 
           </ul><!-- /.sidebar-menu -->
         </section>

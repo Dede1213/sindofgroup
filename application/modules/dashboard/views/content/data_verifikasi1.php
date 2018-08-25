@@ -80,11 +80,31 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <input type="text" name="title" id="title" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Kota/Kab</label>
-                            <input type="text" name="title" id="title" class="form-control">
+                            <label>Kelurahan</label>
+                            <select class="form-control">
+                                <option>- Kelurahan - </option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label>phone</label>
+                            <label>Kecamatan</label>
+                            <select class="form-control">
+                                <option>- Kecamatan - </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Kabupaten / Kota</label>
+                            <select class="form-control">
+                                <option>- Kabupaten / Kota - </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Provinsi</label>
+                            <select class="form-control">
+                                <option>- Pilih Provinsi - </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
                             <input type="text" name="title" id="title" class="form-control">
                         </div>
                         <div class="form-group">
@@ -105,7 +125,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         </div>
                         <div class="form-group">
                             <label>Luas Toko m2</label>
-                            <input type="text" name="title" id="title" class="form-control" placeholder="...X...">
+                            <input type="text" name="title" id="title" class="form-control" placeholder="Masukkan Panjang">
+                            <input type="text" name="title" id="title" class="form-control" placeholder="Masukkan Lebar">
                         </div>
                         <div class="form-group">
                             <label>Jumlah Karyawan Seluruhnya</label>
@@ -118,12 +139,63 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                     </fieldset>
                             <hr>
+                    <fieldset>
+                        <legend>Data Gudang</legend>
+
+                        <div class="form-group">
+                            <label>Nama Gudang</label>
+                            <input type="text" name="title" id="title" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Alamat</label>
+                            <input type="text" name="title" id="title" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>RT</label>
+                            <input type="text" name="title" id="title" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>RW</label>
+                            <input type="text" name="title" id="title" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Kelurahan</label>
+                            <select class="form-control">
+                                <option>- Kelurahan - </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Kecamatan</label>
+                            <select class="form-control">
+                                <option>- Kecamatan - </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Kabupaten / Kota</label>
+                            <select class="form-control">
+                                <option>- Kabupaten / Kota - </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Provinsi</label>
+                            <select class="form-control">
+                                <option>- Pilih Provinsi - </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="text" name="title" id="title" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Fax</label>
+                            <input type="text" name="title" id="title" class="form-control">
+                        </div>
+                    </fieldset>    
 
                             <fieldset>
                                 <legend>Data Penjualan/Usaha</legend>
-
                                 <div class="form-group">
-                                    <label>Penjualan</label>
+                                    <label>Penjualan</label><br>
                                     <table border="1" width="50%">
                                         <tr>
                                             <th><center>No</center></th><th><center>Produk</center></th><th><center>%</center></th>
@@ -133,9 +205,10 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                         </tr>
                                     </table>
                                 </div>
+                                <button type="button" class="btn btn-success btn-sm">Tambah Data Penjualan</button><br><br>
 
                                 <div class="form-group">
-                                    <label>Bank</label>
+                                    <label>Bank</label><br>
                                     <table border="1" width="50%">
                                         <tr>
                                             <th><center>No</center></th><th><center>Nama Bank</center></th><th><center>No.Rekening</center></th>
@@ -145,6 +218,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                         </tr>
                                     </table>
                                 </div>
+                                <button type="button" class="btn btn-success btn-sm">Tambah Data Bank</button><br><br><br>
 
                                 <div class="form-group">
                                     <label>Apakah Outlet Merupakan sub:</label>
@@ -154,8 +228,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     </select>
                                 </div>
                                 <div class="form-group outlet">
-                                    <label>Nomor Induk Outlet</label>
-                                    <input type="text" name="title" id="title" class="form-control">
+                                    <label>Cari ID / Nama Outlet</label>
+                                    <input type="text" name="title" id="title" class="form-control" placeholder = "Masukkan ID / Nama Outlet">
                                 </div>
 
                             </fieldset>

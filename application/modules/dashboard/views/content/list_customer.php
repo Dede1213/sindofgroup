@@ -40,7 +40,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <thead>
                             <tr>
                                 <th width="5%">No</th>
-                                <th colspan="2">No ID Pelanggan</th>
+                                <th>No ID Pelanggan</th>
+                                <th>No Sub ID Pelanggan</th>
                                 <th>No KTP/Passport</th>
                                 <th>NPWP</th>
                                 <th>Nama</th>

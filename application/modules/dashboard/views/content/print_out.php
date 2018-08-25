@@ -94,7 +94,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 <td>SI A</td>
                                 <td>3</td>
                                 <td>1,000,000</td>
-                                <td width=""><a href="<?php echo base_url('dashboard/printout/cash/sales');?>"> <button type="button"><i class="fa fa-check"></i> Pilih</button></a></td>
+                                <td width=""><a href="<?php echo base_url('dashboard/print_cetak');?>"> <button type="button"><i class="fa fa-check"></i> Pilih</button></a></td>
                             </tr>
                             <tr>
                                 <td>2</td>
@@ -103,7 +103,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 <td>SI B</td>
                                 <td>3</td>
                                 <td>2,000,000</td>
-                                <td width=""><a href="<?php echo base_url('dashboard/data_customer_terpilih');?>"> <button type="button"><i class="fa fa-check"></i> Pilih</button></a></td>
+                                <td width=""><a href="<?php echo base_url('dashboard/print_cetak');?>"> <button type="button"><i class="fa fa-check"></i> Pilih</button></a></td>
                             </tr>
                             <tr>
                                 <td>3</td>
@@ -112,7 +112,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 <td>SI C</td>
                                 <td>3</td>
                                 <td>3,000,000</td>
-                                <td width=""><a href="<?php echo base_url('dashboard/data_customer_terpilih');?>"> <button type="button"><i class="fa fa-check"></i> Pilih</button></a></td>
+                                <td width=""><a href="<?php echo base_url('dashboard/print_cetak');?>"> <button type="button"><i class="fa fa-check"></i> Pilih</button></a></td>
                             </tr>
                             </tbody>
                         </table>

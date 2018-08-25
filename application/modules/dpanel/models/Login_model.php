@@ -9,16 +9,17 @@ class Login_model extends CI_Model
 {
 	function cek_login($email,$password)
 	{
-		$query = $this->db->get_where('tm_employee', array('username'=>$email,'password'=>$password),1);
+		$query = $this->db->get_where('m_user', array('username'=>$email,'password'=>$password),1);
 
 		if ($query->num_rows() == 1)
 		{
             //reset userdata dulu biar aman
-            $this->session->set_userdata(array('id' => '','id_level' => '','username' => '','login' => '','name'=>'' ));
+            $this->session->set_userdata(array('id' => '','id_level' => '','username' => '','login' => ''));
             //end
 
             $row = $query->row_array();
             $data = array('id' => $row['id'],'id_level' => $row['id_level'],'username' => $row['username'],'login' => TRUE );
+
             $this->session->set_userdata($data);
             //Insert or update id_session untuk single device
 //            $cek_log = $this->db->get_where('log_sessions',array('id_user'=>$row['id']),1);

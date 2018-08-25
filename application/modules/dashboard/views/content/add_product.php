@@ -43,6 +43,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 <th>Kategori</th>
                                 <th>Product Code</th>
                                 <th>Nama Barang</th>
+                                <th>Gudang</th>
                                 <th width="10%">Action</th>
                             </tr>
                             </thead>
@@ -53,10 +54,32 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 <td>A1</td>
                                 <td>A001</td>
                                 <td>Top Cover For PF 150</td>
+                                <td>
+                                    <select>
+                                        <option>Gudang Shoroom | Display (2)</option>
+                                        <option>Gudang Shoroom | Stock (2)</option>
+                                        <option>Gudang Pusat</option>
+                                    </select>
+                                </td>
                                 <td width=""><a href="<?php echo base_url();?>/dashboard/detail_product"><button type="button" data-dismiss="modal"><i class="fa fa-plus"> Add</i></button></a></td>
                             </tr>
                             </tbody>
                         </table>
+                        
+                        <br>
+                            <fieldset>
+                                <legend>Khusus Display (Popup Modal)</legend>
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <label>Serial Number </label>
+                                    <input type="text" name="title" id="title" class="form-control" placeholder="Masukkan Serial Number">
+                                </div>
+                                <div class="form-group">
+                                    <label>Upload Foto Product </label>
+                                    <input type="file" name="title" id="title" class="form-control">
+                                </div>
+                                
+                            </fieldset>
 
                     </div><!-- table responsive -->
                     <br>

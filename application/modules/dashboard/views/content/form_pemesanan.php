@@ -128,25 +128,26 @@
                                 <td width="25%"></td>
                             </tr>
                             <tr>
-                                <td rowspan="2">Address</td>
+                                <td>ID NPWP</td>
                                 <td></td>
                                 <td>Home</td>
                                 <td></td>
                             </tr>
                             <tr>
 
+                                <td>Address</td>
                                 <td></td>
                                 <td>Handphone 1</td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>Provinsi</td>
+                                <td>Kota</td>
                                 <td></td>
                                 <td>Handphone 2</td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>Kota</td>
+                                <td>Provinsi</td>
                                 <td></td>
                                 <td>Email</td>
                                 <td></td>
@@ -174,47 +175,100 @@
                     <br>
 
                     <font style="text-align: center">
-                        <table border='1' width="100%" class="">
-                            <tr style="background-color: #E0E0E0">
-                                <th colspan="9"><center>PRODUCT DETAIL</center></th>
-                            </tr>
-                            <tr style="background-color: #E0E0E0">
+                    <table border='1' width="100%" class="">
+                        <tr style="background-color: #E0E0E0">
                                 <th rowspan="2"><center>NO</center></th>
                                 <th rowspan="2"><center>KODE</center></th>
                                 <th colspan="2"><center>Deskripsi</center></th>
                                 <th><center>Status</center></th>
                                 <th rowspan="2"><center>Qty</center></th>
-
                                 <th rowspan="2"><center>Pricelist</center></th>
                                 <th rowspan="2"><center>Disc(%)</center></th>
+                                <th rowspan="2"><center>Ket Add Disc</center></th>
                                 <th rowspan="2"><center>Harga Netto</center></th>
-                            </tr>
+                                <th rowspan="2"><center>Sudah Di Bawa</center></th>
+                        </tr>
 
-                            <tr style="background-color: #E0E0E0">
+                        <tr style="background-color: #E0E0E0">
 
                                 <th><center>Merek</center></th>
                                 <th><center>Type</center></th>
-                                <th><center>Produk</center></th>
+                                <th><center>Product</center></th>
 
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>MWKM</td>
+                            <td>A</td>
+                            <td align = "left">&nbsp;TRIM KIT FOR MICROWAVE MW</td>
+                            <td>R/I</td>
+                            <td>1 </a>  </td>
+                            <td>350.000</td>
+                            <td>10%</td>
+                            <td>PWP</td>
+                            <td>315.000</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>MWKMC</td>
+                            <td>A</td>
+                            <td align = "left">&nbsp;KOMPOR TANAM GOG</td>
+                            <td>R/I</td>
+                            <td>1 </a>  </td>
+                            <td>350.000</td>
+                            <td>10%</td>
+                            <td>-</td>
+                            <td>315.000</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>MWKMK</td>
+                            <td>A</td>
+                            <td align = "left">&nbsp;MESIN PENGERING</td>
+                            <td>R/I</td>
+                            <td>1 </a>  </td>
+                            <td>350.000</td>
+                            <td>10%</td>
+                            <td>PWP</td>
+                            <td>315.000</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>WKMK</td>
+                            <td>A</td>
+                            <td align = "left">&nbsp;MESIN KOPI 1</td>
+                            <td>R/I</td>
+                            <td>1 </a>  </td>
+                            <td>350.000</td>
+                            <td>10%</td>
+                            <td>RMD 1</td>
+                            <td>320.000</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>MWKMK</td>
+                            <td>A</td>
+                            <td align = "left">&nbsp;KOMPOR GANDA</td>
+                            <td>R/I</td>
+                            <td>1 </a>  </td>
+                            <td>150.000</td>
+                            <td>10%</td>
+                            <td>RMD 1</td>
+                            <td>315.000</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td colspan="12">PWP Program Periode 1-9 Maret 2019</td>
+                        </tr>
+                        <tr>
+                            <td colspan="12">RMD 1 Program Periode 10 Februari-20 Desember 2019</td>
+                        </tr>
 
-                            </tr>
-
-
-                            <tr>
-                                <td>1</td>
-                                <td>MWKM</td>
-                                <td>A</td>
-                                <td>TRIM KIT FOR MICROWAVE MW</td>
-
-                                <td>PO</td>
-                                <td>1</td>
-                                <td>345.000</td>
-                                <td>10%</td>
-                                <td>315.000</td>
-                            </tr>
-
-
-                        </table>
+                    </table>
 
                     <br>
                     <table style="float: right;font-size: large;font-weight: bold;" width="22%">
@@ -250,9 +304,9 @@
 
                     </table>
                     <table style="float: right;margin-right: 5%;" width="35%" border="1">
-                      <tr style="background-color: #e0e0e0"><th>PEMESANAN</th><th>WIRANIAGA</th></tr>
+                      <tr style="background-color: #e0e0e0"><th>PELANGGAN</th><th>WIRANIAGA</th></tr>
                         <tr><td style="height:80px">.</td><td>.</td></tr>
-                        <tr style="background-color: #e0e0e0"><th>KA PENJUAL</th><th>FINANCE</th></tr>
+                        <tr style="background-color: #e0e0e0"><th>KEPALA WIRANIAGA</th><th>FINANCE</th></tr>
                         <tr><td style="height:80px">.</td><td>.</td></tr>
 
 

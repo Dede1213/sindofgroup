@@ -50,8 +50,13 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             </div>
 
                             <div class="form-group">
-                                <label>ID KTP/Passport/NPWP</label>
+                                <label>ID KTP/Passport</label>
                                <input type="text" name="title" id="title" class="form-control" value="9776776767676" >
+                            </div>
+
+                            <div class="form-group">
+                                <label>ID NPWP</label>
+                               <input type="text" name="title" id="title" class="form-control" value="434343434343443" >
                             </div>
 
                             <div class="form-group">
@@ -59,9 +64,29 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 <input type="text" name="title" id="title" class="form-control" value="Kp.Suradita No.56 RT.001/001 Cisauk-Tangerang,Banten">
                             </div>
 
+                                                    <div class="form-group">
+                            <label>Kelurahan</label>
+                            <select class="form-control">
+                                <option>- Kelurahan - </option>
+                            </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Kecamatan</label>
+                                <select class="form-control">
+                                    <option>- Kecamatan - </option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Kabupaten / Kota</label>
+                                <select class="form-control">
+                                    <option>- Kabupaten / Kota - </option>
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label>Provinsi</label>
-                                <input type="text" name="title" id="title" class="form-control" value="Jakarta" >
+                                <select class="form-control">
+                                    <option>- Pilih Provinsi - </option>
+                                </select>
                             </div>
 
                                 <div class="form-group">

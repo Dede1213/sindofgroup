@@ -86,10 +86,6 @@
                             <a href="<?php echo base_url('dashboard/data_formulir');?>" class="btn btn-block btn-danger">Tidak Ada Penjualan</a>
                         </div>
                         
-                        <div class="col-sm-2" style="float: right">
-                            <a href="#" class="btn btn-block btn-warning">Beli Putus</a>
-                        </div>
-
                         <?php }else{?>
                             <div class="form-group">
                                 <label>Pilih Outlet</label>

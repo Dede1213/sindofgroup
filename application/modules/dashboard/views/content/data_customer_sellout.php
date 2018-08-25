@@ -14,7 +14,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <?php echo $page_title; ?>
+            <?php echo "Form Sellout"; ?>
             <small></small>
         </h1>
         <ol class="breadcrumb">
@@ -56,10 +56,90 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <label>Tanggal Order</label>
                             <input type="date" name="title" id="title" class="form-control" value="">
                         </div>
+                        <br>
+                        <div class="form-group">
+                            <label>Struk Bayar / Remark</label>
+                            <input type="file" name="title" id="title" class="form-control" value="" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nama Konsumen</label>
+                            <input type="text" name="title" id="title" class="form-control" value="">
+                        </div>
+
+                        <div class="form-group">
+                            <label>No HP</label>
+                            <input type="text" name="title" id="title" class="form-control" value="">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Konsumen</label>
+                            <input type="text" name="title" id="title" class="form-control" value="">
+                        </div>
+                        <hr>
+                    <br><label>Data Product</label>
+                    <table border='1' width="100%" class="">
+                        <tr style="background-color: #E0E0E0">
+                                <th rowspan="2"><center>NO</center></th>
+                                <th rowspan="2"><center>Kode</center></th>
+                                <th ><center>Nama Barang</center></th>
+                                <th rowspan="2"><center>Qty</center></th>
+                                <th rowspan="2"><center>Kode Promo</center></th>
+                                <th rowspan="2"><center>Sellout Price</center></th>
+                                <th rowspan="2"><center>Status Barang</center></th>
+                                <th rowspan="2"><center>Action</center></th>
+                        </tr>
+
+                        <tr style="background-color: #E0E0E0">
+
+                                <th><center>Merek</center></th>
+
+                        </tr>
+
+
+                    <tr>
+                        <td>1</td>
+                        <td align = "center">MWKM</td>
+                        <td align = "left">&nbsp;TRIM KIT FOR MICROWAVE MW</td>
+                        <td>1 <a href="#"><i class="fa fa-edit"></i></a>  </td>
+                        <td>-</td>
+                        <td>350.000</td>
+                        <td>Konsinyasi</td>
+                        <td><a href="#"><i class="fa fa-trash"></i></a> </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td align = "center">MWKM</td>
+                        <td align = "left">&nbsp;KOMPOR GANDA</td>
+                        <td>1 <a href="#"><i class="fa fa-edit"></i></a>  </td>
+                        <td>-</td>
+                        <td>350.000</td>
+                        <td>Beli Putus</td>
+                        <td><a href="#"><i class="fa fa-trash"></i></a> </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td align = "center">MWKM</td>
+                        <td align = "left">&nbsp;TRIM KIT FOR MICROWAVE MW</td>
+                        <td>1 <a href="#"><i class="fa fa-edit"></i></a>  </td>
+                        <td>-</td>
+                        <td>350.000</td>
+                        <td>Beli Putus</td>
+                        <td><a href="#"><i class="fa fa-trash"></i></a> </td>
+                    </tr>
+
+                    </table>
+                    <br>
+                    <button>Tambah Produk</button><br><br>
 
                         <div class="form-group">
                             <label>Kode Barang</label>
                             <input type="text" name="title" id="title" class="form-control" value="">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nama Barang</label>
+                            <input type="text" name="title" id="title" class="form-control" value="" readonly>
                         </div>
 
                         <div class="form-group">
@@ -82,38 +162,16 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         </div>
 
                         <div class="form-group">
-                            <label>Struk Bayar / Remark</label>
-                            <input type="file" name="title" id="title" class="form-control" value="" disabled>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Nama Konsumen</label>
-                            <input type="text" name="title" id="title" class="form-control" value="">
-                        </div>
-
-                        <div class="form-group">
-                            <label>No HP</label>
-                            <input type="text" name="title" id="title" class="form-control" value="">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Email Konsumen</label>
-                            <input type="text" name="title" id="title" class="form-control" value="">
-                        </div>
-                        <div class="form-group">
-                            <label>Status Produk</label>
+                            <label>Status Produk (otomatis dari gudang virtual)</label>
                             <select class="form-control">
                                 <option>Beli Putus</option>
                                 <option>Konsinyasi</option>
                             </select>
                         </div>
-
-
-
-
-
+                        <button>Tambahkan Barang</button><br>
 
                         <hr>
+                        <br>
 
 
                         <div class="col-md-2">
