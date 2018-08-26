@@ -130,6 +130,10 @@ class Customer extends My_Controller
             $this->data['data_gudang'] = $this->general->getwhere('m_customer_store_gudang',array('id_store'=>$getDataStore['id_store']),1);
         }
 
+        $id_store = $this->general->getwhere('m_customer_store',array('id_customer'=>$id_customer),false);
+        // return print_r($id_store['id_store']);
+
+        $this->data['id_store'] = $id_store['id_store'];
         $this->data['id_customer'] = $id_customer;
         $this->data['menu_tab'] = '2';
         $this->data['page_title'] = 'Create New Customer';

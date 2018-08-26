@@ -213,6 +213,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     </table>
                                 </div>
                                 <button type="button" class="btn btn-success btn-sm">Tambah Data Bank</button><br><br><br>
+                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
                                 <div class="form-group">
                                     <label>Apakah Outlet Merupakan sub:</label>
@@ -246,3 +247,23 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
 
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <input type="text" name="title" id="title" value="<?php echo $id_store;?>">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
