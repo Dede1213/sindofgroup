@@ -231,6 +231,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 														<td><center><?php echo $no;?></center></td>
 														<td><center><?php echo $value['nama'];?></center></td>
 														<td><center><?php echo $value['no_rekening'];?></center></td>
+														<td><a href="<?php echo base_url('sales/customer/act_delete_bank/'.$value['id_bank'])?>" class="fa fa-trash fa-2x" onclick="return confirm('Are you sure to Delete ?')"></a><span></td>
 													</tr>
 										<?php
 													$no++;

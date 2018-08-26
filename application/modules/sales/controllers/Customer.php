@@ -243,15 +243,6 @@ class Customer extends My_Controller
 
     }
 	
-	public function act_delete_penjualan($id = false)
-    {
-        $action = $this->general->delete('m_customer_store_penjualan', array('id_penjualan'=>$id));
-        if ($action) {
-            echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/customer/data_verifikasi1/'.$id_customer)."';</script>");
-        }
-
-    }
-	
 	public function act_add_bank()
     {
 
@@ -317,6 +308,22 @@ class Customer extends My_Controller
             echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('user')."';</script>");
         }
 
+    }
+	
+	public function act_delete_penjualan($id = false)
+    {
+        $action = $this->general->delete('m_customer_store_penjualan', array('id_penjualan'=>$id));
+        if ($action) {
+            echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/customer/data_verifikasi1/'.$id_customer)."';</script>");
+        }
+    }
+	
+	public function act_delete_bank($id = false)
+    {
+        $action = $this->general->delete('m_customer_store_bank', array('id_bank'=>$id));
+        if ($action) {
+            echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/customer/data_verifikasi1/'.$id_customer)."';</script>");
+        }
     }
 
     #boy di bawah
