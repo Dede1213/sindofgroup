@@ -192,14 +192,28 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     <label>Penjualan</label><br>
                                     <table border="1" width="50%">
                                         <tr>
-                                            <th><center>No</center></th><th><center>Produk</center></th><th><center>%</center></th>
+                                            <th><center>No</center></th><th><center>Produk</center></th><th><center>%</center></th></th><th><center>No. HP</center></th>
                                         </tr>
-                                        <tr>
-                                            <td><center>-</center></td><td><center>-</center></td><td><center>-</center></td>
-                                        </tr>
+										<?php
+											if($data_penjualan){
+												$no = 1;
+												foreach($data_penjualan as $value){
+													?>
+													<tr>
+														<td><center><?php echo $no;?></center></td>
+														<td><center><?php echo $value['produk'];?></center></td>
+														<td><center><?php echo $value['presentase'];?></center></td>
+														<td><center><?php echo $value['no_hp'];?></center></td>
+													</tr>
+										<?php
+													$no++;
+												}
+											}
+										?>
+                                        
                                     </table>
                                 </div>
-                                <button type="button" class="btn btn-success btn-sm" id="tambah_data_penjualan">Tambah Data Penjualan</button><br><br>
+                                <button type="button" class="btn btn-success btn-sm"  data-toggle="modal" data-target="#myModal">Tambah Data Penjualan</button><br><br>
 
                                 <div class="form-group">
                                     <label>Bank</label><br>
@@ -213,8 +227,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     </table>
                                 </div>
                                 <button type="button" class="btn btn-success btn-sm">Tambah Data Bank</button><br><br><br>
-                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
+                                
+								
                                 <div class="form-group">
                                     <label>Apakah Outlet Merupakan sub:</label>
                                     <select id="status_outlet">
@@ -258,11 +272,34 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                 <h4 class="modal-title">Modal Header</h4>
             </div>
             <div class="modal-body">
-                <input type="text" name="title" id="title" value="<?php echo $id_store;?>">
+				<form id="datapenjualan" method="post" action="<?php echo base_url('sales/customer/act_add_penjualan/');?>">
+					<div class="row">
+					<div class="col-lg-3">
+						<fieldset>
+							<div class="form-group">
+								<input type="hidden"  value="<?php echo $id_store;?>" name="id_store_penjualan">
+								<input type="hidden"  value="<?php echo $id_customer;?>" name="id_customer_penjualan">
+							</div>
+							<div class="form-group">
+								<label>Produk:</label>
+								<input type="text" id="title" id="title" name="produk">
+							</div>
+							<div class="form-group">
+								<label>Presentase:</label>
+								<input type="text" id="title" id="title" name="presentase">
+							</div>
+							<div class="form-group">
+								<label>Phone:</label>
+								<input type="text" id="title" id="title" name="no_hp">
+							</div>
+						</fieldset>
+						<button type="submit" class="btn btn-primary btn-block btn-flat">Submit</button>
+					</div>
+					
+					</div>
+				</form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
+            
         </div>
 
     </div>

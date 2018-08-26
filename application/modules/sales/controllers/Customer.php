@@ -69,7 +69,7 @@ class Customer extends My_Controller
 
 
 		
-        $action = $this->general->create('m_customer', array('status_data' => 1,'id_sales' => $id_sales,'no_ktp_passport' => $ktp_pass, 'no_npwp' => $npwp, 'nama' => $nama, 'alamat' => $alamat, 'kelurahan' => $kelurahan, 'kecamatan' => $kecamatan, 'kabupaten_kota' => $kabupaten, 'provinsi' => $provinsi, 'kode_pos' => $kode_pos, 'no_hp' => $no_hp, 'no_kantor' => $no_kantor, 'no_rumah' => $no_rumah, 'email' => $email, 'status_rumah' => $status_rumah, 'sewa_berakhir' => $berakhir));
+        $action = $this->general->create('m_customer', array('status_data' => 2,'id_sales' => $id_sales,'no_ktp_passport' => $ktp_pass, 'no_npwp' => $npwp, 'nama' => $nama, 'alamat' => $alamat, 'kelurahan' => $kelurahan, 'kecamatan' => $kecamatan, 'kabupaten_kota' => $kabupaten, 'provinsi' => $provinsi, 'kode_pos' => $kode_pos, 'no_hp' => $no_hp, 'no_kantor' => $no_kantor, 'no_rumah' => $no_rumah, 'email' => $email, 'status_rumah' => $status_rumah, 'sewa_berakhir' => $berakhir));
         $id_customer = $this->db->insert_id();
 		$insertStore = $this->general->create('m_customer_store', array('id_customer' => $id_customer));
 		$id_store = $this->db->insert_id();
@@ -105,7 +105,7 @@ class Customer extends My_Controller
         $berakhir= $this->input->post('berakhir');
 
 
-        $action = $this->general->update('m_customer',array('id_customer'=>$id_customer), array('status_data' => 1,'id_sales' => $id_sales,'no_ktp_passport' => $ktp_pass, 'no_npwp' => $npwp, 'nama' => $nama, 'alamat' => $alamat, 'kelurahan' => $kelurahan, 'kecamatan' => $kecamatan, 'kabupaten_kota' => $kabupaten, 'provinsi' => $provinsi, 'kode_pos' => $kode_pos, 'no_hp' => $no_hp, 'no_kantor' => $no_kantor, 'no_rumah' => $no_rumah, 'email' => $email, 'status_rumah' => $status_rumah, 'sewa_berakhir' => $berakhir));
+        $action = $this->general->update('m_customer',array('id_customer'=>$id_customer), array('status_data' => 2,'id_sales' => $id_sales,'no_ktp_passport' => $ktp_pass, 'no_npwp' => $npwp, 'nama' => $nama, 'alamat' => $alamat, 'kelurahan' => $kelurahan, 'kecamatan' => $kecamatan, 'kabupaten_kota' => $kabupaten, 'provinsi' => $provinsi, 'kode_pos' => $kode_pos, 'no_hp' => $no_hp, 'no_kantor' => $no_kantor, 'no_rumah' => $no_rumah, 'email' => $email, 'status_rumah' => $status_rumah, 'sewa_berakhir' => $berakhir));
         if ($action) {
             echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/customer/data_verifikasi1/'.$id_customer)."';</script>");
         }
@@ -215,6 +215,31 @@ class Customer extends My_Controller
         if ($insertStore && $insertGudang) {
                 return True;
             }
+
+    }
+	
+	public function act_add_penjualan()
+    {
+
+        $id_sales = $this->session->userdata('id');
+
+        $id_customer = $this->input->post('id_customer_penjualan');
+        $id_store = $this->input->post('id_store_penjualan');
+        $produk = $this->input->post('produk');
+        $presentase = $this->input->post('presentase');
+        $no_hp = $this->input->post('no_hp');
+		
+		// return print_r($id_customer);
+		
+        $action = $this->general->create('m_customer_store_penjualan', 
+										array('id_store' => $id_store,
+												'produk' => $produk,
+												'presentase' => $presentase, 
+												'no_hp' => $no_hp, 
+												));		
+		if ($action) {
+            echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/customer/data_verifikasi1/'.$id_customer)."';</script>");
+        }
 
     }
 
