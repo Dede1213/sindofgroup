@@ -68,9 +68,15 @@ class Customer extends My_Controller
         $berakhir= $this->input->post('berakhir');
 
 
+		
         $action = $this->general->create('m_customer', array('status_data' => 1,'id_sales' => $id_sales,'no_ktp_passport' => $ktp_pass, 'no_npwp' => $npwp, 'nama' => $nama, 'alamat' => $alamat, 'kelurahan' => $kelurahan, 'kecamatan' => $kecamatan, 'kabupaten_kota' => $kabupaten, 'provinsi' => $provinsi, 'kode_pos' => $kode_pos, 'no_hp' => $no_hp, 'no_kantor' => $no_kantor, 'no_rumah' => $no_rumah, 'email' => $email, 'status_rumah' => $status_rumah, 'sewa_berakhir' => $berakhir));
-        if ($action) {
-            $id_customer = $this->db->insert_id();
+        $id_customer = $this->db->insert_id();
+		$insertStore = $this->general->create('m_customer_store', array('id_customer' => $id_customer));
+		$id_store = $this->db->insert_id();
+        $insertGudang = $this->general->create('m_customer_gudang', array('id_store' => $id_store));
+        
+		if ($action) {
+            
             echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/customer/data_verifikasi1/'.$id_customer)."';</script>");
         }
 
@@ -131,7 +137,7 @@ class Customer extends My_Controller
         $this->load->view('template_content', $this->data);
     }
 
-    private function act_add_verifikasi1()
+    public function act_update_verifikasi1()
     {
         $id_customer = $this->input->post('id_customer');
         $nama_toko = $this->input->post('nama_toko');
@@ -144,7 +150,7 @@ class Customer extends My_Controller
         $provinsi_toko = $this->input->post('provinsi_toko');
         $no_hp_toko = $this->input->post('no_hp_toko');
         $no_fax_toko = $this->input->post('no_fax_toko');
-        $status = $this->input->post('status-toko');
+        $status = $this->input->post('status_toko');
         $berakhir_toko = $this->input->post('berakhir_toko');
         $panjang_toko = $this->input->post('panjang_toko');
         $lebar_toko = $this->input->post('lebar_toko');
@@ -152,6 +158,7 @@ class Customer extends My_Controller
         $jml_teknisi_toko= $this->input->post('jml_teknisi_toko');
 
 
+        $nama_gudang = $this->input->post('nama_gudang');
         $alamat_gudang = $this->input->post('alamat_gudang');
         $rw_gudang = $this->input->post('rw_gudang');
         $rt_gudang = $this->input->post('rt_gudang');
@@ -160,13 +167,47 @@ class Customer extends My_Controller
         $kabupaten_gudang = $this->input->post('kabupaten_gudang');
         $provinsi_gudang = $this->input->post('provinsi_gudang');
         $no_hp_gudang = $this->input->post('no_hp_gudang');
+        $rekening_gudang = $this->input->post('rekening_gudang');
+        $kode_pos_gudang = $this->input->post('kode_pos_gudang');
         $no_fax_gudang = $this->input->post('no_fax_gudang');
 
 
 
-        $insertStore = $this->general->create('m_customer_store', array('id_customer' => $id_customer,'nama' => $nama_toko,'alamat' => $alamat_toko, 'rt' => $rt_toko, 'rw' => $rw_toko, 'kelurahan' => $kelurahan_toko, 'kecamatan' => $kecamatan_toko,'kabupaten_kota' => $kabupaten_toko, 'provinsi' => $provinsi_toko, 'no_hp' => $no_hp_toko, 'no_fax' => $no_fax_toko, 'status_store' => $status,'sewa_berakhir' => $berakhir_toko, 'panjang' => $panjang_toko, 'lebar' => $lebar_toko, 'jumlah_karyawan' => $jml_karyawan_toko, 'jumlah_teknisi' => $jml_teknisi_toko));
-        $id_store = $this->db->insert_id();
-        $insertGudang = $this->general->create('m_customer_gudang', array('id_store' => $id_store,'alamat' => $alamat_gudang, 'rt' => $rt_gudang, 'rw' => $rw_gudang, 'kelurahan' => $kelurahan_gudang, 'kecamatan' => $kecamatan_gudang,'kabupaten_kota' => $kabupaten_gudang, 'provinsi' => $provinsi_gudang, 'no_hp' => $no_hp_gudang, 'no_fax' => $no_fax_gudang));
+        $insertStore = $this->general->update('m_customer_store', 
+											array('id_customer'=>$id_customer),
+											array('nama' => $nama_toko,
+												'alamat' => $alamat_toko,
+												'rt' => $rt_toko, 
+												'rw' => $rw_toko, 
+												'kelurahan' => $kelurahan_toko, 
+												'kecamatan' => $kecamatan_toko,
+												'kabupaten_kota' => $kabupaten_toko, 
+												'provinsi' => $provinsi_toko, 
+												'no_hp' => $no_hp_toko, 
+												'no_fax' => $no_fax_toko, 
+												'status_store' => $status,
+												'sewa_berakhir' => $berakhir_toko, 
+												'panjang' => $panjang_toko, 
+												'lebar' => $lebar_toko, 
+												'jumlah_karyawan' => $jml_karyawan_toko, 
+												'jumlah_teknisi' => $jml_teknisi_toko)
+		);
+        $id_store = $this->general->getwhere('m_customer_store',array('id_customer'=>$id_customer),false);
+		// return print_r($id_store['id_store']);
+        $insertGudang = $this->general->update('m_customer_store_gudang', 
+											array('id_store'=>$id_store['id_store']),
+											array('nama' => $nama_gudang, 
+											'alamat' => $alamat_gudang, 
+											'rt' => $rt_gudang, 
+											'rw' => $rw_gudang, 
+											'kelurahan' => $kelurahan_gudang, 
+											'kecamatan' => $kecamatan_gudang,
+											'kabupaten_kota' => $kabupaten_gudang, 
+											'provinsi' => $provinsi_gudang, 
+											'no_hp' => $no_hp_gudang, 
+											'no_rekening' => $rekening_gudang, 
+											'kode_pos' => $kode_pos_gudang, 
+											'no_fax' => $no_fax_gudang));
         if ($insertStore && $insertGudang) {
                 return True;
             }

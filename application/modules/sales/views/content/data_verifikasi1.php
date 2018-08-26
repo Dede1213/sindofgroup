@@ -39,7 +39,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 
                     <div class="box-body">
-                        <form id="dataverifikasi1" method="post">
+                        <form id="dataverifikasi1" method="post" action="<?php echo base_url('sales/customer/act_update_verifikasi1/');?>">
 
 
                             <!-- text input -->
@@ -167,6 +167,14 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <select class="form-control" name="provinsi_gudang">
                                 <option>- Pilih Provinsi - </option>
                             </select>
+                        </div>
+						<div class="form-group">
+                            <label>Kode Pos</label>
+                            <input type="text" name="kode_pos_gudang" id="title" class="form-control">
+                        </div>
+						<div class="form-group">
+                            <label>No. Rekening</label>
+                            <input type="text" name="rekening_gudang" id="title" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Phone</label>
