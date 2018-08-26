@@ -43,7 +43,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         if($data){
                         ?>
 
-                            <form method="post" action="<?php echo base_url('sales/act_update_customer/');?>">
+                            <form method="post" action="<?php echo base_url('sales/customer/act_update_customer/');?>">
 
 
                                 <!-- text input -->
@@ -155,7 +155,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         }else{
                         ?>
 
-                            <form method="post" action="<?php echo base_url('sales/act_add_customer');?>">
+                            <form method="post" action="<?php echo base_url('sales/customer/act_add_customer');?>">
 
 
                                 <!-- text input -->
