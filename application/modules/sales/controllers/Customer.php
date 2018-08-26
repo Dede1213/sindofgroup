@@ -25,7 +25,7 @@ class Customer extends My_Controller
     public function index()
     {
         $this->data['page_title'] = 'List Customer';
-        $this->data['main_view'] = 'content/list_customer';
+        $this->data['main_view'] = 'customer/list_customer';
         $this->data['data'] = $this->general->getwhere('m_customer',array('status_data'=>'4'),'1',false,false,array('param'=>'id_customer','by'=>'asc'));
         $this->load->view('template_content', $this->data);
     }
@@ -41,7 +41,7 @@ class Customer extends My_Controller
 
         $this->data['menu_tab'] = '1';
         $this->data['page_title'] = 'Create New Customer';
-        $this->data['main_view'] = 'content/add_customer';
+        $this->data['main_view'] = 'customer/add_customer';
         $this->load->view('template_content', $this->data);
     }
 
@@ -137,7 +137,7 @@ class Customer extends My_Controller
         $this->data['id_customer'] = $id_customer;
         $this->data['menu_tab'] = '2';
         $this->data['page_title'] = 'Create New Customer';
-        $this->data['main_view'] = 'content/data_verifikasi1';
+        $this->data['main_view'] = 'customer/data_verifikasi1';
         $this->load->view('template_content', $this->data);
     }
 
@@ -242,12 +242,37 @@ class Customer extends My_Controller
         }
 
     }
+	
+	public function act_add_bank()
+    {
+
+        $id_sales = $this->session->userdata('id');
+
+        $id_customer = $this->input->post('id_customer_penjualan');
+        $id_store = $this->input->post('id_store_penjualan');
+        $produk = $this->input->post('produk');
+        $presentase = $this->input->post('presentase');
+        $no_hp = $this->input->post('no_hp');
+		
+		// return print_r($id_customer);
+		
+        $action = $this->general->create('m_customer_store_penjualan', 
+										array('id_store' => $id_store,
+												'produk' => $produk,
+												'presentase' => $presentase, 
+												'no_hp' => $no_hp, 
+												));		
+		if ($action) {
+            echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/customer/data_verifikasi1/'.$id_customer)."';</script>");
+        }
+
+    }
 
     public function data_verifikasi2()
     {
         $this->data['menu_tab'] = '3';
         $this->data['page_title'] = 'Create New Customer';
-        $this->data['main_view'] = 'content/data_verifikasi2';
+        $this->data['main_view'] = 'customer/data_verifikasi2';
         $this->load->view('template_content', $this->data);
     }
 
