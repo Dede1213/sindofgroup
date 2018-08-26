@@ -264,6 +264,56 @@ class Customer extends My_Controller
 
     }
 
+    #boy di bawah
+    public function actInsertMedia(){
+        $title = strip_tags($this->input->post('title'));
+
+        // config upload
+        $config['upload_path'] = $this->config->item('path_images_customer');
+        $config['allowed_types'] = 'jpg|png|pdf'; //sebenernya udah di filter lagi oleh mime.php bawaan ci to xss
+        $config['max_size'] = '500'; // 1MB
+        $config['encrypt_name'] = true; // to clean xss in name of file
+        $this->load->library('upload', $config);
+        //$this->upload->initialize($config);
+
+
+        if (!$this->upload->do_upload('media')) {
+            $error = strip_tags($this->upload->display_errors());
+            echo"<script>alert('{$error}');window.location.href='".base_url('dashboard/media')."'</script>";
+            exit;
+        }else{
+            $name_file = $this->upload->data('file_name');
+            $file_size = $this->upload->data('file_size');
+            if (!empty($title)) {
+                $insertMedia = $this->dashboard->create('m_media', array('name_file' => $name_file,'size'=>$file_size, 'title' => $title));
+                if ($insertMedia) {
+                    echo"<script>alert('Upload Berhasil');window.location.href='".base_url('dashboard/media')."'</script>";
+                    exit;
+                }
+            } else {
+                $path = $this->config->item('path_images_media').$name_file;
+                unlink($path);
+                echo"<script>alert('title harus diisi');window.location.href='".base_url('dashboard/media')."'</script>";
+                exit;
+            }
+        }
+    }
+
+    public function actDeleteMedia($id = false, $name_file = false)
+    {
+        $delete = $this->dashboard->delete('m_media',array('id'=>$id));
+
+        if ($delete) {
+            $path = $this->config->item('path_images_customer').$name_file;
+            unlink($path);
+            echo"<script>alert('Delete Success');window.location.href='".base_url('dashboard/media')."'</script>";
+            exit;
+        }else{
+            echo"<script>alert('Delete failed');window.location.href='".base_url('dashboard/media')."'</script>";
+            exit;
+        }
+    }
 
 }
+
 

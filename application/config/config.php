@@ -8,7 +8,7 @@ $root .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME'
  * PATH CONFIGURATION
  * Place in this section for all of your path configuration
  */
-$config['path_images_thumbnail'] = FCPATH.'assets'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'thumbnail'.DIRECTORY_SEPARATOR;
+$config['path_images_customer'] = FCPATH.'assets'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'customer'.DIRECTORY_SEPARATOR;
 $config['path_images_user'] = FCPATH.'assets'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'user'.DIRECTORY_SEPARATOR;
 
 /*

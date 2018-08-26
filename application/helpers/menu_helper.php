@@ -35,7 +35,7 @@ function getMenu($id_user = false)
             echo "<li class='treeview'>";
 
             #Category ke-2
-            $category_1 = $ci->general->getwhere('m_menu', array('parent_id' => $data1['id']), 1);
+            $category_1 = $ci->general->getwhere('m_menu', array('parent_id' => $data1['id']), 1,false,false,array('param'=>'menu_order','by'=>'asc'),'id',$in);
             if ($category_1) {
                 #jika ada sub menu
                 echo "<a href=".base_url($data1['link'])."><i class='".$data1['icon']."'></i> <span>".$data1['menu']."</span><i class='fa fa-angle-left pull-right'></i></a>";
@@ -46,7 +46,7 @@ function getMenu($id_user = false)
                 foreach ($category_1 as $data2) {
                     echo"<li class='treeview'>";
 
-                    $category_2 = $ci->general->getwhere('m_menu', array('parent_id' => $data2['id']), 1);
+                    $category_2 = $ci->general->getwhere('m_menu', array('parent_id' => $data2['id']), 1,false,false,array('param'=>'menu_order','by'=>'asc'),'id',$in);
                     if ($category_2) {
                         #jika ada sub menu
                         echo"<a href=".base_url($data2['link'])."><i class='".$data2['icon']."'></i> <span>".$data2['menu']."</span><i class='fa fa-angle-left pull-right'></i></a>";
