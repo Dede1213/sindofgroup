@@ -26,17 +26,19 @@ class Customer extends My_Controller
     {
         $this->data['page_title'] = 'List Customer';
         $this->data['main_view'] = 'content/list_customer';
-        $this->data['data'] = $this->general->getwhere('m_customer',array('status_data'=>'4'),'1',false,false,array('param'=>'id_customer','by'=>'asc'));
+        $this->data['data'] = $this->general->getwhere('m_customer',array('id_status'=>'5'),'1',false,false,array('param'=>'id_customer','by'=>'asc'));
         $this->load->view('template_content', $this->data);
     }
 
     public function add_customer()
     {
         $id_sales = $this->session->userdata('id');
-        $cekPending = $this->general->getwhere('m_customer',array('id_sales'=>$id_sales,'status_data'=>'1'));
+        $cekPending = $this->general->get_query_natural('select * from m_customer WHERE id_status < 5');
 
         if($cekPending){
             $this->data['data'] = $cekPending;
+        }else{
+            $this->data['data'] = false;
         }
 
         $this->data['menu_tab'] = '1';
@@ -69,13 +71,13 @@ class Customer extends My_Controller
 
 
 		
-        $action = $this->general->create('m_customer', array('status_data' => 2,'id_sales' => $id_sales,'no_ktp_passport' => $ktp_pass, 'no_npwp' => $npwp, 'nama' => $nama, 'alamat' => $alamat, 'kelurahan' => $kelurahan, 'kecamatan' => $kecamatan, 'kabupaten_kota' => $kabupaten, 'provinsi' => $provinsi, 'kode_pos' => $kode_pos, 'no_hp' => $no_hp, 'no_kantor' => $no_kantor, 'no_rumah' => $no_rumah, 'email' => $email, 'status_rumah' => $status_rumah, 'sewa_berakhir' => $berakhir));
+        $action = $this->general->create('m_customer', array('id_status' => 2,'id_sales' => $id_sales,'no_ktp_passport' => $ktp_pass, 'no_npwp' => $npwp, 'nama' => $nama, 'alamat' => $alamat, 'kelurahan' => $kelurahan, 'kecamatan' => $kecamatan, 'kabupaten_kota' => $kabupaten, 'provinsi' => $provinsi, 'kode_pos' => $kode_pos, 'no_hp' => $no_hp, 'no_kantor' => $no_kantor, 'no_rumah' => $no_rumah, 'email' => $email, 'status_rumah' => $status_rumah, 'sewa_berakhir' => $berakhir));
         $id_customer = $this->db->insert_id();
 		$insertStore = $this->general->create('m_customer_store', array('id_customer' => $id_customer));
 		$id_store = $this->db->insert_id();
-        $insertGudang = $this->general->create('m_customer_gudang', array('id_store' => $id_store));
+        $insertGudang = $this->general->create('m_customer_store_gudang', array('id_store' => $id_store));
         
-		if ($action) {
+		if ($insertStore && $insertGudang) {
             
             echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/customer/data_verifikasi1/'.$id_customer)."';</script>");
         }
@@ -105,7 +107,7 @@ class Customer extends My_Controller
         $berakhir= $this->input->post('berakhir');
 
 
-        $action = $this->general->update('m_customer',array('id_customer'=>$id_customer), array('status_data' => 2,'id_sales' => $id_sales,'no_ktp_passport' => $ktp_pass, 'no_npwp' => $npwp, 'nama' => $nama, 'alamat' => $alamat, 'kelurahan' => $kelurahan, 'kecamatan' => $kecamatan, 'kabupaten_kota' => $kabupaten, 'provinsi' => $provinsi, 'kode_pos' => $kode_pos, 'no_hp' => $no_hp, 'no_kantor' => $no_kantor, 'no_rumah' => $no_rumah, 'email' => $email, 'status_rumah' => $status_rumah, 'sewa_berakhir' => $berakhir));
+        $action = $this->general->update('m_customer',array('id_customer'=>$id_customer), array('id_status' => 2,'id_sales' => $id_sales,'no_ktp_passport' => $ktp_pass, 'no_npwp' => $npwp, 'nama' => $nama, 'alamat' => $alamat, 'kelurahan' => $kelurahan, 'kecamatan' => $kecamatan, 'kabupaten_kota' => $kabupaten, 'provinsi' => $provinsi, 'kode_pos' => $kode_pos, 'no_hp' => $no_hp, 'no_kantor' => $no_kantor, 'no_rumah' => $no_rumah, 'email' => $email, 'status_rumah' => $status_rumah, 'sewa_berakhir' => $berakhir));
         if ($action) {
             echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/customer/data_verifikasi1/'.$id_customer)."';</script>");
         }
