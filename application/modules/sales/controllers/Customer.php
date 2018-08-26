@@ -243,6 +243,15 @@ class Customer extends My_Controller
 
     }
 	
+	public function act_delete_penjualan($id = false)
+    {
+        $action = $this->general->delete('m_customer_store_penjualan', array('id_penjualan'=>$id));
+        if ($action) {
+            echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/customer/data_verifikasi1/'.$id_customer)."';</script>");
+        }
+
+    }
+	
 	public function act_add_bank()
     {
 
@@ -250,17 +259,13 @@ class Customer extends My_Controller
 
         $id_customer = $this->input->post('id_customer_penjualan');
         $id_store = $this->input->post('id_store_penjualan');
-        $produk = $this->input->post('produk');
-        $presentase = $this->input->post('presentase');
-        $no_hp = $this->input->post('no_hp');
+        $nama_bank = $this->input->post('nama_bank');
+        $no_rek = $this->input->post('no_rek');
 		
-		// return print_r($id_customer);
-		
-        $action = $this->general->create('m_customer_store_penjualan', 
+        $action = $this->general->create('m_customer_store_bank', 
 										array('id_store' => $id_store,
-												'produk' => $produk,
-												'presentase' => $presentase, 
-												'no_hp' => $no_hp, 
+												'nama' => $nama_bank,
+												'no_rekening' => $no_rek,
 												));		
 		if ($action) {
             echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/customer/data_verifikasi1/'.$id_customer)."';</script>");

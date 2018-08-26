@@ -204,6 +204,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 														<td><center><?php echo $value['produk'];?></center></td>
 														<td><center><?php echo $value['presentase'];?></center></td>
 														<td><center><?php echo $value['no_hp'];?></center></td>
+														<td><a href="<?php echo base_url('sales/customer/act_delete_penjualan/'.$value['id_penjualan'])?>" class="fa fa-trash fa-2x" onclick="return confirm('Are you sure to Delete ?')"></a><span></td>
 													</tr>
 										<?php
 													$no++;
@@ -213,7 +214,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                         
                                     </table>
                                 </div>
-                                <button type="button" class="btn btn-success btn-sm"  data-toggle="modal" data-target="#myModal">Tambah Data Penjualan</button><br><br>
+                                <button type="button" class="btn btn-success btn-sm"  data-toggle="modal" data-target="#modalPenjualan">Tambah Data Penjualan</button><br><br>
 
                                 <div class="form-group">
                                     <label>Bank</label><br>
@@ -221,12 +222,24 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                         <tr>
                                             <th><center>No</center></th><th><center>Nama Bank</center></th><th><center>No.Rekening</center></th>
                                         </tr>
-                                        <tr>
-                                            <td><center>-</center></td><td><center>-</center></td><td><center>-</center></td>
-                                        </tr>
+                                        <?php
+											if($data_bank){
+												$no = 1;
+												foreach($data_bank as $value){
+													?>
+													<tr>
+														<td><center><?php echo $no;?></center></td>
+														<td><center><?php echo $value['nama'];?></center></td>
+														<td><center><?php echo $value['no_rekening'];?></center></td>
+													</tr>
+										<?php
+													$no++;
+												}
+											}
+										?>
                                     </table>
                                 </div>
-                                <button type="button" class="btn btn-success btn-sm">Tambah Data Bank</button><br><br><br>
+                                <button type="button" class="btn btn-success btn-sm"  data-toggle="modal" data-target="#modalBank">Tambah Data Bank</button><br><br><br>
                                 
 								
                                 <div class="form-group">
@@ -262,14 +275,14 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 </div><!-- /.content-wrapper -->
 
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+<div id="modalPenjualan" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
+                <h4 class="modal-title">Add Data Penjualan</h4>
             </div>
             <div class="modal-body">
 				<form id="datapenjualan" method="post" action="<?php echo base_url('sales/customer/act_add_penjualan/');?>">
@@ -291,6 +304,45 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 							<div class="form-group">
 								<label>Phone:</label>
 								<input type="text" id="title" id="title" name="no_hp">
+							</div>
+						</fieldset>
+						<button type="submit" class="btn btn-primary btn-block btn-flat">Submit</button>
+					</div>
+					
+					</div>
+				</form>
+            </div>
+            
+        </div>
+
+    </div>
+</div>
+
+<div id="modalBank" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add Data Bank</h4>
+            </div>
+            <div class="modal-body">
+				<form id="datapenjualan" method="post" action="<?php echo base_url('sales/customer/act_add_bank/');?>">
+					<div class="row">
+					<div class="col-lg-3">
+						<fieldset>
+							<div class="form-group">
+								<input type="hidden"  value="<?php echo $id_store;?>" name="id_store_penjualan">
+								<input type="hidden"  value="<?php echo $id_customer;?>" name="id_customer_penjualan">
+							</div>
+							<div class="form-group">
+								<label>Nama Bank:</label>
+								<input type="text" id="title" id="title" name="nama_bank">
+							</div>
+							<div class="form-group">
+								<label>No. Rekening:</label>
+								<input type="text" id="title" id="title" name="no_rek">
 							</div>
 						</fieldset>
 						<button type="submit" class="btn btn-primary btn-block btn-flat">Submit</button>
