@@ -13,7 +13,7 @@ class Login_model extends CI_Model
 
 		if ($query->num_rows() == 1)
 		{
-            //reset userdata dulu biar aman
+            //reset userdata dulu biar aman oke
             $this->session->set_userdata(array('id' => '','id_level' => '','username' => '','login' => ''));
             //end
 

@@ -6,7 +6,6 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 <script>
     var base_url = '<?php echo base_url();?>';
 </script>
-
 <script src="<?php echo base_url(); ?>assets/js_ajax/dashboard.js" type="text/javascript"></script>
 <!-- End AJAX JS -->
 
@@ -47,59 +46,59 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                     <fieldset>
                         <legend>Data Toko</legend>
 
-                        <input type="hidden" name="id_customer" id="title" class="form-control" value="<?php echo $id_customer;?>">
+                        <input type="hidden" name="id_customer" id="id_customer-id" class="form-control" value="<?php echo $id_customer;?>">
 
                         <div class="form-group">
                             <label>Nama Toko</label>
-                            <input type="text" name="nama_toko" id="title" class="form-control">
+                            <input type="text" name="nama_toko" id="nama_toko-id" class="form-control" value="<?php echo $this->session->userdata('nama_toko');?>">
                         </div>
                         <div class="form-group">
                             <label>Alamat</label>
-                            <input type="text" name="alamat_toko" id="title" class="form-control">
+                            <input type="text" name="alamat_toko" id="alamat_toko-id" class="form-control" value="<?php echo $this->session->userdata('alamat_toko');?>">
                         </div>
                         <div class="form-group">
                             <label>RT</label>
-                            <input type="text" name="rt_toko" id="title" class="form-control">
+                            <input type="text" name="rt_toko" id="rt_toko-id" class="form-control" value="<?php echo $this->session->userdata('rt_toko');?>">
                         </div>
                         <div class="form-group">
                             <label>RW</label>
-                            <input type="text" name="rw_toko" id="title" class="form-control">
+                            <input type="text" name="rw_toko" id="rw_toko-id" class="form-control" value="<?php echo $this->session->userdata('rw_toko');?>">
                         </div>
                         <div class="form-group">
                             <label>Kelurahan</label>
-                            <select class="form-control" name="kelurahan_toko">
+                            <select class="form-control" name="kelurahan_toko" id="kelurahan_toko-id" value="<?php echo $this->session->userdata('kelurahan_toko');?>">
                                 <option>- Kelurahan - </option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Kecamatan</label>
-                            <select class="form-control" name="kecamatan_toko">
+                            <select class="form-control" name="kecamatan_toko" id="kecamatan_toko-id" value="<?php echo $this->session->userdata('kecamatan_toko');?>">
                                 <option>- Kecamatan - </option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Kabupaten / Kota</label>
-                            <select class="form-control" name="kabupaten_toko">
+                            <select class="form-control" name="kabupaten_toko" id="kabupaten_toko-id" value="<?php echo $this->session->userdata('kabupaten_toko');?>">
                                 <option>- Kabupaten / Kota - </option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Provinsi</label>
-                            <select class="form-control" name="provinsi_toko">
+                            <select class="form-control" name="provinsi_toko" id="provinsi_toko-id" value="<?php echo $this->session->userdata('provinsi_toko');?>">
                                 <option>- Pilih Provinsi - </option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Phone</label>
-                            <input type="text" name="no_hp_toko" id="title" class="form-control">
+                            <input type="text" name="no_hp_toko" id="no_hp_toko-id" class="form-control" value="<?php echo $this->session->userdata('no_hp_toko');?>">
                         </div>
                         <div class="form-group">
                             <label>Fax</label>
-                            <input type="text" name="no_fax_toko" id="title" class="form-control">
+                            <input type="text" name="no_fax_toko" id="no_fax_toko-id" class="form-control" value="<?php echo $this->session->userdata('no_fax_toko');?>">
                         </div>
                         <div class="form-group">
                             <label>Status Toko</label>
-                            <select id="status_toko" name="status_toko">
+                            <select id="status_toko-id" name="status_toko" value="<?php echo $this->session->userdata('status_toko');?>">
                                 <option>Milik Sendiri</option>
                                 <option>Milik yang diagunkan</option>
                                 <option>Sewa</option>
@@ -107,20 +106,20 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         </div>
                         <div class="form-group sewa_toko">
                             <label>Berakhir</label>
-                            <input type="date" name="berakhir_toko" id="title" class="form-control">
+                            <input type="date" name="berakhir_toko" id="berakhir_toko-id" class="form-control" value="<?php echo $this->session->userdata('berakhir_toko');?>">
                         </div>
                         <div class="form-group">
                             <label>Luas Toko m2</label>
-                            <input type="text" name="panjang_toko" id="title" class="form-control" placeholder="Masukkan Panjang">
-                            <input type="text" name="lebar_toko" id="title" class="form-control" placeholder="Masukkan Lebar">
+                            <input type="text" name="panjang_toko" id="panjang_toko-id" class="form-control" placeholder="Masukkan Panjang" value="<?php echo $this->session->userdata('panjang_toko');?>">
+                            <input type="text" name="lebar_toko" id="lebar_toko-id" class="form-control" placeholder="Masukkan Lebar" value="<?php echo $this->session->userdata('lebar_toko');?>">
                         </div>
                         <div class="form-group">
                             <label>Jumlah Karyawan Seluruhnya</label>
-                            <input type="text" name="jml_karyawan_toko" id="title" class="form-control">
+                            <input type="text" name="jml_karyawan_toko" id="jml_karyawan_toko-id" class="form-control" value="<?php echo $this->session->userdata('jml_karyawan_toko');?>">
                         </div>
                         <div class="form-group">
                             <label>Jumlah Teknisi</label>
-                            <input type="text" name="jml_teknisi_toko" id="title" class="form-control">
+                            <input type="text" name="jml_teknisi_toko" id="jml_teknisi_toko-id" class="form-control" value="<?php echo $this->session->userdata('jml_teknisi_toko');?>">
                         </div>
 
                     </fieldset>
@@ -130,59 +129,59 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                         <div class="form-group">
                             <label>Nama Gudang</label>
-                            <input type="text" name="nama_gudang" id="title" class="form-control">
+                            <input type="text" name="nama_gudang" id="nama_gudang-id" class="form-control" value="<?php echo $this->session->userdata('nama_gudang');?>">
                         </div>
                         <div class="form-group">
                             <label>Alamat</label>
-                            <input type="text" name="alamat_gudang" id="title" class="form-control">
+                            <input type="text" name="alamat_gudang" id="alamat_gudang-id" class="form-control" value="<?php echo $this->session->userdata('alamat_gudang');?>">
                         </div>
                         <div class="form-group">
                             <label>RT</label>
-                            <input type="text" name="rt_gudang" id="title" class="form-control">
+                            <input type="text" name="rt_gudang" id="rt_gudang-id" class="form-control" value="<?php echo $this->session->userdata('rt_gudang');?>">
                         </div>
                         <div class="form-group">
                             <label>RW</label>
-                            <input type="text" name="rw_gudang" id="title" class="form-control">
+                            <input type="text" name="rw_gudang" id="rw_gudang-id" class="form-control" value="<?php echo $this->session->userdata('rw_gudang');?>">
                         </div>
                         <div class="form-group">
                             <label>Kelurahan</label>
-                            <select class="form-control" name="kelurahan_gudang">
+                            <select class="form-control" name="kelurahan_gudang" id="kelurahan_gudang-id" value="<?php echo $this->session->userdata('kelurahan_gudang');?>">
                                 <option>- Kelurahan - </option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Kecamatan</label>
-                            <select class="form-control" name="kecamatan_gudang">
+                            <select class="form-control" name="kecamatan_gudang" id="kecamatan_gudang-id" value="<?php echo $this->session->userdata('kecamatan_gudang');?>">
                                 <option>- Kecamatan - </option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Kabupaten / Kota</label>
-                            <select class="form-control" name="kabupaten_gudang">
+                            <select class="form-control" name="kabupaten_gudang" id="kabupaten_gudang-id" value="<?php echo $this->session->userdata('kabupaten_gudang');?>">
                                 <option>- Kabupaten / Kota - </option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Provinsi</label>
-                            <select class="form-control" name="provinsi_gudang">
+                            <select class="form-control" name="provinsi_gudang" id="provinsi_gudang-id" value="<?php echo $this->session->userdata('provinsi_gudang');?>">
                                 <option>- Pilih Provinsi - </option>
                             </select>
                         </div>
 						<div class="form-group">
                             <label>Kode Pos</label>
-                            <input type="text" name="kode_pos_gudang" id="title" class="form-control">
+                            <input type="text" name="kode_pos_gudang" id="kode_pos_gudang-id" class="form-control" value="<?php echo $this->session->userdata('kode_pos_gudang');?>">
                         </div>
 						<div class="form-group">
                             <label>No. Rekening</label>
-                            <input type="text" name="rekening_gudang" id="title" class="form-control">
+                            <input type="text" name="rekening_gudang" id="rekening_gudang-id" class="form-control" value="<?php echo $this->session->userdata('rekening_gudang');?>">
                         </div>
                         <div class="form-group">
                             <label>Phone</label>
-                            <input type="text" name="no_hp_gudang" id="title" class="form-control">
+                            <input type="text" name="no_hp_gudang" id="no_hp_gudang-id" class="form-control" value="<?php echo $this->session->userdata('no_hp_gudang');?>">
                         </div>
                         <div class="form-group">
                             <label>Fax</label>
-                            <input type="text" name="no_fax_gudang" id="title" class="form-control">
+                            <input type="text" name="no_fax_gudang" id="no_fax_gudang-id" class="form-control" value="<?php echo $this->session->userdata('no_fax_gudang');?>">
                         </div>
                     </fieldset>    
 
@@ -192,7 +191,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     <label>Penjualan</label><br>
                                     <table border="1" width="50%">
                                         <tr>
-                                            <th><center>No</center></th><th><center>Produk</center></th><th><center>%</center></th></th><th><center>No. HP</center></th>
+                                            <th><center>No</center></th><th><center>Produk</center></th><th><center>%</center></th></th><th><center>No. HP</center></th><th><center>#</center></th>
                                         </tr>
 										<?php
 											if($data_penjualan){
@@ -204,7 +203,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 														<td><center><?php echo $value['produk'];?></center></td>
 														<td><center><?php echo $value['presentase'];?></center></td>
 														<td><center><?php echo $value['no_hp'];?></center></td>
-														<td><a href="<?php echo base_url('sales/customer/act_delete_penjualan/'.$value['id_penjualan'])?>" class="fa fa-trash fa-2x" onclick="return confirm('Are you sure to Delete ?')"></a><span></td>
+														<td><center><a href="<?php echo base_url('sales/customer/act_delete_penjualan/'.$value['id_penjualan'].'/'.$id_customer)?>" class="fa fa-trash fa-2x" onclick="return confirm('Are you sure to Delete ?')"></a></center></td>
 													</tr>
 										<?php
 													$no++;
@@ -214,13 +213,13 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                         
                                     </table>
                                 </div>
-                                <button type="button" class="btn btn-success btn-sm"  data-toggle="modal" data-target="#modalPenjualan">Tambah Data Penjualan</button><br><br>
+                                <button id="btn-modal-penjualan" type="button" class="btn btn-success btn-sm"  data-toggle="modal" data-target="#modalPenjualan">Tambah Data Penjualan</button><br><br>
 
                                 <div class="form-group">
                                     <label>Bank</label><br>
                                     <table border="1" width="50%">
                                         <tr>
-                                            <th><center>No</center></th><th><center>Nama Bank</center></th><th><center>No.Rekening</center></th>
+                                            <th><center>No</center></th><th><center>Nama Bank</center></th><th><center>No.Rekening</center></th><th><center>#</center></th>
                                         </tr>
                                         <?php
 											if($data_bank){
@@ -231,7 +230,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 														<td><center><?php echo $no;?></center></td>
 														<td><center><?php echo $value['nama'];?></center></td>
 														<td><center><?php echo $value['no_rekening'];?></center></td>
-														<td><a href="<?php echo base_url('sales/customer/act_delete_bank/'.$value['id_bank'])?>" class="fa fa-trash fa-2x" onclick="return confirm('Are you sure to Delete ?')"></a><span></td>
+														<td><center><a href="<?php echo base_url('sales/customer/act_delete_bank/'.$value['id_bank'].'/'.$id_customer)?>" class="fa fa-trash fa-2x" onclick="return confirm('Are you sure to Delete ?')"></a></center></td>
 													</tr>
 										<?php
 													$no++;
@@ -240,7 +239,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 										?>
                                     </table>
                                 </div>
-                                <button type="button" class="btn btn-success btn-sm"  data-toggle="modal" data-target="#modalBank">Tambah Data Bank</button><br><br><br>
+                                <button id="btn-modal-bank" type="button" class="btn btn-success btn-sm"  data-toggle="modal" data-target="#modalBank">Tambah Data Bank</button><br><br><br>
                                 
 								
                                 <div class="form-group">
@@ -357,3 +356,5 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
     </div>
 </div>
+
+

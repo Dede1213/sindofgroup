@@ -120,6 +120,53 @@ $(document).ready(function() {
             }
         });
     });
+	
+	$("#btn-modal-penjualan, #btn-modal-bank").click(function () {
+		data = new FormData();
+					
+        data.append( 'nama_toko', $( '#nama_toko-id' ).val() );
+        data.append( 'alamat_toko', $( '#alamat_toko-id' ).val() );
+        data.append( 'rw_toko', $( '#rw_toko-id' ).val() );
+        data.append( 'rt_toko', $( '#rt_toko-id' ).val() );
+        data.append( 'kelurahan_toko', $( '#kelurahan_toko-id' ).val() );
+        data.append( 'kecamatan_toko', $( '#kecamatan_toko-id' ).val() );
+        data.append( 'kabupaten_toko', $( '#kabupaten_toko-id' ).val() );
+        data.append( 'provinsi_toko', $( '#provinsi_toko-id' ).val() );
+        data.append( 'no_hp_toko', $( '#no_hp_toko-id' ).val() );
+        data.append( 'no_fax_toko', $( '#no_fax_toko-id' ).val() );
+        data.append( 'status', $( '#status-id' ).val() );
+        data.append( 'berakhir_toko', $( '#berakhir_toko-id' ).val() );
+        data.append( 'panjang_toko', $( '#panjang_toko-id' ).val() );
+        data.append( 'lebar_toko', $( '#lebar_toko-id' ).val() );
+        data.append( 'jml_karyawan_toko', $( '#jml_karyawan_toko-id' ).val() );
+        data.append( 'jml_teknisi_toko', $( '#jml_teknisi_toko-id' ).val() );
+        data.append( 'nama_gudang', $( '#nama_gudang-id' ).val() );
+        data.append( 'alamat_gudang', $( '#alamat_gudang-id' ).val() );
+        data.append( 'rw_gudang', $( '#rw_gudang-id' ).val() );
+        data.append( 'rt_gudang', $( '#rt_gudang-id' ).val() );
+        data.append( 'kelurahan_gudang', $( '#kelurahan_gudang-id' ).val() );
+        data.append( 'kecamatan_gudang', $( '#kecamatan_gudang-id' ).val() );
+        data.append( 'kabupaten_gudang', $( '#kabupaten_gudang-id' ).val() );
+        data.append( 'provinsi_gudang', $( '#provinsi_gudang-id' ).val() );
+        data.append( 'no_hp_gudang', $( '#no_hp_gudang-id' ).val() );
+        data.append( 'rekening_gudang', $( '#rekening_gudang-id' ).val() );
+        data.append( 'kode_pos_gudang', $( '#kode_pos_gudang-id' ).val() );
+        data.append( 'no_fax_gudang', $( '#no_fax_gudang-id' ).val() );
+        $.ajax({
+            type: "POST",
+            url: base_url + "sales/customer/act_create_session_ver_1",
+            data: data,
+            processData: false,
+			contentType: false,
+            success: function (response) {
+                if (response.error == false) {
+                    sweet(response.title, response.pesan, 'true.jpg', base_url + 'dashboard/user');
+                } else {
+                    // alert();
+                }
+            }
+        });
+    });
 
     $("#add_about").click(function () {
         // save TinyMCE instances before serialize
