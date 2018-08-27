@@ -68,7 +68,7 @@
                                     <td><?php echo $value['keterangan_discount'];?></td>
                                     <td><?php echo $value['harga_netto'];?></td>
                                     <td>1 </td>
-                                    <td><a href="#"><i class="fa fa-edit">Edit</i></a> | <a href="#"><i class="fa fa-trash">Delete</i></a>  </td>
+                                    <td><a href="#"><i class="fa fa-edit">Edit</i></a> | <a href="<?php echo base_url('/sales/sales_order/delete_produk/'.$value['id_produk']);?>"><i class="fa fa-trash">Delete</i></a>  </td>
                                 </tr>
                         <?php
                                 $no++;
@@ -138,10 +138,10 @@
                     <br>
                     <div class="col-md-2">
 
-                        <a href="<?php echo base_url('dashboard/add_product');?>" class="btn btn-block btn-primary">Add Product</a>
+                        <a href="<?php echo base_url('sales/sales_order/add_product');?>" class="btn btn-block btn-primary">Add Product</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="<?php echo base_url('dashboard/data_pengiriman');?>" class="btn btn-block btn-success">Submit</a>
+                        <a href="<?php echo base_url('sales/sales_order/add_product_finish');?>" class="btn btn-block btn-success">Submit</a>
                     </div>
                     <div class="col-md-2">
 <!--                        <a href="--><?php //echo base_url('dashboard/data_pengiriman');?><!--" class="btn btn-block btn-warning">Konfirmasi Stock</a>-->

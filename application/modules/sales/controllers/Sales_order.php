@@ -22,17 +22,22 @@ class Sales_order extends My_Controller
         $this->cekLoginAdmin();
     }
 
-    public function cekPending(){
+    public function cekPending($id_status = false){
         $id_sales = $this->session->userdata('id');
         $cekPending = $this->general->get_query_natural("select id_status from t_sales_order where id_sales = '$id_sales' AND id_status < 5");
         if($cekPending){
-            if($cekPending['id_status'] == '2'){
-                redirect(base_url('sales/sales_order/product'));
-            }elseif($cekPending['id_status'] == '3'){
-                redirect(base_url('sales/sales_order/product'));
-            }elseif($cekPending['id_status'] == '4'){
-                redirect(base_url('sales/sales_order/product'));
+            if($cekPending['id_status'] == $id_status){
+                return true;
+            }else{
+                if($cekPending['id_status'] == '2'){
+                    redirect(base_url('sales/sales_order/product'));
+                }elseif($cekPending['id_status'] == '3'){
+                    redirect(base_url('sales/sales_order/data_pengiriman'));
+                }elseif($cekPending['id_status'] == '4'){
+                    redirect(base_url('sales/sales_order/product'));
+                }
             }
+
         }
     }
 
@@ -63,6 +68,8 @@ class Sales_order extends My_Controller
 
     public function index()
     {
+        $id_status = '1';
+        $this->cekPending($id_status);
 
         $this->data['data'] = 'index';
         $this->data['menu_tab'] = '3';
@@ -98,24 +105,6 @@ class Sales_order extends My_Controller
           $id_customer = $this->input->post('id_customer');
           $no_invoice = "INV".rand(1000,9999);
 
-//        $nama = $this->input->post('nama');
-//        $ktp_pass = $this->input->post('ktp_pass');
-//        $npwp = $this->input->post('npwp');
-//        $alamat = $this->input->post('alamat');
-//        $kelurahan = $this->input->post('kelurahan');
-//        $kecamatan = $this->input->post('kecamatan');
-//        $kabupaten = $this->input->post('kabupaten');
-//        $provinsi = $this->input->post('provinsi');
-//        $kode_pos = $this->input->post('kode_pos');
-//        $no_kantor = $this->input->post('no_kantor');
-//        $no_rumah = $this->input->post('no_rumah');
-//        $no_hp = $this->input->post('no_hp');
-//        $email = $this->input->post('email');
-//        $status_rumah = $this->input->post('status_rumah');
-//        $berakhir= $this->input->post('berakhir');
-
-
-
         $action = $this->general->create('t_sales_order', array('id_customer' => $id_customer,'id_sales' => $id_sales,'no_invoice' => $no_invoice,'id_status'=>2));
 
         if ($action) {
@@ -127,6 +116,9 @@ class Sales_order extends My_Controller
 
     public function product()
     {
+        $id_status = '2';
+        $this->cekPending($id_status);
+
         $this->data['menu_tab'] = '2';
         $this->data['page_title'] = 'Detail Product';
 
@@ -149,90 +141,111 @@ class Sales_order extends My_Controller
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public function add_customer()
+    public function add_product()
     {
-        $id_sales = $this->session->userdata('id');
-        $cekPending = $this->general->get_query_natural('select * from m_customer where id_status < 5');
-
-        if($cekPending){
-            $this->data['data'] = $cekPending;
-        }
-
-        $this->data['menu_tab'] = '1';
-        $this->data['page_title'] = 'Create New Customer';
-        $this->data['main_view'] = 'customer/add_customer';
+        $this->data['menu_tab'] = '2';
+        $this->data['page_title'] = 'Add Product';
+        $this->data['data'] = $this->general->get('m_produk',1);
+        $this->data['main_view'] = 'sales_order/add_product';
         $this->load->view('template_content', $this->data);
     }
 
 
-    public function act_add_customer()
+    public function act_add_produk($id_produk = false)
     {
+        $id_sales_order = $this->getIdSalesOrder();
 
-        $id_sales = $this->session->userdata('id');
+        $getDataProduk = $this->general->getwhere('m_produk',array('id_produk'=>$id_produk));
 
-        $nama = $this->input->post('nama');
-        $ktp_pass = $this->input->post('ktp_pass');
-        $npwp = $this->input->post('npwp');
-        $alamat = $this->input->post('alamat');
-        $kelurahan = $this->input->post('kelurahan');
-        $kecamatan = $this->input->post('kecamatan');
-        $kabupaten = $this->input->post('kabupaten');
-        $provinsi = $this->input->post('provinsi');
-        $kode_pos = $this->input->post('kode_pos');
-        $no_kantor = $this->input->post('no_kantor');
-        $no_rumah = $this->input->post('no_rumah');
-        $no_hp = $this->input->post('no_hp');
-        $email = $this->input->post('email');
-        $status_rumah = $this->input->post('status_rumah');
-        $berakhir= $this->input->post('berakhir');
-
-
-
-        $action = $this->general->create('m_customer', array('id_status' => 2,'id_sales' => $id_sales,'no_ktp_passport' => $ktp_pass, 'no_npwp' => $npwp, 'nama' => $nama, 'alamat' => $alamat, 'kelurahan' => $kelurahan, 'kecamatan' => $kecamatan, 'kabupaten_kota' => $kabupaten, 'provinsi' => $provinsi, 'kode_pos' => $kode_pos, 'no_hp' => $no_hp, 'no_kantor' => $no_kantor, 'no_rumah' => $no_rumah, 'email' => $email, 'status_rumah' => $status_rumah, 'sewa_berakhir' => $berakhir));
-        $id_customer = $this->db->insert_id();
-        $insertStore = $this->general->create('m_customer_store', array('id_customer' => $id_customer));
-        $id_store = $this->db->insert_id();
-        $insertGudang = $this->general->create('m_customer_gudang', array('id_store' => $id_store));
+        $action = $this->general->create('t_sales_order_produk',
+            array('id_sales_order' => $id_sales_order,
+                'id_produk' => $id_produk,
+                'pricelist'=>$getDataProduk['pricelist'],
+                'discount' => $getDataProduk['discount'],
+                'keterangan_discount' => $getDataProduk['keterangan_discount'],
+                'harga_netto' => $getDataProduk['harga_netto'],
+                'status_produk' => $getDataProduk['status_produk'],
+                'deskripsi' => $getDataProduk['deskripsi'],
+                'merek' => $getDataProduk['merek'],
+                'tipe' => $getDataProduk['tipe'],
+                'kode' => $getDataProduk['kode']));
 
         if ($action) {
 
-            echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/customer/data_verifikasi1/'.$id_customer)."';</script>");
+            echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/sales_order/product/')."';</script>");
         }
 
     }
+
+
+
+    public function delete_produk($id_produk = false)
+    {
+        $id_sales_order = $this->getIdSalesOrder();
+
+        $action = $this->general->delete('t_sales_order_produk', array('id_produk'=>$id_produk,'id_sales_order'=>$id_sales_order));
+        if ($action) {
+            echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/sales_order/product')."';</script>");
+        }
+
+    }
+
+    public function add_product_finish()
+    {
+        $id_sales_order = $this->getIdSalesOrder();
+
+        $action = $this->general->update('t_sales_order',array('id_sales_order' => $id_sales_order),array('id_status'=>'3'));
+        if ($action) {
+            echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/sales_order/data_pengiriman')."';</script>");
+        }
+
+    }
+
+
+    public function data_pengiriman()
+    {
+        $id_status = '3';
+        $this->cekPending($id_status);
+
+        $this->data['menu_tab'] = '4';
+        $this->data['page_title'] = 'Data Pengiriman';
+        $this->data['main_view'] = 'sales_order/data_pengiriman';
+        $this->load->view('template_content', $this->data);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function act_update_customer()
     {
@@ -263,6 +276,7 @@ class Sales_order extends My_Controller
         }
 
     }
+
 
 
 
