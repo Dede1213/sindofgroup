@@ -24,8 +24,8 @@
             <!-- Optionally, you can add icons to the links -->
 
 
-
             <?php
+
             get_instance()->load->helper('menu_helper');
             echo getMenu();
             ?>
