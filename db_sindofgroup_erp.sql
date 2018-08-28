@@ -149,14 +149,17 @@ DROP TABLE IF EXISTS `m_karyawan`;
 CREATE TABLE `m_karyawan` (
   `nik` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(50) NOT NULL,
-  `id_sales_type` int(5) NOT NULL,
+  `id_karyawan_level` int(5) NOT NULL,
   `id_cabang` int(5) NOT NULL,
   `id_exhibition` int(5) NOT NULL,
   `id_divisi` int(5) NOT NULL,
+  `id_showroom` int(5) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`nik`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `m_karyawan` (`nik`, `nama`, `id_karyawan_level`, `id_cabang`, `id_exhibition`, `id_divisi`, `id_showroom`, `created_date`) VALUES
+(17080001,	'Dede Sales Credit',	1,	1,	1,	1,	1,	'2018-08-28 04:21:27');
 
 DROP TABLE IF EXISTS `m_karyawan_cabang`;
 CREATE TABLE `m_karyawan_cabang` (
@@ -165,6 +168,8 @@ CREATE TABLE `m_karyawan_cabang` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `m_karyawan_cabang` (`id`, `nama`) VALUES
+(1,	'Jakarta');
 
 DROP TABLE IF EXISTS `m_karyawan_divisi`;
 CREATE TABLE `m_karyawan_divisi` (
@@ -173,6 +178,8 @@ CREATE TABLE `m_karyawan_divisi` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `m_karyawan_divisi` (`id`, `nama`) VALUES
+(1,	'Sales');
 
 DROP TABLE IF EXISTS `m_karyawan_exhibition`;
 CREATE TABLE `m_karyawan_exhibition` (
@@ -182,32 +189,29 @@ CREATE TABLE `m_karyawan_exhibition` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `m_karyawan_exhibition` (`id`, `nama`, `created`) VALUES
+(1,	'Exhibition',	'2018-08-28 04:13:48');
+
+DROP TABLE IF EXISTS `m_karyawan_level`;
+CREATE TABLE `m_karyawan_level` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `m_karyawan_level` (`id`, `nama`) VALUES
+(1,	'Sales Credit');
 
 DROP TABLE IF EXISTS `m_karyawan_showroom`;
 CREATE TABLE `m_karyawan_showroom` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nik` int(11) NOT NULL,
-  `id_showroom` int(11) NOT NULL,
+  `nama` varchar(100) NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-DROP TABLE IF EXISTS `m_karyawan_showroom_location`;
-CREATE TABLE `m_karyawan_showroom_location` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-DROP TABLE IF EXISTS `m_karyawan_type`;
-CREATE TABLE `m_karyawan_type` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
+INSERT INTO `m_karyawan_showroom` (`id`, `nama`, `created`) VALUES
+(1,	'Jakarta Showroom',	'2018-08-28 04:32:33');
 
 DROP TABLE IF EXISTS `m_menu`;
 CREATE TABLE `m_menu` (
@@ -239,12 +243,12 @@ INSERT INTO `m_menu` (`id`, `parent_id`, `menu`, `menu_order`, `icon`, `link`, `
 (15,	0,	'Payment',	5,	'fa fa-money',	'dashboard/payment',	'2018-07-28 05:27:01'),
 (16,	0,	'Print & Upload',	6,	'fa fa-print',	'#',	'2018-07-28 05:27:43'),
 (17,	16,	'Print',	1,	'fa fa-print',	'#',	'2018-07-28 05:28:27'),
-(18,	17,	'Sales Order',	1,	'fa fa-file',	'dashboard/printout/cash',	'2018-07-28 05:29:44'),
+(18,	17,	'Sales Order',	1,	'fa fa-file',	'sales/sales_order/printout/cash',	'2018-08-28 07:09:17'),
 (19,	17,	'Sell Out',	2,	'fa fa-file',	'dashboard/print_sellout',	'2018-07-28 05:31:00'),
 (20,	17,	'Form Verifikasi',	3,	'fa fa-file',	'dashboard/print_verifikasi',	'2018-07-28 05:32:03'),
 (21,	17,	'Kwitansi',	4,	'fa fa-file',	'dashboard/print_kwitansi',	'2018-07-28 05:33:35'),
 (22,	16,	'Upload',	2,	'fa fa-upload',	'#',	'2018-07-28 05:34:28'),
-(23,	22,	'Sales Order',	1,	'fa fa-file',	'dashboard/upload',	'2018-07-28 05:35:26'),
+(23,	22,	'Sales Order',	1,	'fa fa-file',	'sales/sales_order/upload',	'2018-08-28 09:21:36'),
 (24,	22,	'Verifikasi Customer',	2,	'fa fa-file',	'#',	'2018-07-28 05:36:20'),
 (25,	0,	'Report',	7,	'fa fa-briefcase',	'#',	'2018-07-28 05:37:42'),
 (26,	25,	'Progress',	1,	'fa fa-file',	'#',	'2018-07-28 07:09:13'),
@@ -352,7 +356,7 @@ INSERT INTO `m_user` (`id`, `nama`, `id_level`, `nik`, `username`, `password`, `
 (1,	'Super Admin',	1,	'',	'admin',	'240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9',	'2018-04-28 15:01:18'),
 (2,	'Finance',	1,	'',	'finance',	'240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9',	'2018-08-22 04:33:56'),
 (3,	'Delivery',	3,	'',	'delivery',	'240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9',	'2018-07-18 13:12:40'),
-(4,	'Sales',	4,	'',	'sales',	'240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9',	'2018-08-02 02:55:41');
+(4,	'Sales',	4,	'17080001',	'sales',	'240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9',	'2018-08-28 04:42:39');
 
 DROP TABLE IF EXISTS `m_user_level`;
 CREATE TABLE `m_user_level` (
@@ -366,33 +370,6 @@ INSERT INTO `m_user_level` (`id`, `nama`, `created`) VALUES
 (2,	'finance',	'2018-04-28 14:24:15'),
 (3,	'Delivery',	'2018-04-28 14:24:15'),
 (4,	'Sales',	'2018-04-28 14:24:15');
-
-DROP TABLE IF EXISTS `tt_sales`;
-CREATE TABLE `tt_sales` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_invoice` varchar(255) NOT NULL,
-  `id_customer` int(11) NOT NULL,
-  `id_approval` int(5) NOT NULL,
-  `status_pembelian` int(5) NOT NULL,
-  `status_pembayaran` int(5) NOT NULL,
-  `subtotal` int(11) NOT NULL,
-  `ppn` int(11) NOT NULL,
-  `total_harga` int(11) NOT NULL,
-  `uang_muka` int(11) NOT NULL,
-  `sisa` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-DROP TABLE IF EXISTS `tt_sales_product`;
-CREATE TABLE `tt_sales_product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_invoice` varchar(255) NOT NULL,
-  `id_product` int(11) NOT NULL,
-  `qty` int(5) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 DROP TABLE IF EXISTS `t_sales_order`;
 CREATE TABLE `t_sales_order` (
@@ -410,11 +387,12 @@ CREATE TABLE `t_sales_order` (
   `sisa_bayar` int(11) NOT NULL,
   `total_discount` int(11) NOT NULL,
   `discount_pembulatan` int(11) NOT NULL,
+  `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_sales_order`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `t_sales_order` (`id_sales_order`, `no_invoice`, `id_sales`, `id_customer`, `id_approval`, `status_pembelian`, `id_status`, `subtotal`, `ppn`, `total_harga`, `uang_muka`, `sisa_bayar`, `total_discount`, `discount_pembulatan`) VALUES
-(4,	'INV5083',	4,	2,	0,	'credit',	3,	5000,	2000,	7000,	1000,	6000,	50,	1000);
+INSERT INTO `t_sales_order` (`id_sales_order`, `no_invoice`, `id_sales`, `id_customer`, `id_approval`, `status_pembelian`, `id_status`, `subtotal`, `ppn`, `total_harga`, `uang_muka`, `sisa_bayar`, `total_discount`, `discount_pembulatan`, `created_date`) VALUES
+(4,	'INV5083',	4,	2,	0,	'credit',	6,	5000,	2000,	7000,	1000,	6000,	50,	1000,	'2018-08-28 06:58:25');
 
 DROP TABLE IF EXISTS `t_sales_order_delivery`;
 CREATE TABLE `t_sales_order_delivery` (
@@ -429,6 +407,8 @@ CREATE TABLE `t_sales_order_delivery` (
   PRIMARY KEY (`id_sales_order`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `t_sales_order_delivery` (`id_sales_order`, `tanggal_order`, `tanggal_kirim`, `alamat_kirim`, `pengiriman_via`, `kirim_invoice_ke`, `email_invoice`, `informasi_tambahan`) VALUES
+(4,	'0000-00-00',	'2018-08-29',	'sesuai_domisili_pc',	'kurir',	'on',	'dede@gmail.com',	'tambahan');
 
 DROP TABLE IF EXISTS `t_sales_order_produk`;
 CREATE TABLE `t_sales_order_produk` (
@@ -451,4 +431,4 @@ CREATE TABLE `t_sales_order_produk` (
 INSERT INTO `t_sales_order_produk` (`id_sales_order`, `id_produk`, `jumlah`, `pricelist`, `discount`, `keterangan_discount`, `harga_netto`, `status_produk`, `deskripsi`, `merek`, `tipe`, `kode`, `dibawa_langsung`, `created_date`) VALUES
 (4,	1,	0,	100000,	10,	'diskon aja',	50000,	'Indent',	'deksripisi',	'samsung',	'tipe',	'SAM123',	'',	'2018-08-27 14:10:07');
 
--- 2018-08-27 15:39:43
+-- 2018-08-28 09:23:47

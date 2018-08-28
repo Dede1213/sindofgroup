@@ -24,7 +24,7 @@ class Sales_order extends My_Controller
 
     public function cekPending($id_status = false){
         $id_sales = $this->session->userdata('id');
-        $cekPending = $this->general->get_query_natural("select id_status from t_sales_order where id_sales = '$id_sales' AND id_status < 5");
+        $cekPending = $this->general->get_query_natural("select id_status from t_sales_order where id_sales = '$id_sales' AND id_status < 6");
         if($cekPending){
             if($cekPending['id_status'] == $id_status){
                 return true;
@@ -35,6 +35,8 @@ class Sales_order extends My_Controller
                     redirect(base_url('sales/sales_order/data_pengiriman'));
                 }elseif($cekPending['id_status'] == '4'){
                     redirect(base_url('sales/sales_order/product'));
+                }elseif($cekPending['id_status'] == '5'){
+                    redirect(base_url('sales/sales_order/form_pemesanan'));
                 }
             }
 
@@ -43,7 +45,7 @@ class Sales_order extends My_Controller
 
     public function getIdCustomer(){
         $id_sales = $this->session->userdata('id');
-        $get = $this->general->get_query_natural("select id_customer from t_sales_order where id_sales = '$id_sales' AND id_status < 5");
+        $get = $this->general->get_query_natural("select id_customer from t_sales_order where id_sales = '$id_sales' AND id_status < 6");
         if($get){
             $id_customer = $get['id_customer'];
         }else{
@@ -206,6 +208,10 @@ class Sales_order extends My_Controller
     {
         $id_status = '3';
         $this->cekPending($id_status);
+        $id_sales_order = $this->getIdSalesOrder();
+
+        $getDateOrder = $this->general->getwhere('t_sales_order',array('id_sales_order'=>$id_sales_order));
+        $this->data['date_order'] = date("d/m/Y", strtotime($getDateOrder['created_date']));
 
         $this->data['menu_tab'] = '4';
         $this->data['page_title'] = 'Data Pengiriman';
@@ -214,70 +220,181 @@ class Sales_order extends My_Controller
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public function act_update_customer()
+    public function act_data_pengiriman()
     {
 
-        $id_sales = $this->session->userdata('id');
+        $IdSalesOrder = $this->getIdSalesOrder();
 
-        $id_customer = $this->input->post('id_customer');
-        $nama = $this->input->post('nama');
-        $ktp_pass = $this->input->post('ktp_pass');
-        $npwp = $this->input->post('npwp');
-        $alamat = $this->input->post('alamat');
-        $kelurahan = $this->input->post('kelurahan');
-        $kecamatan = $this->input->post('kecamatan');
-        $kabupaten = $this->input->post('kabupaten');
-        $provinsi = $this->input->post('provinsi');
-        $kode_pos = $this->input->post('kode_pos');
-        $no_kantor = $this->input->post('no_kantor');
-        $no_rumah = $this->input->post('no_rumah');
-        $no_hp = $this->input->post('no_hp');
-        $email = $this->input->post('email');
-        $status_rumah = $this->input->post('status_rumah');
-        $berakhir= $this->input->post('berakhir');
+        $tanggal_order = $this->input->post('tanggal_order');
+        $tanggal_kirim = $this->input->post('tanggal_kirim');
+        $via = $this->input->post('via');
+        $alamat_kirim = $this->input->post('alamat_kirim');
+        $kirim_invoice = $this->input->post('kirim_invoice');
+        $email_invoice = $this->input->post('email_invoice');
+        $informasi_tambahan = $this->input->post('informasi_tambahan');
 
 
-        $action = $this->general->update('m_customer',array('id_customer'=>$id_customer), array('id_status' => 2,'id_sales' => $id_sales,'no_ktp_passport' => $ktp_pass, 'no_npwp' => $npwp, 'nama' => $nama, 'alamat' => $alamat, 'kelurahan' => $kelurahan, 'kecamatan' => $kecamatan, 'kabupaten_kota' => $kabupaten, 'provinsi' => $provinsi, 'kode_pos' => $kode_pos, 'no_hp' => $no_hp, 'no_kantor' => $no_kantor, 'no_rumah' => $no_rumah, 'email' => $email, 'status_rumah' => $status_rumah, 'sewa_berakhir' => $berakhir));
-        if ($action) {
-            echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/customer/data_verifikasi1/'.$id_customer)."';</script>");
+        $idStatus = $this->general->update('t_sales_order', array('id_sales_order'=>$IdSalesOrder),array('id_status'=>'4'));
+
+
+        $action = $this->general->create('t_sales_order_delivery', array('id_sales_order' => $IdSalesOrder,'tanggal_order' => $tanggal_order,'tanggal_kirim' => $tanggal_kirim,'alamat_kirim'=>$alamat_kirim,'pengiriman_via'=>$via,'kirim_invoice_ke'=>$kirim_invoice,'email_invoice'=>$email_invoice,'informasi_tambahan'=>$informasi_tambahan));
+
+        if ($action && $idStatus) {
+
+            echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/sales_order/data_formulir/')."';</script>");
         }
 
     }
 
 
+
+    public function data_formulir()
+    {
+        $id_status = '4';
+        $this->cekPending($id_status);
+        $id_sales_order = $this->getIdSalesOrder();
+
+        $this->data['page_title'] = 'Data formulir';
+        $this->data['menu_tab'] = '1';
+        $this->data['main_view'] = 'sales_order/data_formulir';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function act_data_formulir()
+    {
+
+          $IdSalesOrder = $this->getIdSalesOrder();
+//
+//        $tanggal_order = $this->input->post('tanggal_order');
+//        $tanggal_kirim = $this->input->post('tanggal_kirim');
+//        $via = $this->input->post('via');
+//        $alamat_kirim = $this->input->post('alamat_kirim');
+//        $kirim_invoice = $this->input->post('kirim_invoice');
+//        $email_invoice = $this->input->post('email_invoice');
+//        $informasi_tambahan = $this->input->post('informasi_tambahan');
+
+
+        $idStatus = $this->general->update('t_sales_order', array('id_sales_order'=>$IdSalesOrder),array('id_status'=>'5'));
+
+        if ($idStatus) {
+
+            echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/sales_order/form_pemesanan')."';</script>");
+        }
+
+    }
+
+
+
+
+    public function form_pemesanan()
+    {
+        $id_status = '5';
+        $this->cekPending($id_status);
+        $id_sales_order = $this->getIdSalesOrder();
+
+        $id_customer = $this->getIdCustomer();
+
+        $id_sales = $this->session->userdata('id');
+        $getNIK = $this->general->getwhere('m_user',array('id'=>$id_sales));
+        $nik = $getNIK['nik'];
+
+
+        $this->data['data_sales'] = $this->general->get_query_natural("select a.nama,b.nama as cabang,c.nama as level,d.nama as divisi,e.nama as exhibition,f.nama as showroom from m_karyawan a
+        left join m_karyawan_cabang b on a.id_cabang = b.id
+        left join m_karyawan_level c on a.id_karyawan_level = c.id
+        left join m_karyawan_divisi d on a.id_divisi = d.id
+        left join m_karyawan_exhibition e on a.id_exhibition= e.id
+        left join m_karyawan_showroom f on a.id_showroom = f.id where a.nik = '$nik'");
+
+        $this->data['data_sales_order_produk'] = $this->general->get_query_natural("select * from t_sales_order_produk  where id_sales_order = '$id_sales_order'",1);
+        $this->data['data_sales_order'] = $this->general->get_query_natural("select * from t_sales_order where id_sales_order = '$id_sales_order'");
+        $this->data['data_customer'] = $this->general->getwhere('m_customer',array('id_customer'=>$id_customer));
+        $this->data['data_sales_order_delivery'] = $this->general->getwhere('t_sales_order_delivery',array('id_sales_order'=>$id_sales_order));
+
+        $this->data['menu_tab'] = '5';
+        $this->data['page_title'] = 'Form Pemesanan';
+        $this->data['main_view'] = 'sales_order/form_pemesanan';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function finish_order()
+    {
+
+        $IdSalesOrder = $this->getIdSalesOrder();
+//
+//        $tanggal_order = $this->input->post('tanggal_order');
+//        $tanggal_kirim = $this->input->post('tanggal_kirim');
+//        $via = $this->input->post('via');
+//        $alamat_kirim = $this->input->post('alamat_kirim');
+//        $kirim_invoice = $this->input->post('kirim_invoice');
+//        $email_invoice = $this->input->post('email_invoice');
+//        $informasi_tambahan = $this->input->post('informasi_tambahan');
+
+
+        $idStatus = $this->general->update('t_sales_order', array('id_sales_order'=>$IdSalesOrder),array('id_status'=>'6'));
+
+        if ($idStatus) {
+
+            echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/sales_order/')."';</script>");
+        }
+
+    }
+
+
+    public function printout($cat = false,$jenis = false)
+    {
+        $id_sales = $this->session->userdata('id');
+
+        $this->data['page_title'] = 'Print Out';
+        $this->data['cat'] = $cat;
+        $this->data['jenis'] = $jenis;
+        $this->data['data_sales_order'] = $this->general->get_query_natural("select * from t_sales_order where id_sales = '$id_sales'",1);
+        $this->data['main_view'] = 'sales_order/print_out';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function print_cetak()
+    {
+        $id_status = '6';
+        $this->cekPending($id_status);
+        $id_sales_order = $this->getIdSalesOrder();
+
+        $id_customer = $this->getIdCustomer();
+
+        $id_sales = $this->session->userdata('id');
+        $getNIK = $this->general->getwhere('m_user',array('id'=>$id_sales));
+        $nik = $getNIK['nik'];
+
+
+        $this->data['data_sales'] = $this->general->get_query_natural("select a.nama,b.nama as cabang,c.nama as level,d.nama as divisi,e.nama as exhibition,f.nama as showroom from m_karyawan a
+        left join m_karyawan_cabang b on a.id_cabang = b.id
+        left join m_karyawan_level c on a.id_karyawan_level = c.id
+        left join m_karyawan_divisi d on a.id_divisi = d.id
+        left join m_karyawan_exhibition e on a.id_exhibition= e.id
+        left join m_karyawan_showroom f on a.id_showroom = f.id where a.nik = '$nik'");
+
+        $this->data['data_sales_order_produk'] = $this->general->get_query_natural("select * from t_sales_order_produk  where id_sales_order = '$id_sales_order'",1);
+        $this->data['data_sales_order'] = $this->general->get_query_natural("select * from t_sales_order where id_sales_order = '$id_sales_order'");
+        $this->data['data_customer'] = $this->general->getwhere('m_customer',array('id_customer'=>$id_customer));
+        $this->data['data_sales_order_delivery'] = $this->general->getwhere('t_sales_order_delivery',array('id_sales_order'=>$id_sales_order));
+
+        $this->data['menu_tab'] = '5';
+        $this->data['page_title'] = 'Cetak Form';
+        $this->data['main_view'] = 'sales_order/form_pemesanan_cetak';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function upload($invoice = false)
+    {
+        $id_sales = $this->session->userdata('id');
+        $this->data['page_title'] = 'Print Out';
+        $this->data['invoice'] = $invoice;
+
+        $this->data['data_sales_order'] = $this->general->get_query_natural("select * from t_sales_order where id_sales = '$id_sales'",1);
+
+        $this->data['main_view'] = 'sales_order/upload';
+        $this->load->view('template_content', $this->data);
+    }
 
 
     #reference------------------------------------------

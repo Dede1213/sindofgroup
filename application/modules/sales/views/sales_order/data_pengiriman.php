@@ -37,17 +37,17 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 
                     <div class="box-body">
-                        <form>
+                        <form method="post" action="<?php echo base_url('sales/sales_order/act_data_pengiriman');?>">
 
 
                             <!-- text input -->
                             <div class="form-group">
                                 <label>Tanggal Order</label>
-                                <input type="date" name="title" id="title" class="form-control" placeholder="please write something" readonly>
+                                <input type="text" name="tanggal_order" id="title" class="form-control" value="<?php echo $date_order;?>" readonly>
                             </div>
                             <div class="form-group">
                                 <label>Tanggal Kirim</label>
-                                <input type="date" name="title" id="title" class="form-control" placeholder="please write something">
+                                <input type="date" name="tanggal_kirim" id="title" class="form-control" placeholder="please write something">
                             </div>
 
                             <!--<div class="form-group">-->
@@ -72,16 +72,16 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <!--    </select>-->
                             <!--</div>-->
 
-                            <div class="form-group">
-                                <label>Alamat Kirim</label><br>
-                                <input type = "checkbox" name="sesuai_domisili_kirim" id="sesuai_domisili_kirim" value="sesuai_domisili_kirim"> Sesuai Domisili <br>
-                                <input type = "checkbox" name="sesuai_tujuan_kirim" id="sesuai_tujuan_kirim" value="sesuai_tujuan_kirim"> Sesuai Tujuan<br>
-                            </div>
+<!--                            <div class="form-group">-->
+<!--                                <label>Alamat Kirim</label><br>-->
+<!--                                <input type = "checkbox" name="sesuai_domisili_kirim" id="sesuai_domisili_kirim" value="sesuai_domisili_kirim"> Sesuai Domisili <br>-->
+<!--                                <input type = "checkbox" name="sesuai_tujuan_kirim" id="sesuai_tujuan_kirim" value="sesuai_tujuan_kirim"> Sesuai Tujuan<br>-->
+<!--                            </div>-->
                             
                             <div class="form-group">
                                 <label>Pengiriman Via</label><br>
-                                <input type = "checkbox" name="kurir" id="kurir" value="kurir"> Kurir<br>
-                                <input type = "checkbox" name="armada" id="armada" value="armada"> Armada <br>
+                                <input type = "checkbox" name="via" id="kurir" value="kurir"> Kurir<br>
+                                <input type = "checkbox" name="via" id="armada" value="armada"> Armada <br>
                             </div>
                             
 
@@ -125,8 +125,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                             <div class="form-group">
                                 <label>Alamat Kirim</label><br>
-                                <input type = "checkbox" name="sesuai_domisili_pc" id="sesuai_domisili_pc" value="sesuai_domisili_pc"> Sesuai Domisili <br>
-                                <input type = "checkbox" name="sesuai_gudang_pc" id="sesuai_gudang_pc" value="sesuai_gudang_pc"> Sesuai Gudang / Lokasi Proyek <br>
+                                <input type = "checkbox" name="alamat_kirim" id="sesuai_domisili_pc" value="sesuai_domisili_pc"> Sesuai Domisili <br>
+                                <input type = "checkbox" name="alamat_kirim" id="sesuai_gudang_pc" value="sesuai_gudang_pc"> Sesuai Gudang / Lokasi Proyek <br>
                             </div>
                             
 
@@ -170,26 +170,26 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                                 <div class="form-group">
                                     <label>Kirim Invoice Ke</label><br>
-                                    <input type ="radio"> Tidak Perlu Dikirim &nbsp;&nbsp;
-                                    <input type ="radio"> Sesuai Domisili &nbsp;&nbsp;
-                                    <input type ="radio"> Sesuai Tujuan &nbsp;&nbsp;
-                                    <input type ="radio"> Via Email &nbsp;&nbsp;
+                                    <input type ="radio" name="kirim_invoice"> Tidak Perlu Dikirim &nbsp;&nbsp;
+                                    <input type ="radio" name="kirim_invoice"> Sesuai Domisili &nbsp;&nbsp;
+                                    <input type ="radio" name="kirim_invoice"> Sesuai Tujuan &nbsp;&nbsp;
+                                    <input type ="radio" name="kirim_invoice"> Via Email &nbsp;&nbsp;
                                 </div>
                                 <div class="form-group">
                                     <label>Email Invoice (optional) </label>
-                                    <input type="text" name="title" id="title" class="form-control" placeholder="please write something">
+                                    <input type="text" name="email_invoice" id="title" class="form-control" placeholder="please write something">
                                 </div>
 
                                 <div class="form-group">
                                     <label>Informasi Tambahan </label>
-                                    <input type="text" name="title" id="title" class="form-control" placeholder="please write something">
+                                    <input type="text" name="informasi_tambahan" id="title" class="form-control" placeholder="please write something">
                                 </div>
                                 
                             </fieldset>
                             
 
 
-                            <a href="<?php echo base_url('dashboard/data_formulir')?>"><button type="button" class="btn btn-primary btn-block btn-flat">Submit</button></a>
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">Submit</button>
                         </form>
                         <span class="loading"></span>
                     </div><!-- /.box-body -->
