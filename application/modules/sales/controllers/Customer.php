@@ -17,7 +17,7 @@ class Customer extends My_Controller
     {
         parent::__construct();
         $this->load->model('general_model','general');
-        $this->load->helper(array('role_form_helper','xss_helper'));
+        $this->load->helper(array('role_form_helper','xss_helper', 'form', 'url'));
         $this->load->library('datatables');
         $this->cekLoginAdmin();
     }
@@ -142,6 +142,36 @@ class Customer extends My_Controller
         $this->data['menu_tab'] = '2';
         $this->data['page_title'] = 'Create New Customer';
         $this->data['main_view'] = 'customer/data_verifikasi1';
+        $this->load->view('template_content', $this->data);
+    }
+	
+	public function verifikasi_upload($id_customer = false)
+    {
+		// return print_r($id_customer);
+        if(!$id_customer){
+            redirect(base_url('sales/add_customer'));
+        }
+
+        $id_sales = $this->session->userdata('id');
+        $cekPending = $this->general->getwhere('m_customer',array('id_sales'=>$id_sales,'id_status'=>'2'));
+
+        // if($cekPending){
+            // $getDataStore = $this->general->getwhere('m_customer_store',array('id_customer'=>$id_customer));
+            // $this->data['data_store'] = $getDataStore;
+
+            // $this->data['data_penjualan'] = $this->general->getwhere('m_customer_store_penjualan',array('id_store'=>$getDataStore['id_store']),1);
+            // $this->data['data_bank'] = $this->general->getwhere('m_customer_store_bank',array('id_store'=>$getDataStore['id_store']),1);
+            // $this->data['data_gudang'] = $this->general->getwhere('m_customer_store_gudang',array('id_store'=>$getDataStore['id_store']),1);
+        // }
+
+        $id_store = $this->general->getwhere('m_customer_store',array('id_customer'=>$id_customer),false);
+        // return print_r($id_store['id_store']);
+
+        $this->data['id_store'] = $id_store['id_store'];
+        $this->data['id_customer'] = $id_customer;
+        $this->data['menu_tab'] = '2';
+        $this->data['page_title'] = 'Upload Verifikasi';
+        $this->data['main_view'] = 'customer/verifikasi_upload';
         $this->load->view('template_content', $this->data);
     }
 	
@@ -413,28 +443,60 @@ class Customer extends My_Controller
 
     #boy di bawah
     public function actInsertMedia(){
-        $title = strip_tags($this->input->post('title'));
+        $title = 'media';
 
         // config upload
         $config['upload_path'] = $this->config->item('path_images_customer');
-        $config['allowed_types'] = 'jpg|png|pdf'; //sebenernya udah di filter lagi oleh mime.php bawaan ci to xss
+        $config['allowed_types'] = 'jpg|png|pdf|xlsx'; //sebenernya udah di filter lagi oleh mime.php bawaan ci to xss
         $config['max_size'] = '500'; // 1MB
         $config['encrypt_name'] = true; // to clean xss in name of file
         $this->load->library('upload', $config);
         //$this->upload->initialize($config);
+		$id_customer = $this->getIdCustomer();
+		$id_store = $this->getIdStore($id_customer);
 
-
-        if (!$this->upload->do_upload('media')) {
+        if (!$this->upload->do_upload('ktp')) {
             $error = strip_tags($this->upload->display_errors());
-            echo"<script>alert('{$error}');window.location.href='".base_url('dashboard/media')."'</script>";
+            echo"<script>alert('{$error}');window.location.href='".base_url('customer/verifikasi_upload')."'</script>";
             exit;
         }else{
-            $name_file = $this->upload->data('file_name');
-            $file_size = $this->upload->data('file_size');
+			$this->upload->do_upload('ktp');
+			$this->upload->do_upload('siup');
+			$this->upload->do_upload('npwp_pribadi');
+			$this->upload->do_upload('npwp_perusahaan');
+			$this->upload->do_upload('domisili');
+			$this->upload->do_upload('sktp');
+			$this->upload->do_upload('foto_toko');
+			$this->upload->do_upload('foto_gudang');
+			// $data = array('ktp' => $this->upload->data());
+            $ktp = array('ktp' => $this->upload->data());
+			// return print_r($ktp['ktp']['orig_name']);
+            $siup = array('siup' => $this->upload->data());
+            $tdp = array('tdp' => $this->upload->data());
+            // $siup = array('siup' => $this->upload->data());
+            $npwp_pribadi = array('npwp_pribadi' => $this->upload->data());
+            $npwp_perusahaan = array('npwp_perusahaan' => $this->upload->data());
+            $domisili = array('domisili' => $this->upload->data());
+            $sktp = array('sktp' => $this->upload->data());
+            $foto_toko = array('foto_toko' => $this->upload->data());
+            $foto_gudang = array('foto_gudang' => $this->upload->data());
+			
             if (!empty($title)) {
-                $insertMedia = $this->dashboard->create('m_media', array('name_file' => $name_file,'size'=>$file_size, 'title' => $title));
+                $insertMedia = $this->general->create('m_customer_img', 
+														array(
+															'id_store' => $id_store,
+															'ktp' => $ktp['ktp']['orig_name'],
+															'npwp_pribadi'=>$npwp_pribadi['npwp_pribadi']['orig_name'], 
+															'siup' => $siup['siup']['orig_name'],
+															'tdp' => $tdp['tdp']['orig_name'],
+															'npwp_perusahaan' => $npwp_perusahaan['npwp_perusahaan']['orig_name'],
+															'domisili' => $domisili['domisili']['orig_name'],
+															'sktp' => $sktp['sktp']['orig_name'],
+															'foto_toko' => $foto_toko['foto_toko']['orig_name'],
+															'foto_gudang' => $foto_gudang['foto_gudang']['orig_name'])
+															);
                 if ($insertMedia) {
-                    echo"<script>alert('Upload Berhasil');window.location.href='".base_url('dashboard/media')."'</script>";
+                    echo"<script>alert('Upload Berhasil');window.location.href='".base_url('customer/data_customer')."'</script>";
                     exit;
                 }
             } else {
