@@ -73,7 +73,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 <!--                                            <a href="--><?php //echo base_url('sales/delete/'.$value['id_customer']);?><!--" onclick="return confirm('Are you sure?')"> <i class="fa fa-trash fa-2x"></i> </a>-->
                                         </td>
                                     </tr>
-                                    <?
+                                    <?php
                                     $i++;
                                 }
                             }
@@ -94,4 +94,3 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
-

@@ -39,7 +39,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 
                     <div class="box-body">
-                        <form>
+                        <form id="dataverifikasi2" method="post" action="<?php echo base_url('sales/customer/act_add_verifikasi2/');?>">
+
 
 
                             <!-- text input -->
@@ -49,29 +50,29 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             </div>
                             <div class="form-group">
                                 <label>Tanggal Dibuat</label>
-                                <input type="date" name="title" id="title" class="form-control">
+                                <input type="date" name="tgl_create" id="title" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Tanggal Survey</label>
-                                <input type="date" name="title" id="title" class="form-control">
+                                <input type="date" name="tgl_survei" id="title" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Tanggal Diajukan</label>
-                                <input type="date" name="title" id="title" class="form-control">
+                                <input type="date" name="tgl_pengajuan" id="title" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Tanggal Disetujui</label>
-                                <input type="date" name="title" id="title" class="form-control">
+                                <input type="date" name="tgl_disetujui" id="title" class="form-control">
                             </div>
 
                             <div class="form-group">
                                 <label>Direksi yang menyetujui</label>
-                                <input type="date" name="title" id="title" class="form-control">
+                                <input type="text" name="nm_approval" id="title" class="form-control">
                             </div>
 
                             <div class="form-group">
                                 <label>Catatan Kepentingan Perusahaan : <br> Distribution Chanel</label> <br>
-                                <select class = "form-control">
+                                <select class = "form-control" name="distribution_chanel">
                                     <option>Dealer</option>
                                     <option>Retail</option>
                                     <option>Outlet</option>
@@ -80,22 +81,22 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                             <div class="form-group">
                                 <label>Credit Limit (CR)</label>
-                                <input type="text" name="title" id="title" class="form-control" readonly>
+                                <input type="text" name="credit_limit" id="title" class="form-control" readonly>
                             </div>
 
                             <div class="form-group">
                                 <label>Term Of Payment (TOP)</label>
-                                <input type="text" name="title" id="title" class="form-control" readonly>
+                                <input type="text" name="top" id="title" class="form-control" readonly>
                             </div>
 
                             <div class="form-group">
                                 <label>Catatan Khusus</label>
-                                <input type="text" name="title" id="title" class="form-control" readonly>
+                                <input type="text" name="catatan" id="title" class="form-control" readonly>
                             </div>
 
 
                             <div class="col-md-2">
-                                <a href="<?php echo base_url('dashboard/detail_product')?>"><button type="button" class="btn btn-primary btn-block btn-flat">Submit</button></a>
+                                <button type="submit" class="btn btn-primary btn-block btn-flat">Submit</button>
                             </div>
                             <div class="col-md-2">
                                 <a href="#"><button type="button" class="btn btn-warning btn-block btn-flat">Edit Data</button></a>

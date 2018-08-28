@@ -144,6 +144,72 @@ class Customer extends My_Controller
         $this->data['main_view'] = 'customer/data_verifikasi1';
         $this->load->view('template_content', $this->data);
     }
+	
+	public function data_verifikasi2($id_customer = false)
+    {
+		if(!$id_customer){
+            redirect(base_url('sales/add_customer'));
+        }
+
+        $id_sales = $this->session->userdata('id');
+        $cekPending = $this->general->getwhere('m_customer',array('id_sales'=>$id_sales,'id_status'=>'3'));
+		if($cekPending){
+            $getDataVerifikasi = $this->general->getwhere('m_customer_verifikasi',array('id_customer'=>$id_customer));
+            $this->data['data_verifikasi'] = $getDataVerifikasi;
+        }
+        $this->data['menu_tab'] = '3';
+        $this->data['page_title'] = 'Create New Customer';
+        $this->data['main_view'] = 'customer/data_verifikasi2';
+        $this->load->view('template_content', $this->data);
+    }
+	
+	public function act_add_verifikasi2()
+    {
+
+        $id_sales = $this->session->userdata('id');
+
+        $tgl_create = $this->input->post('tgl_create');
+        $tgl_survei = $this->input->post('tgl_survei');
+        $tgl_pengajuan = $this->input->post('tgl_pengajuan');
+        $tgl_disetujui = $this->input->post('tgl_disetujui');
+        $nm_approval = $this->input->post('nm_approval');
+        $distribution_chanel = $this->input->post('distribution_chanel');
+        $credit_limit = $this->input->post('credit_limit');
+        $top = $this->input->post('top');
+        $catatan = $this->input->post('catatan');
+
+		$id_customer = $this->getIdCustomer();
+		$id_store = $this->getIdStore($id_customer);
+
+        $action = $this->general->create('m_customer_verifikasi', 
+											array(
+												'id_customer' => $id_customer,
+												'id_store' => $id_store,
+												'tgl_create' => $tgl_create,
+												'tgl_survei' => $tgl_survei,
+												'tgl_pengajuan' => $tgl_pengajuan, 
+												'tgl_disetujui' => $tgl_disetujui, 
+												'nm_approval' => $nm_approval, 
+												'distribution_chanel' => $distribution_chanel,
+												'credit_limit' => $credit_limit, 
+												'top' => $top, 
+												'catatan' => $catatan));
+
+        if ($action) {
+			$this->general->update('m_customer',array('id_customer'=>$id_customer),array('id_status'=>'4'));
+			echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/customer/data_customer/')."';</script>");
+        }
+
+    }
+	
+	public function data_customer($param = false)
+    {
+        $this->data['param'] = $param;
+        $this->data['menu_tab'] = '3';
+        $this->data['page_title'] = 'Data Customer';
+        $this->data['main_view'] = 'content/data_customer';
+        $this->load->view('template_content', $this->data);
+    }
 
     public function act_update_verifikasi1()
     {
@@ -216,6 +282,7 @@ class Customer extends My_Controller
 											'no_rekening' => $rekening_gudang, 
 											'kode_pos' => $kode_pos_gudang, 
 											'no_fax' => $no_fax_gudang));
+		$this->general->update('m_customer',array('id_customer'=>$id_customer),array('id_status'=>'3'));
         if ($insertStore && $insertGudang) {
                 echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/customer/data_verifikasi2/'.$id_customer)."';</script>");
             }
@@ -268,13 +335,7 @@ class Customer extends My_Controller
 
     }
 
-    public function data_verifikasi2()
-    {
-        $this->data['menu_tab'] = '3';
-        $this->data['page_title'] = 'Create New Customer';
-        $this->data['main_view'] = 'customer/data_verifikasi2';
-        $this->load->view('template_content', $this->data);
-    }
+    
 
 
 
@@ -303,7 +364,26 @@ class Customer extends My_Controller
 
     }
 
-
+	public function getIdCustomer(){
+        $id_sales = $this->session->userdata('id');
+        $get = $this->general->get_query_natural("select id_customer from m_customer where id_sales = '$id_sales' AND id_status < 5");
+        if($get){
+            $id_customer = $get['id_customer'];
+        }else{
+            $id_customer = false;
+        }
+        return $id_customer;
+    }
+	
+	public function getIdStore($idCustomer){
+        $get = $this->general->get_query_natural("select id_store from m_customer_store where id_customer = '$idCustomer'");
+        if($get){
+            $id_store = $get['id_store'];
+        }else{
+            $id_store = false;
+        }
+        return $id_store;
+    }
 
     public function delete($id = false)
     {
