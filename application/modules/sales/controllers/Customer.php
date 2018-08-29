@@ -47,7 +47,22 @@ class Customer extends My_Controller
         $this->load->view('template_content', $this->data);
     }
 	
-	
+	public function cust_final()
+    {
+        $this->data['page_title'] = 'Report New Customer Final';
+        $this->data['main_view'] = 'customer/cust_final';
+		$this->data['data'] = $this->general->get_query_natural('select a.nama as nama_customer,
+																	b.nama as nama_toko,
+																	a.created_date,
+																	c.no_verifikasi,
+																	c.created_date as tgl_verifikasi
+																	 
+																	from m_customer a
+																	inner join m_customer_store b on a.id_customer = b.id_customer
+																	inner join m_customer_verifikasi c on a.id_customer = c.id_customer'
+																,1);
+        $this->load->view('template_content', $this->data);
+    }
 
 
     public function act_add_customer()
@@ -230,6 +245,23 @@ class Customer extends My_Controller
 			echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/customer/data_customer/')."';</script>");
         }
 
+    }
+	
+	public function print_verifikasi($param = false)
+    {
+        $this->data['page_title'] = 'Print Verifikasi';
+        $this->data['param'] = $param;
+		
+		$id_customer = $this->getIdCustomer();
+		$id_store = $this->getIdStore($id_customer);
+		
+        $this->data['data_customer'] = $this->general->getwhere('m_customer',array('id_customer'=>$id_customer),false);
+        $this->data['data_store'] = $this->general->getwhere('m_customer_store',array('id_store'=>$id_store),false);
+        $this->data['data_penjualan'] = $this->general->getwhere('m_customer_store_penjualan',array('id_store'=>$id_store),1);
+        $this->data['data_bank'] = $this->general->getwhere('m_customer_store_bank',array('id_store'=>$id_store),1);
+		
+        $this->data['main_view'] = 'customer/verifikasi_print';
+        $this->load->view('template_content', $this->data);
     }
 	
 	public function data_customer($param = false)
