@@ -74,7 +74,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                             <a href="<?php echo base_url('menu/delete/'.$value['id']);?>" onclick="return confirm('Are you sure?')"> <button type="button"><i class="fa fa-trash"></i> Delete</button></a>
                                         </td>
                                     </tr>
-                            <?
+                            <?php
                                     $i++;
                                 }
                             }
@@ -86,7 +86,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                     </div><!-- table responsive -->
                     <br>
-
+					
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
 
@@ -95,4 +95,3 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
-
