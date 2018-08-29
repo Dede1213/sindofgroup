@@ -396,6 +396,157 @@ class Sales_order extends My_Controller
         $this->load->view('template_content', $this->data);
     }
 
+    public function act_upload(){
+        $images = $this->input->post('images');
+
+        // config upload
+        $config['upload_path'] = $this->config->item('path_images_sales_order');
+        $config['allowed_types'] = 'jpg|png|pdf'; //sebenernya udah di filter lagi oleh mime.php bawaan ci to xss
+        $config['max_size'] = '5120000k'; // 5MB
+        $config['encrypt_name'] = true; // to clean xss in name of file
+        $this->load->library('upload', $config);
+        //$this->upload->initialize($config);
+
+
+
+
+        if (!$this->upload->do_upload('images')) {
+            $error = strip_tags($this->upload->display_errors());
+            echo"<script>alert('{$error}');window.location.href='".base_url('sales/sales_order/upload')."'</script>";
+            exit;
+        }else{
+            $name_file1 = $this->upload->data('file_name');
+            $file_size1 = $this->upload->data('file_size');
+
+            if (!empty($name_file)) {
+
+                $id_sales_order = $this->getIdSalesOrder();
+                $insertMedia = $this->general->update('t_sales_order',array('id_sales_order'=>$id_sales_order) ,array('file_images' => $name_file));
+                if ($insertMedia) {
+                    echo"<script>alert('Upload Berhasil');window.location.href='".base_url('sales/sales_order/upload')."'</script>";
+                    exit;
+                }
+            } else {
+                $path = $this->config->item('path_images_sales_order').$name_file1;
+                unlink($path);
+                echo"<script>alert('title harus diisi');window.location.href='".base_url('sales/sales_order/upload')."'</script>";
+                exit;
+            }
+        }
+
+
+
+        #upload Images 1
+        if (!$this->upload->do_upload('images')) {
+            $error = strip_tags($this->upload->display_errors());
+            echo"<script>alert('{$error}');window.location.href='".base_url('sales/sales_order/upload')."'</script>";
+            exit;
+        }else{
+            $name_file1 = $this->upload->data('file_name');
+            //$file_size1 = $this->upload->data('file_size');
+
+            $path = $this->config->item('path_images_sales_order').$name_file1;
+            unlink($path);
+            exit;
+        }
+
+//        #upload Images 2
+//        if (!$this->upload->do_upload('images')) {
+//            $error = strip_tags($this->upload->display_errors());
+//
+//            #hapus images 1 yg berhasil di upload biar ga spam
+//            $path = $this->config->item('path_images_sales_order').$name_file1;
+//            unlink($path);
+//            #end
+//
+//            echo"<script>alert('{$error}');window.location.href='".base_url('sales/sales_order/upload')."'</script>";
+//            exit;
+//        }else{
+//            $name_file2 = $this->upload->data('file_name');
+//            $file_size2 = $this->upload->data('file_size');
+//
+//            if (!empty($name_file2)) {
+//
+//                $id_sales_order = $this->getIdSalesOrder();
+//                $insertMedia = $this->general->update('t_sales_order',array('id_sales_order'=>$id_sales_order) ,array('file_images' => $name_file2));
+//                if ($insertMedia) {
+//                    echo"<script>alert('Upload Berhasil');window.location.href='".base_url('sales/sales_order/upload')."'</script>";
+//                    exit;
+//                }
+//            } else {
+//
+//                #hapus images 1 yg berhasil di upload biar ga spam
+//                $path = $this->config->item('path_images_sales_order').$name_file1;
+//                unlink($path);
+//                #end
+//
+//                $path = $this->config->item('path_images_sales_order').$name_file2;
+//                unlink($path);
+//                echo"<script>alert('title harus diisi');window.location.href='".base_url('sales/sales_order/upload')."'</script>";
+//                exit;
+//            }
+//        }
+
+
+    }
+
+    public function so_progress()
+    {
+        $this->data['search'] = false;
+        $this->data['page_title'] = 'Report SO Progress';
+        $this->data['main_view'] = 'sales_order/so_progress';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function so_progress_search()
+    {
+        $id_sales_order = $this->getIdSalesOrder();
+
+        $tanggal_awal = $this->input->post('tanggal_awal');
+        $tanggal_akhir = $this->input->post('tanggal_akhir');
+
+        $search = $this->general->get_query_natural("select * from t_sales_order WHERE created_date BETWEEN '$tanggal_awal' and '$tanggal_akhir' and id_sales_order='$id_sales_order'",1);
+        if($search){
+            $this->data['data'] = $search;
+        }else{
+            $this->data['data'] = false;
+        }
+
+        $this->data['search'] = true;
+        $this->data['page_title'] = 'Report SO Progress';
+        $this->data['main_view'] = 'sales_order/so_progress';
+        $this->load->view('template_content', $this->data);
+    }
+
+
+    public function so_final()
+    {
+        $this->data['search'] = false;
+        $this->data['page_title'] = 'Report SO Progress';
+        $this->data['main_view'] = 'sales_order/so_final';
+        $this->load->view('template_content', $this->data);
+    }
+
+    public function so_final_search()
+    {
+        $id_sales_order = $this->getIdSalesOrder();
+
+        $tanggal_awal = $this->input->post('tanggal_awal');
+        $tanggal_akhir = $this->input->post('tanggal_akhir');
+
+        $search = $this->general->get_query_natural("select * from t_sales_order WHERE created_date BETWEEN '$tanggal_awal' and '$tanggal_akhir' and id_sales_order='$id_sales_order'",1);
+        if($search){
+            $this->data['data'] = $search;
+        }else{
+            $this->data['data'] = false;
+        }
+
+        $this->data['search'] = true;
+        $this->data['page_title'] = 'Report SO Progress';
+        $this->data['main_view'] = 'sales_order/so_final';
+        $this->load->view('template_content', $this->data);
+    }
+
 
     #reference------------------------------------------
 

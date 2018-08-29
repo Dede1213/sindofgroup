@@ -121,7 +121,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                            background: #c00 none 0 0 no-repeat;
                        }
                    </style>
-                   <form id="upload" action="index.html" method="POST" enctype="multipart/form-data">
+                   <form id="upload" action="<?php echo base_url('sales/sales_order/act_upload');?>" method="POST" enctype="multipart/form-data">
 
                        <fieldset>
                            <legend> File Upload</legend>
@@ -130,7 +130,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                            <div>
                                <label for="fileselect">Files to upload:</label>
-                               <input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
+                               <input type="file" id="fileselect" name="images" multiple="multiple" />
                                <div id="filedrag">or drop files here</div>
                            </div>
 
@@ -139,7 +139,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                            </div>
 
                        </fieldset>
-                       <a href="<?php echo base_url('dashboard/upload');?>"> <button type="button" class="btn btn-primary"><i class="fa fa-upload"></i> Upload</button></a>
+                       <button type="submit" class="btn btn-primary"><i class="fa fa-upload"></i> Upload</button>
 
                    </form>
 
@@ -269,8 +269,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                         <td>-</td>
 
                                         <td><?php echo $value['total_harga'];?>  </td>
-                                        <td>-</td>
-                                        <td width=""><a href="<?php echo base_url('dashboard/upload/'.$value['id_sales_order']);?>"> <button type="button"><i class="fa fa-check"></i> Pilih</button></a></td>
+                                        <td><?php echo $value['file_images'];?></td>
+                                        <td width=""><a href="<?php echo base_url('sales/sales_order/upload/'.$value['id_sales_order']);?>"> <button type="button"><i class="fa fa-check"></i> Pilih</button></a></td>
 
                                     </tr>
                                     <?php

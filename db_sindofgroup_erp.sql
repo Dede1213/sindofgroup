@@ -30,7 +30,7 @@ CREATE TABLE `m_customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `m_customer` (`id_customer`, `id_sales`, `no_ktp_passport`, `no_npwp`, `nama`, `alamat`, `kelurahan`, `kecamatan`, `kabupaten_kota`, `provinsi`, `kode_pos`, `no_hp`, `no_kantor`, `no_rumah`, `email`, `status_rumah`, `sewa_berakhir`, `id_status`, `created_date`) VALUES
-(2,	4,	'1342567839',	'126861286',	'Dede Irawan',	'ahsghjagsjgh',	'Suradita',	'Cisauk',	'Kab.tangerang',	'Banten',	'12312',	'089832989328',	'021999999',	'09809809',	'dede.irawan1213',	'Milik Sendiri',	'0000-00-00',	2,	'2018-08-26 09:13:24');
+(2,	4,	'1342567839',	'126861286',	'Dede Irawan',	'ahsghjagsjgh',	'Suradita',	'Cisauk',	'Kab.tangerang',	'Banten',	'12312',	'089832989328',	'021999999',	'09809809',	'dede.irawan1213',	'Milik Sendiri',	'0000-00-00',	4,	'2018-08-29 01:30:09');
 
 DROP TABLE IF EXISTS `m_customer_img`;
 CREATE TABLE `m_customer_img` (
@@ -76,7 +76,7 @@ CREATE TABLE `m_customer_store` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `m_customer_store` (`id_store`, `id_customer`, `nama`, `alamat`, `rt`, `rw`, `kelurahan`, `kecamatan`, `kabupaten_kota`, `provinsi`, `no_hp`, `no_fax`, `status_store`, `sewa_berakhir`, `panjang`, `lebar`, `jumlah_karyawan`, `jumlah_teknisi`, `sub_outlet_status`, `created_date`) VALUES
-(2,	2,	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'0000-00-00',	'',	'',	'',	'',	0,	'2018-08-26 09:13:24');
+(2,	2,	'',	'',	'',	'',	'- Kelurahan -',	'- Kecamatan -',	'- Kabupaten / Kota -',	'- Pilih Provinsi -',	'',	'',	'Milik Sendiri',	'0000-00-00',	'',	'',	'',	'',	0,	'2018-08-29 01:29:23');
 
 DROP TABLE IF EXISTS `m_customer_store_bank`;
 CREATE TABLE `m_customer_store_bank` (
@@ -110,7 +110,7 @@ CREATE TABLE `m_customer_store_gudang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `m_customer_store_gudang` (`id_gudang`, `id_store`, `nama`, `no_rekening`, `created_date`, `alamat`, `rt`, `rw`, `kelurahan`, `kecamatan`, `kabupaten_kota`, `provinsi`, `kode_pos`, `no_hp`, `no_fax`) VALUES
-(1,	2,	'',	'',	'2018-08-26 09:13:24',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'');
+(1,	2,	'',	'',	'2018-08-29 01:29:23',	'',	'',	'',	'- Kelurahan -',	'- Kecamatan -',	'- Kabupaten / Kota -',	'- Pilih Provinsi -',	'',	'',	'');
 
 DROP TABLE IF EXISTS `m_customer_store_penjualan`;
 CREATE TABLE `m_customer_store_penjualan` (
@@ -124,7 +124,8 @@ CREATE TABLE `m_customer_store_penjualan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `m_customer_store_penjualan` (`id_penjualan`, `id_store`, `produk`, `presentase`, `no_hp`, `created_date`) VALUES
-(1,	2,	'produk 1',	'10%',	'123123123',	'2018-08-26 09:57:16');
+(1,	2,	'produk 1',	'10%',	'123123123',	'2018-08-26 09:57:16'),
+(2,	2,	'1',	'1',	'1',	'2018-08-29 01:29:16');
 
 DROP TABLE IF EXISTS `m_customer_verifikasi`;
 CREATE TABLE `m_customer_verifikasi` (
@@ -144,6 +145,8 @@ CREATE TABLE `m_customer_verifikasi` (
   PRIMARY KEY (`no_verifikasi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `m_customer_verifikasi` (`no_verifikasi`, `id_store`, `id_customer`, `tgl_create`, `tgl_survei`, `tgl_pengajuan`, `tgl_disetujui`, `nm_approval`, `distribution_chanel`, `credit_limit`, `top`, `catatan`, `created_date`) VALUES
+(1,	2,	2,	'0000-00-00',	'0000-00-00',	'0000-00-00',	'0000-00-00',	'',	'Dealer',	0,	'',	'',	'2018-08-29 01:30:09');
 
 DROP TABLE IF EXISTS `m_karyawan`;
 CREATE TABLE `m_karyawan` (
@@ -252,14 +255,14 @@ INSERT INTO `m_menu` (`id`, `parent_id`, `menu`, `menu_order`, `icon`, `link`, `
 (24,	22,	'Verifikasi Customer',	2,	'fa fa-file',	'#',	'2018-07-28 05:36:20'),
 (25,	0,	'Report',	7,	'fa fa-briefcase',	'#',	'2018-07-28 05:37:42'),
 (26,	25,	'Progress',	1,	'fa fa-file',	'#',	'2018-07-28 07:09:13'),
-(27,	26,	'Report SO',	1,	'fa fa-file',	'dashboard/so_progress',	'2018-07-28 07:10:42'),
+(27,	26,	'Report SO',	1,	'fa fa-file',	'sales/sales_order/so_progress',	'2018-08-29 09:12:26'),
 (28,	26,	'Report Sell Out',	2,	'fa fa-file',	'dashboard/sellout',	'2018-07-28 07:11:34'),
 (29,	26,	'Report New Customer',	3,	'fa fa-file',	'dashboard/cust_progress',	'2018-07-28 07:12:39'),
 (30,	26,	'SO Draft',	4,	'fa fa-file',	'dashboard/draft',	'2018-07-28 07:13:18'),
 (31,	25,	'Final',	2,	'fa fa-file',	'#',	'2018-07-28 07:13:57'),
 (32,	31,	'Report Absensi',	1,	'fa fa-file',	'report_absensi',	'2018-07-28 07:14:52'),
 (33,	31,	'Schedule & Call Plan',	2,	'fa fa-file',	'dashboard/report_plan',	'2018-07-28 07:15:42'),
-(34,	31,	'Report SO',	3,	'fa fa-file',	'dashboard/so_progress',	'2018-07-28 07:16:28'),
+(34,	31,	'Report SO',	3,	'fa fa-file',	'sales/sales_order/so_final',	'2018-08-29 09:46:58'),
 (35,	31,	'Report Sell Out',	4,	'fa fa-file',	'dashboard/sellout',	'2018-07-28 07:17:25'),
 (36,	31,	'Report Komisi',	5,	'fa fa-file',	'#',	'2018-07-28 07:18:36'),
 (37,	0,	'Setting Menu',	8,	'fa fa-gear',	'menu',	'2018-07-30 14:28:23'),
@@ -387,12 +390,13 @@ CREATE TABLE `t_sales_order` (
   `sisa_bayar` int(11) NOT NULL,
   `total_discount` int(11) NOT NULL,
   `discount_pembulatan` int(11) NOT NULL,
+  `file_images` varchar(255) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_sales_order`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `t_sales_order` (`id_sales_order`, `no_invoice`, `id_sales`, `id_customer`, `id_approval`, `status_pembelian`, `id_status`, `subtotal`, `ppn`, `total_harga`, `uang_muka`, `sisa_bayar`, `total_discount`, `discount_pembulatan`, `created_date`) VALUES
-(4,	'INV5083',	4,	2,	0,	'credit',	6,	5000,	2000,	7000,	1000,	6000,	50,	1000,	'2018-08-28 06:58:25');
+INSERT INTO `t_sales_order` (`id_sales_order`, `no_invoice`, `id_sales`, `id_customer`, `id_approval`, `status_pembelian`, `id_status`, `subtotal`, `ppn`, `total_harga`, `uang_muka`, `sisa_bayar`, `total_discount`, `discount_pembulatan`, `file_images`, `created_date`) VALUES
+(4,	'INV5083',	4,	2,	0,	'credit',	6,	5000,	2000,	7000,	1000,	6000,	50,	1000,	'210e8471e12a3c6c4ad6c80d20a8f83a.png',	'2018-08-29 06:55:55');
 
 DROP TABLE IF EXISTS `t_sales_order_delivery`;
 CREATE TABLE `t_sales_order_delivery` (
@@ -431,4 +435,4 @@ CREATE TABLE `t_sales_order_produk` (
 INSERT INTO `t_sales_order_produk` (`id_sales_order`, `id_produk`, `jumlah`, `pricelist`, `discount`, `keterangan_discount`, `harga_netto`, `status_produk`, `deskripsi`, `merek`, `tipe`, `kode`, `dibawa_langsung`, `created_date`) VALUES
 (4,	1,	0,	100000,	10,	'diskon aja',	50000,	'Indent',	'deksripisi',	'samsung',	'tipe',	'SAM123',	'',	'2018-08-27 14:10:07');
 
--- 2018-08-28 09:23:47
+-- 2018-08-29 09:53:51
