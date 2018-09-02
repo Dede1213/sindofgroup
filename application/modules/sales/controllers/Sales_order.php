@@ -57,7 +57,7 @@ class Sales_order extends My_Controller
     public function getIdSalesOrder(){
 
         $id_sales = $this->session->userdata('id');
-        $getIdSalesOrder = $this->general->getwhere('t_sales_order',array('id_sales'=>$id_sales));
+        $getIdSalesOrder = $this->general->get_query_natural("select id_sales_order from t_sales_order where id_sales = '$id_sales' AND id_status < 6");
 
         if($getIdSalesOrder){
             $id_sales_order =  $getIdSalesOrder['id_sales_order'];
@@ -124,9 +124,9 @@ class Sales_order extends My_Controller
         $this->data['menu_tab'] = '2';
         $this->data['page_title'] = 'Detail Product';
 
-        $id_sales = $this->session->userdata('id');
-        $getIdSalesOrder = $this->general->getwhere('t_sales_order',array('id_sales'=>$id_sales));
-        $id_sales_order = $getIdSalesOrder['id_sales_order'];
+
+        $id_sales_order = $this->getIdSalesOrder();
+
 
         $data_sales_order_produk = $this->general->get_query_natural("select * from t_sales_order where id_sales_order = '$id_sales_order'",1);
 

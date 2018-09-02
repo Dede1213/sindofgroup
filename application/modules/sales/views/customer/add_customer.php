@@ -39,228 +39,108 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 
                     <div class="box-body">
-                        <?php
-                        if($data){
-                        ?>
 
-                            <form method="post" action="<?php echo base_url('sales/customer/act_update_customer/');?>">
+                        <form method="post" action="<?php echo base_url('sales/customer/act_add_customer');?>">
 
 
-                                <!-- text input -->
-                                <input type="hidden" name="id_customer" id="title"  value="<?php echo $data['id_customer']; ?>">
+                            <!-- text input -->
 
-                                <div class="form-group">
-                                    <label>Nama</label>
-                                    <input type="text" name="nama" id="title" class="form-control" value="<?php echo $data['nama']; ?>">
-                                </div>
+                            <div class="form-group">
+                                <label>Nama</label>
+                                <input type="text" name="nama" id="title" class="form-control" >
+                            </div>
 
-                                <div class="form-group">
-                                    <label>ID KTP/Passport</label>
-                                    <input type="text" name="ktp_pass" id="title" class="form-control" value="<?php echo $data['no_ktp_passport']; ?>">
-                                </div>
+                            <div class="form-group">
+                                <label>ID KTP/Passport</label>
+                                <input type="text" name="ktp_pass" id="title" class="form-control" >
+                            </div>
 
-                                <div class="form-group">
-                                    <label>ID NPWP</label>
-                                    <input type="text" name="npwp" id="title" class="form-control" value="<?php echo $data['no_npwp']; ?>">
-                                </div>
+                            <div class="form-group">
+                                <label>ID NPWP</label>
+                                <input type="text" name="npwp" id="title" class="form-control" >
+                            </div>
 
-                                <div class="form-group">
-                                    <label>Provinsi</label>
-                                    <select class="form-control" name="provinsi">
-                                        <option><?php echo $data['provinsi']; ?></option>
+                            <div class="form-group">
+                                <label>Provinsi</label>
+                                <select class="form-control" name="provinsi">
+                                    <option>-</option>
+                                    <option>Banten</option>
+                                </select>
+                            </div>
 
-                                        <option>Banten</option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label>Kabupaten / Kota</label>
+                                <select class="form-control" name="kabupaten">
+                                    <option>-</option>
+                                    <option>Kab.tangerang</option>
+                                </select>
+                            </div>
 
-                                <div class="form-group">
-                                    <label>Kabupaten / Kota</label>
-                                    <select class="form-control" name="kabupaten">
-                                        <option><?php echo $data['kabupaten_kota']; ?></option>
+                            <div class="form-group">
+                                <label>Kecamatan</label>
+                                <select class="form-control" name="kecamatan">
+                                    <option>-</option>
+                                    <option>Cisauk</option>
+                                </select>
+                            </div>
 
-                                        <option>Kab.tangerang</option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label>Kelurahan</label>
+                                <select class="form-control" name="kelurahan">
+                                    <option>-</option>
+                                    <option>Suradita</option>
+                                </select>
+                            </div>
 
-                                <div class="form-group">
-                                    <label>Kecamatan</label>
-                                    <select class="form-control" name="kecamatan">
-                                        <option><?php echo $data['kecamatan']; ?></option>
+                            <div class="form-group">
+                                <label>Alamat</label>
+                                <input type="text" name="alamat" id="title" class="form-control" >
+                            </div>
 
-                                        <option>Cisauk</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Kelurahan</label>
-                                    <select class="form-control" name="kelurahan">
-                                        <option><?php echo $data['kelurahan']; ?></option>
-                                        <option>Suradita</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Alamat</label>
-                                    <input type="text" name="alamat" id="title" class="form-control" value="<?php echo $data['alamat']; ?>">
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Kode Pos </label>
-                                    <input type="text" name="kode_pos" id="title" class="form-control"  value="<?php echo $data['kode_pos']; ?>">
-                                </div>
-                                <div class="form-group">
-                                    <label>Telepon Kantor </label>
-                                    <input type="text" name="no_kantor" id="title" class="form-control"  value="<?php echo $data['no_kantor']; ?>">
-                                </div>
-                                <div class="form-group">
-                                    <label>Telepon Rumah </label>
-                                    <input type="text" name="no_rumah" id="title" class="form-control" value="<?php echo $data['no_rumah']; ?>">
-                                </div>
-                                <div class="form-group">
-                                    <label>Handphone </label>
-                                    <input type="text" name="no_hp" id="title" class="form-control" value="<?php echo $data['no_hp']; ?>">
-                                </div>
-                                <div class="form-group">
-                                    <label>Email </label>
-                                    <input type="text" name="email" id="title" class="form-control" value="<?php echo $data['email']; ?>">
-                                </div>
+                            <div class="form-group">
+                                <label>Kode Pos </label>
+                                <input type="text" name="kode_pos" id="title" class="form-control"  >
+                            </div>
+                            <div class="form-group">
+                                <label>Telepon Kantor </label>
+                                <input type="text" name="no_kantor" id="title" class="form-control"  >
+                            </div>
+                            <div class="form-group">
+                                <label>Telepon Rumah </label>
+                                <input type="text" name="no_rumah" id="title" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Handphone </label>
+                                <input type="text" name="no_hp" id="title" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Email </label>
+                                <input type="text" name="email" id="title" class="form-control">
+                            </div>
 
 
-                                <div class="form-group">
-                                    <label>Status Rumah</label>
-                                    <select id="status_rumah" name="status_rumah">
-                                        <option><?php echo $data['status_rumah']; ?></option>
-                                        <option>Milik Sendiri</option>
-                                        <option>Milik yang diagunkan</option>
-                                        <option>Sewa</option>
-                                    </select>
-                                </div>
-                                <div class="form-group sewa">
-                                    <label>Berakhir</label>
-                                    <input type="date" name="berakhir" id="title" class="form-control" value="<?php echo $data['sewa_berakhir']; ?>">
-                                </div>
+                            <div class="form-group">
+                                <label>Status Rumah</label>
+                                <select id="status_rumah" name="status_rumah">
+                                    <option>Milik Sendiri</option>
+                                    <option>Milik yang diagunkan</option>
+                                    <option>Sewa</option>
+                                </select>
+                            </div>
+                            <div class="form-group sewa">
+                                <label>Berakhir</label>
+                                <input type="date" name="berakhir" id="title" class="form-control">
+                            </div>
 
 
-                                <hr>
+                            <hr>
 
 
-                                <div class="col-md-2">
-                                    <button type="submit" class="btn btn-primary btn-block btn-flat">Save And Next Step</button>
-                                </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-primary btn-block btn-flat">Save And Next Step</button>
+                            </div>
 
-                            </form>
-
-
-                        <?php
-                        }else{
-                        ?>
-
-                            <form method="post" action="<?php echo base_url('sales/customer/act_add_customer');?>">
-
-
-                                <!-- text input -->
-
-                                <div class="form-group">
-                                    <label>Nama</label>
-                                    <input type="text" name="nama" id="title" class="form-control" >
-                                </div>
-
-                                <div class="form-group">
-                                    <label>ID KTP/Passport</label>
-                                    <input type="text" name="ktp_pass" id="title" class="form-control" >
-                                </div>
-
-                                <div class="form-group">
-                                    <label>ID NPWP</label>
-                                    <input type="text" name="npwp" id="title" class="form-control" >
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Provinsi</label>
-                                    <select class="form-control" name="provinsi">
-                                        <option>-</option>
-                                        <option>Banten</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Kabupaten / Kota</label>
-                                    <select class="form-control" name="kabupaten">
-                                        <option>-</option>
-                                        <option>Kab.tangerang</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Kecamatan</label>
-                                    <select class="form-control" name="kecamatan">
-                                        <option>-</option>
-                                        <option>Cisauk</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Kelurahan</label>
-                                    <select class="form-control" name="kelurahan">
-                                        <option>-</option>
-                                        <option>Suradita</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Alamat</label>
-                                    <input type="text" name="alamat" id="title" class="form-control" >
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Kode Pos </label>
-                                    <input type="text" name="kode_pos" id="title" class="form-control"  >
-                                </div>
-                                <div class="form-group">
-                                    <label>Telepon Kantor </label>
-                                    <input type="text" name="no_kantor" id="title" class="form-control"  >
-                                </div>
-                                <div class="form-group">
-                                    <label>Telepon Rumah </label>
-                                    <input type="text" name="no_rumah" id="title" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>Handphone </label>
-                                    <input type="text" name="no_hp" id="title" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>Email </label>
-                                    <input type="text" name="email" id="title" class="form-control">
-                                </div>
-
-
-                                <div class="form-group">
-                                    <label>Status Rumah</label>
-                                    <select id="status_rumah" name="status_rumah">
-                                        <option>Milik Sendiri</option>
-                                        <option>Milik yang diagunkan</option>
-                                        <option>Sewa</option>
-                                    </select>
-                                </div>
-                                <div class="form-group sewa">
-                                    <label>Berakhir</label>
-                                    <input type="date" name="berakhir" id="title" class="form-control">
-                                </div>
-
-
-                                <hr>
-
-
-                                <div class="col-md-2">
-                                    <button type="submit" class="btn btn-primary btn-block btn-flat">Save And Next Step</button>
-                                </div>
-
-                            </form>
-
-
-                        <?php
-                        }
-                        ?>
+                        </form>
 
                         <span class="loading"></span>
                     </div><!-- /.box-body -->

@@ -14,11 +14,11 @@ class Login_model extends CI_Model
 		if ($query->num_rows() == 1)
 		{
             //reset userdata dulu biar aman oke
-            $this->session->set_userdata(array('id' => '','id_level' => '','username' => '','login' => ''));
+            $this->session->set_userdata(array('id' => '','username' => '','login' => ''));
             //end
 
             $row = $query->row_array();
-            $data = array('id' => $row['id'],'id_level' => $row['id_level'],'username' => $row['username'],'login' => TRUE );
+            $data = array('id' => $row['id'],'username' => $row['username'],'nik' => $row['nik'],'login' => TRUE );
 
             $this->session->set_userdata($data);
             //Insert or update id_session untuk single device

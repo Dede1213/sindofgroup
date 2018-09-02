@@ -46,7 +46,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <!-- text input -->
                             <div class="form-group">
                                 <label>Nomor Form Verifikasi</label>
-                                <input type="text" name="title" id="title" class="form-control" readonly>
+                                <input type="text" name="nomor_form" id="title" class="form-control" readonly value="<?php echo $nomor_form;?>">
                             </div>
                             <div class="form-group">
                                 <label>Tanggal Dibuat</label>

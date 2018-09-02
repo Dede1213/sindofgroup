@@ -27,36 +27,7 @@
                 <div class="box">
                     <div class="box-body">
 
-                    <?php if(!$param){?>
-                        <table class="table table-bordered table-striped" id="t_datatable">
-                            <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Tanggal Pembuatan</th>
-                                <th>Nomor Form Verifikasi</th>
-                                <th>Nama Toko</th>
-                                <th>Nama Pribadi</th>
-                                <th>Chanel</th>
-                                <th>Action</th>
 
-                            </tr>
-
-                            </thead>
-                            <tbody>
-
-                            <tr>
-                                <td>1</td>
-                                <td>29-may-2018</td>
-                                <td>2020202020</td>
-                                <td>Toko Jaya</td>
-                                <td>Jaya</td>
-                                <td>Outlet</td>
-                                <td width=""><a href="<?php echo base_url('sales/customer/print_verifikasi/asdf');?>"> <button type="button"><i class="fa fa-check"></i> Pilih</button></a></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                       
-                        <?php }else{?>
 
 <table width="80%">
     <tr>
@@ -67,8 +38,8 @@
         </td>
         <td>
             <div style="float: right;">
-                Nomor : ......................... <br>
-                Kode Salesman : ...................... <br>
+                Nomor : <?php echo $data_verifikasi['no_verifikasi']?> <br>
+                Kode Salesman : <?php echo $data_verifikasi['nik']?> <br>
                 Kode Cabang : ....................... <br><br>
             </div>
         </td>
@@ -80,14 +51,14 @@
         <td style="border: 1px solid #000;padding: 1%;" colspan="2">
         <table>
             <tr><td colspan="3"><b>Data Toko</b></td></tr>
-            <tr><td width="25%">Nama Toko</td><td width="2%">:</td><td><center><?php echo $data_store['nama']?></center></td></tr>
-            <tr><td>Alamat</td><td width="2%">:</td><td><center><?php echo $data_store['alamat']?></center></td></tr>
-            <tr><td>Phone</td><td width="2%">:</td><td><center><?php echo $data_store['no_hp']?></center></td></tr>
-            <tr><td>Faxs</td><td width="2%">:</td><td><center><?php echo $data_store['no_fax']?></center></td></tr>
-            <tr><td>Status Toko</td><td width="2%">:</td><td><center><?php echo $data_store['status_store']?></center></td></tr>
-            <tr><td>Luas Toko</td><td width="2%">:</td><td><center><?php echo $data_store['panjang']?> x <?php echo $data_store['lebar']?></center></td></tr>
-            <tr><td>Karyawan &nbsp&nbsp&nbsp&nbsp&nbsp Seluruhnya &nbsp&nbsp&nbsp</td><td width="2%">:</td><td><center><?php echo $data_store['jumlah_karyawan']?>  Orang</center></td></tr>
-            <tr><td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Teknisi</td><td width="2%">:</td><td><center><?php echo $data_store['jumlah_teknisi']?>  Orang</center></td></tr>
+            <tr><td width="25%">Nama Toko</td><td width="2%">:</td><td><?php echo $data_store['nama']?></td></tr>
+            <tr><td>Alamat</td><td width="2%">:</td><td><?php echo $data_store['alamat']?></td></tr>
+            <tr><td>Phone</td><td width="2%">:</td><td><?php echo $data_store['no_hp']?></td></tr>
+            <tr><td>Faxs</td><td width="2%">:</td><td><?php echo $data_store['no_fax']?></td></tr>
+            <tr><td>Status Toko</td><td width="2%">:</td><td><?php echo $data_store['status_store']?></td></tr>
+            <tr><td>Luas Toko</td><td width="2%">:</td><td><?php echo $data_store['panjang']?> x <?php echo $data_store['lebar']?></td></tr>
+            <tr><td>Karyawan &nbsp&nbsp&nbsp&nbsp&nbsp Seluruhnya &nbsp&nbsp&nbsp</td><td width="2%">:</td><td><?php echo $data_store['jumlah_karyawan']?>  Orang</td></tr>
+            <tr><td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Teknisi</td><td width="2%">:</td><td><?php echo $data_store['jumlah_teknisi']?>  Orang</td></tr>
 
         </table>
             </td></tr>
@@ -95,16 +66,16 @@
                 <td style="border: 1px solid #000;padding: 1%;" colspan="2">
             <table>
                 <tr><td colspan="3"><b>Data Pribadi</b></td></tr>
-                <tr><td width="25%">Nama</td><td width="2%">:</td><td><center><?php echo $data_customer['nama']?></center></td></tr>
-                <tr><td>Alamat</td><td width="2%">:</td><td><center><?php echo $data_customer['alamat']?></center></td></tr>
-                <tr><td>No.KTP</td><td width="2%">:</td><td><center><?php echo $data_customer['no_ktp_passport']?></center></td></tr>
-                <tr><td>NPWP</td><td width="2%">:</td><td><center><?php echo $data_customer['no_npwp']?></center></td></tr>
-                <tr><td>Phone</td><td width="2%">:</td><td><center><?php echo $data_customer['no_hp']?></center></td></tr>
-                <tr><td>Faxs</td><td width="2%">:</td><td><center><?php echo $data_customer['no_kantor']?></center></td></tr>
-                <tr><td>Email</td><td width="2%">:</td><td><center><?php echo $data_customer['email']?></center></td></tr>
-                <tr><td>Status Rumah &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td><td width="2%">:</td><td><center><?php echo $data_customer['status_rumah']?></center></td></tr>
+                <tr><td width="25%">Nama</td><td width="2%">:</td><td><?php echo $data_customer['nama']?></td></tr>
+                <tr><td>Alamat</td><td width="2%">:</td><td><?php echo $data_customer['alamat']?></td></tr>
+                <tr><td>No.KTP</td><td width="2%">:</td><td><?php echo $data_customer['no_ktp_passport']?></td></tr>
+                <tr><td>NPWP</td><td width="2%">:</td><td><?php echo $data_customer['no_npwp']?></td></tr>
+                <tr><td>Phone</td><td width="2%">:</td><td><?php echo $data_customer['no_hp']?></td></tr>
+                <tr><td>Faxs</td><td width="2%">:</td><td><?php echo $data_customer['no_kantor']?></td></tr>
+                <tr><td>Email</td><td width="2%">:</td><td><?php echo $data_customer['email']?></td></tr>
+                <tr><td>Status Rumah &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td><td width="2%">:</td><td><?php echo $data_customer['status_rumah']?></td></tr>
 
-        </table>
+            </table>
         </td>
     </tr>
     <tr>
@@ -124,7 +95,7 @@
 								<td><center><?php echo $no;?></center></td>
 								<td><center><?php echo $value['produk'];?></center></td>
 								<td><center><?php echo $value['presentase'];?></center></td>
-								
+
 							</tr>
 				<?php
 							$no++;
@@ -147,7 +118,7 @@
 								<td><center><?php echo $no;?></center></td>
 								<td><center><?php echo $value['nama'];?></center></td>
 								<td><center><?php echo $value['no_rekening'];?></center></td>
-								
+
 							</tr>
 				<?php
 							$no++;
@@ -209,8 +180,11 @@
         </td>
     </tr>
 </table>
+<br>
 
-<?php } ?>
+                        <div class="col-md-2">
+                            <a href="#" class="btn btn-block btn-primary" onclick="window.print();">PRINT</a>
+                        </div>
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
 

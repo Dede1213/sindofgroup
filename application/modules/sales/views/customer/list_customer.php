@@ -41,7 +41,6 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <tr>
                                 <th width="5%">No</th>
                                 <th>No ID Pelanggan</th>
-                                <th>No Sub ID Pelanggan</th>
                                 <th>No KTP/Passport</th>
                                 <th>NPWP</th>
                                 <th>Nama</th>
@@ -60,7 +59,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     <tr>
                                         <td><?php echo $i;?></td>
                                         <td><?php echo $value['id_customer'];?></td>
-                                        <td>-</td>
+
                                         <td><?php echo $value['no_ktp_passport'];?></td>
                                         <td><?php echo $value['no_npwp'];?></td>
                                         <td><?php echo $value['nama'];?></td>
