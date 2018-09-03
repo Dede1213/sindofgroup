@@ -54,11 +54,11 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             </div>
                             <div class="form-group">
                                 <label>Tanggal Survey</label>
-                                <input type="date" name="tgl_survei" id="title" class="form-control">
+                                <input type="date" name="tgl_survei" id="title" class="form-control" readonly>
                             </div>
                             <div class="form-group">
                                 <label>Tanggal Diajukan</label>
-                                <input type="date" name="tgl_pengajuan" id="title" class="form-control">
+                                <input type="date" name="tgl_pengajuan" id="title" class="form-control" readonly>
                             </div>
                             <div class="form-group">
                                 <label>Tanggal Disetujui</label>
@@ -96,10 +96,10 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 
                             <div class="col-md-2">
-                                <button type="submit" class="btn btn-primary btn-block btn-flat">Submit</button>
+                                <button type="submit" class="btn btn-primary btn-block btn-flat">Finish</button>
                             </div>
                             <div class="col-md-2">
-                                <a href="#"><button type="button" class="btn btn-warning btn-block btn-flat">Edit Data</button></a>
+<!--                                <a href="#"><button type="button" class="btn btn-warning btn-block btn-flat">Edit Data</button></a>-->
                             </div>
 
 

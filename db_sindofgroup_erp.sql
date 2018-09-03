@@ -51,7 +51,6 @@ CREATE TABLE `m_customer_gudang` (
   `id_gudang` int(11) NOT NULL AUTO_INCREMENT,
   `id_customer` int(11) NOT NULL,
   `pic` varchar(50) NOT NULL,
-  `no_rekening` varchar(50) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `alamat` text CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
   `rt` varchar(50) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
@@ -66,8 +65,8 @@ CREATE TABLE `m_customer_gudang` (
   PRIMARY KEY (`id_gudang`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `m_customer_gudang` (`id_gudang`, `id_customer`, `pic`, `no_rekening`, `created_date`, `alamat`, `rt`, `rw`, `kelurahan`, `kecamatan`, `kabupaten_kota`, `provinsi`, `kode_pos`, `no_hp`, `no_fax`) VALUES
-(2,	4,	'Gudang 1',	'9898989',	'2018-09-02 14:21:34',	'alamat gudang',	'rt gudang',	'Gudang 1',	'Suradita',	'Cisauk',	'Tangerang',	'Banten',	'kodepos gudam',	'08928982',	'032132822');
+INSERT INTO `m_customer_gudang` (`id_gudang`, `id_customer`, `pic`, `created_date`, `alamat`, `rt`, `rw`, `kelurahan`, `kecamatan`, `kabupaten_kota`, `provinsi`, `kode_pos`, `no_hp`, `no_fax`) VALUES
+(2,	4,	'Gudang 1',	'2018-09-02 14:21:34',	'alamat gudang',	'rt gudang',	'Gudang 1',	'Suradita',	'Cisauk',	'Tangerang',	'Banten',	'kodepos gudam',	'08928982',	'032132822');
 
 DROP TABLE IF EXISTS `m_customer_img`;
 CREATE TABLE `m_customer_img` (
@@ -93,14 +92,13 @@ CREATE TABLE `m_customer_penjualan` (
   `id_customer` int(11) NOT NULL,
   `produk` varchar(255) NOT NULL,
   `presentase` varchar(50) NOT NULL,
-  `no_hp` varchar(15) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_penjualan`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `m_customer_penjualan` (`id_penjualan`, `id_customer`, `produk`, `presentase`, `no_hp`, `created_date`) VALUES
-(4,	4,	'produk 1',	'10%',	'089832989328',	'2018-09-02 14:03:29'),
-(5,	4,	'produk 2',	'10%',	'123123123',	'2018-09-02 14:03:41');
+INSERT INTO `m_customer_penjualan` (`id_penjualan`, `id_customer`, `produk`, `presentase`, `created_date`) VALUES
+(4,	4,	'produk 1',	'10%',	'2018-09-02 14:03:29'),
+(5,	4,	'produk 2',	'10%',	'2018-09-02 14:03:41');
 
 DROP TABLE IF EXISTS `m_customer_store`;
 CREATE TABLE `m_customer_store` (
@@ -292,7 +290,7 @@ INSERT INTO `m_menu` (`id`, `parent_id`, `menu`, `menu_order`, `icon`, `link`, `
 (21,	17,	'Kwitansi',	4,	'fa fa-file',	'dashboard/print_kwitansi',	'2018-07-28 05:33:35'),
 (22,	16,	'Upload',	2,	'fa fa-upload',	'#',	'2018-07-28 05:34:28'),
 (23,	22,	'Sales Order',	1,	'fa fa-file',	'sales/sales_order/upload',	'2018-08-28 09:21:36'),
-(24,	22,	'Verifikasi Customer',	2,	'fa fa-file',	'/sales/customer/verifikasi_upload/2',	'2018-08-29 15:51:19'),
+(24,	22,	'Verifikasi Customer',	2,	'fa fa-file',	'/sales/customer/list_verifikasi_upload',	'2018-09-03 06:24:37'),
 (25,	0,	'Report',	7,	'fa fa-briefcase',	'#',	'2018-07-28 05:37:42'),
 (26,	25,	'Progress',	1,	'fa fa-file',	'#',	'2018-07-28 07:09:13'),
 (27,	26,	'Report SO',	1,	'fa fa-file',	'sales/sales_order/so_progress',	'2018-08-29 09:12:26'),
@@ -495,4 +493,4 @@ CREATE TABLE `t_sales_order_produk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
--- 2018-09-02 17:17:00
+-- 2018-09-03 09:45:04
