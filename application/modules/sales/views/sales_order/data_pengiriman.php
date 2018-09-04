@@ -189,7 +189,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             
 
 
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">Submit</button>
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">Save And Next Step</button>
                         </form>
                         <span class="loading"></span>
                     </div><!-- /.box-body -->

@@ -67,7 +67,7 @@
                             <td>Date</td>
                             <td></td>
                             <td>Branch Code</td>
-                            <td><?php echo $data_sales['cabang'];?></td>
+                            <td><?php echo $data_sales['area_gudang'];?></td>
                         </tr>
                         <tr>
                             <td>Document Name</td>
@@ -91,7 +91,7 @@
                             <td>Contract Doc</td>
                             <td></td>
                             <td>Exhibition</td>
-                            <td><?php echo $data_sales['exhibition'];?></td>
+                            <td>-</td>
                         </tr>
                         <tr>
                             <td>DP(%)</td>
@@ -203,15 +203,15 @@
                                 ?>
                                 <tr>
                                     <td><?php echo $no;?></td>
-                                    <td><?php echo $value['id_produk'];?></td>
+                                    <td><?php echo $value['product_code'];?></td>
                                     <td><?php echo $value['merek'];?></td>
-                                    <td align = "left"><?php echo $value['tipe'];?></td>
+                                    <td align = "left"><?php echo $value['deskripsi'];?></td>
                                     <td><?php echo $value['status_produk'];?></td>
                                     <td><?php echo $value['jumlah'];?>  </td>
                                     <td><?php echo $value['pricelist'];?></td>
                                     <td><?php echo $value['discount'];?></td>
                                     <td><?php echo $value['keterangan_discount'];?></td>
-                                    <td><?php echo $value['harga_netto'];?></td>
+                                    <td><?php echo $value['pricelist'];?></td>
                                     <td>0 </td>
                                </tr>
                                 <?php

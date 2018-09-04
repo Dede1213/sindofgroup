@@ -107,8 +107,8 @@ class Customer extends My_Controller
         $action = $this->general->create('m_customer', $data);
 
         if ($action) {
-
-            echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/customer/data_verifikasi1/')."';</script>");
+            echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/customer/data_verifikasi1/')."';</script>");
+            //echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/customer/data_verifikasi1/')."';</script>");
         }
 
     }
@@ -254,6 +254,7 @@ class Customer extends My_Controller
         $insertStore = $this->general->create('m_customer_store',$data);
 
         $dataGudang = array('pic' => $nama_gudang,
+            'nama' => $nama_gudang,
             'id_customer' => $id_customer,
             'alamat' => $alamat_gudang,
             'rt' => $rt_gudang,
@@ -273,7 +274,8 @@ class Customer extends My_Controller
         $this->general->update('m_customer',array('id_customer'=>$id_customer),array('id_status'=>'3'));
 
         if ($insertStore && $insertGudang) {
-            echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/customer/data_verifikasi2/')."';</script>");
+        //    echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/customer/data_verifikasi2/')."';</script>");
+            echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/customer/data_verifikasi2/')."';</script>");
         }
 
     }
@@ -342,6 +344,7 @@ class Customer extends My_Controller
         $insertStore = $this->general->create('m_customer_store',$data);
 
         $dataGudang = array('pic' => $nama_gudang,
+            'nama' => $nama_gudang,
             'id_customer' => $id_customer,
             'alamat' => $alamat_gudang,
             'rt' => $rt_gudang,
@@ -388,7 +391,7 @@ class Customer extends My_Controller
         $id_customer = $this->getIdCustomer();
         $nik = $this->session->userdata('nik');
 
-        $nomor_form = $this->session->userdata('nomor_form');
+        $no_verifikasi = $this->input->post('nomor_verifikasi');
 
         $tgl_create = $this->input->post('tgl_create');
         $tgl_survei = $this->input->post('tgl_survei');
@@ -406,7 +409,7 @@ class Customer extends My_Controller
         $action = $this->general->create('m_customer_verifikasi',
             array(
                 'id_customer' => $id_customer,
-                'no_verifikasi' => $nomor_form,
+                'no_verifikasi' => $no_verifikasi,
                 'nik' => $nik,
                 'tgl_create' => $tgl_create,
                 'tgl_survei' => $tgl_survei,

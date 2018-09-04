@@ -58,9 +58,9 @@
                                 ?>
                                 <tr>
                                     <td><?php echo $no;?></td>
-                                    <td><?php echo $value['id_produk'];?></td>
+                                    <td><?php echo $value['product_code'];?></td>
                                     <td><?php echo $value['merek'];?></td>
-                                    <td align = "left"><?php echo $value['tipe'];?></td>
+                                    <td align = "left"><?php echo $value['deskripsi'];?></td>
                                     <td><?php echo $value['status_produk'];?></td>
                                     <td><?php echo $value['jumlah'];?>  </td>
                                     <td><?php echo $value['pricelist'];?></td>
@@ -68,7 +68,7 @@
                                     <td><?php echo $value['keterangan_discount'];?></td>
                                     <td><?php echo $value['harga_netto'];?></td>
                                     <td>1 </td>
-                                    <td><a href="#"><i class="fa fa-edit">Edit</i></a> | <a href="<?php echo base_url('/sales/sales_order/delete_produk/'.$value['id_produk']);?>"><i class="fa fa-trash">Delete</i></a>  </td>
+                                    <td><a href="#"><i class="fa fa-edit">Edit</i></a> | <a href="<?php echo base_url('/sales/sales_order/delete_produk/'.$value['product_code']);?>"><i class="fa fa-trash">Delete</i></a>  </td>
                                 </tr>
                         <?php
                                 $no++;
@@ -141,7 +141,7 @@
                         <a href="<?php echo base_url('sales/sales_order/add_product');?>" class="btn btn-block btn-primary">Add Product</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="<?php echo base_url('sales/sales_order/add_product_finish');?>" class="btn btn-block btn-success">Submit</a>
+                        <a href="<?php echo base_url('sales/sales_order/add_product_finish');?>" class="btn btn-block btn-success">Save And Next Step</a>
                     </div>
                     <div class="col-md-2">
 <!--                        <a href="--><?php //echo base_url('dashboard/data_pengiriman');?><!--" class="btn btn-block btn-warning">Konfirmasi Stock</a>-->

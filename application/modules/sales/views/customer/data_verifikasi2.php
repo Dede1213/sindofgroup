@@ -46,38 +46,43 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <!-- text input -->
                             <div class="form-group">
                                 <label>Nomor Form Verifikasi</label>
-                                <input type="text" name="nomor_form" id="title" class="form-control" readonly value="<?php echo $nomor_form;?>">
+                                <input type="text" name="nomor_verifikasi" id="title" class="form-control" readonly value="<?php echo $nomor_form;?>">
                             </div>
                             <div class="form-group">
                                 <label>Tanggal Dibuat</label>
-                                <input type="date" name="tgl_create" id="title" class="form-control">
+                                <input type="date" name="tgl_create" id="title" class="form-control" value="<?php echo date('Y-m-d'); ?>">
                             </div>
                             <div class="form-group">
                                 <label>Tanggal Survey</label>
-                                <input type="date" name="tgl_survei" id="title" class="form-control" readonly>
+                                <input type="date" name="tgl_survei" id="title" class="form-control" >
                             </div>
                             <div class="form-group">
                                 <label>Tanggal Diajukan</label>
-                                <input type="date" name="tgl_pengajuan" id="title" class="form-control" readonly>
+                                <input type="date" name="tgl_pengajuan" id="title" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Tanggal Disetujui</label>
-                                <input type="date" name="tgl_disetujui" id="title" class="form-control">
+                                <input type="date" name="tgl_disetujui" id="title" class="form-control" readonly>
                             </div>
 
                             <div class="form-group">
                                 <label>Direksi yang menyetujui</label>
-                                <input type="text" name="nm_approval" id="title" class="form-control">
+                                <input type="text" name="nm_approval" id="title" class="form-control" readonly>
                             </div>
 
                             <div class="form-group">
-                                <label>Catatan Kepentingan Perusahaan : <br> Distribution Chanel</label> <br>
-                                <select class = "form-control" name="distribution_chanel">
-                                    <option>Dealer</option>
-                                    <option>Retail</option>
-                                    <option>Outlet</option>
-                                </select>
+                                <label>Catatan Kepentingan Perusahaan  :<br> Distribution Chanel</label>
+                                <input type="text" name="distribution_chanel" id="title" class="form-control" readonly>
                             </div>
+
+<!--                            <div class="form-group">-->
+<!--                                <label>Catatan Kepentingan Perusahaan : <br> Distribution Chanel</label> <br>-->
+<!--                                <select class = "form-control" name="distribution_chanel">-->
+<!--                                    <option>Dealer</option>-->
+<!--                                    <option>Retail</option>-->
+<!--                                    <option>Outlet</option>-->
+<!--                                </select>-->
+<!--                            </div>-->
 
                             <div class="form-group">
                                 <label>Credit Limit (CR)</label>

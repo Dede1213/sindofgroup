@@ -137,6 +137,10 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         <legend>Data Gudang</legend>
 
 
+                        <div class="form-group">
+                            <label>Nama</label>
+                            <input type="text" name="nama_gudang" id="pic-id" class="form-control" value="<?php echo $data_gudang['nama'];?>">
+                        </div>
 
                         <div class="form-group">
                             <label>PIC</label>

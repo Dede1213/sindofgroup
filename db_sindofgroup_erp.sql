@@ -50,6 +50,7 @@ DROP TABLE IF EXISTS `m_customer_gudang`;
 CREATE TABLE `m_customer_gudang` (
   `id_gudang` int(11) NOT NULL AUTO_INCREMENT,
   `id_customer` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
   `pic` varchar(50) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `alamat` text CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
@@ -65,8 +66,8 @@ CREATE TABLE `m_customer_gudang` (
   PRIMARY KEY (`id_gudang`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `m_customer_gudang` (`id_gudang`, `id_customer`, `pic`, `created_date`, `alamat`, `rt`, `rw`, `kelurahan`, `kecamatan`, `kabupaten_kota`, `provinsi`, `kode_pos`, `no_hp`, `no_fax`) VALUES
-(2,	4,	'Gudang 1',	'2018-09-02 14:21:34',	'alamat gudang',	'rt gudang',	'Gudang 1',	'Suradita',	'Cisauk',	'Tangerang',	'Banten',	'kodepos gudam',	'08928982',	'032132822');
+INSERT INTO `m_customer_gudang` (`id_gudang`, `id_customer`, `nama`, `pic`, `created_date`, `alamat`, `rt`, `rw`, `kelurahan`, `kecamatan`, `kabupaten_kota`, `provinsi`, `kode_pos`, `no_hp`, `no_fax`) VALUES
+(2,	4,	'0',	'Gudang 1',	'2018-09-02 14:21:34',	'alamat gudang',	'rt gudang',	'Gudang 1',	'Suradita',	'Cisauk',	'Tangerang',	'Banten',	'kodepos gudam',	'08928982',	'032132822');
 
 DROP TABLE IF EXISTS `m_customer_img`;
 CREATE TABLE `m_customer_img` (
@@ -165,7 +166,7 @@ CREATE TABLE `m_karyawan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `m_karyawan` (`nik`, `nama`, `level`, `lokasi`, `lokasi_detail`, `divisi`, `showroom`, `area_gudang`, `prosedur`, `bisnis_unit`, `created_date`) VALUES
-(17080001,	'Dede Sales Credit',	'',	'',	'',	'',	'',	'',	'',	'',	'2018-09-02 10:54:47');
+(17080001,	'Dede Sales Credit',	'',	'',	'',	'',	'',	'Gudang Jakarta',	'',	'',	'2018-09-04 04:53:39');
 
 DROP TABLE IF EXISTS `m_karyawan_area_gudang`;
 CREATE TABLE `m_karyawan_area_gudang` (
@@ -362,25 +363,47 @@ CREATE TABLE `m_product` (
   `kategori_2` varchar(255) NOT NULL,
   `kategori_3` varchar(255) NOT NULL,
   `bahan` varchar(255) NOT NULL,
-  `ukuran` int(5) NOT NULL,
+  `ukuran` varchar(50) NOT NULL,
   `ukuran_satuan` varchar(5) NOT NULL,
-  `volume` int(5) NOT NULL,
-  `nominal` int(5) NOT NULL,
+  `volume` varchar(50) NOT NULL,
+  `nominal` varchar(50) NOT NULL,
   `nominal_satuan` varchar(5) NOT NULL,
   `cuci` varchar(10) NOT NULL,
   `pengering` varchar(10) NOT NULL,
-  `rpm` int(5) NOT NULL,
-  `dimensi_h` int(5) NOT NULL,
-  `dimensi_satuan` int(5) NOT NULL,
-  `dimensi_o` int(5) NOT NULL,
+  `rpm` varchar(50) NOT NULL,
+  `dimensi_h` varchar(50) NOT NULL,
+  `dimensi_satuan` varchar(50) NOT NULL,
+  `dimensi_o` varchar(50) NOT NULL,
   `color` varchar(50) NOT NULL,
-  `dimensi_w` int(5) NOT NULL,
+  `dimensi_w` varchar(50) NOT NULL,
   `keterangan` text NOT NULL,
   `status_produk` varchar(10) NOT NULL,
-  `pricelist` int(10) NOT NULL,
+  `pricelist` int(11) NOT NULL,
   PRIMARY KEY (`product_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `m_product` (`product_code`, `home_code`, `merek`, `deskripsi`, `kategori`, `kategori_1`, `kategori_2`, `kategori_3`, `bahan`, `ukuran`, `ukuran_satuan`, `volume`, `nominal`, `nominal_satuan`, `cuci`, `pengering`, `rpm`, `dimensi_h`, `dimensi_satuan`, `dimensi_o`, `color`, `dimensi_w`, `keterangan`, `status_produk`, `pricelist`) VALUES
+('3XWED5705SW',	'XXXX16',	'WHIRLLPOOL',	'MESIN PENGERING PAKAIAN (LISTRIK)',	'WASH & CLEAN',	'FREE-STANDING',	'DRYER',	'ELECTRIC',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'READY',	97000),
+('5VES3FHGRS',	'XXXX14',	'WHIRLLPOOL',	'LEMARI ES SIDE BY SIDE 640 LITER NO FROST STAINLESS-STEEL',	'COLD & PRESERVE',	'FREE-STANDING',	'REFRIGERATOR',	'SIDE BY SIDE',	'STAINLESS-STEEL',	'',	'',	'640',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'NO-FROST',	'READY',	235000),
+('6GD25DCXHS',	'XXXX15',	'WHIRLLPOOL',	'LEMARI ES SIDE BY SIDE 746 LITER NO FROST STAINLESS-STEEL',	'COLD & PRESERVE',	'FREE-STANDING',	'REFRIGERATOR',	'SIDE BY SIDE',	'STAINLESS-STEEL',	'',	'',	'746',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'NO-FROST',	'INDENT',	246000),
+('AQM9D49U.EX',	'XXXX7',	'ARISTON',	'MESIN CUCI DAN PENGERING FRONT-LOAD 1400 RPM 9 KG CUCI 5 KG PENGERING',	'WASH & CLEAN',	'FREE-STANDING',	'WASHER / DRYER',	'FRONT LOAD',	'',	'',	'',	'',	'',	'KG',	'9',	'5',	'1400',	'',	'',	'',	'',	'',	'FRONT LOAD',	'READY',	123000),
+('DDWG12-3XFS',	'XXXX6',	'DELIZIA',	'MESIN PENCUCI PIRING AUTOMATIS KAPASITAS 12 PCS (FREE STANDING)',	'WASH & CLEAN',	'FREE-STANDING',	'DISHWASHER',	'FRONT LOAD',	'',	'',	'',	'',	'12',	'PCS',	'',	'',	'',	'',	'',	'',	'',	'',	'FREE STANDING',	'READY',	110000),
+('DRDSBA2(IX)',	'XXXX3',	'DELIZIA',	'LEMARI ES STAINLESS-STEEL 549 LITER NO-FROST 2 PINTU',	'COLD & PRESERVE',	'FREE-STANDING',	'REFRIGERATOR',	'SIDE BY SIDE',	'STAINLESS-STEEL',	'',	'',	'549',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'NO-FROST',	'READY',	235000),
+('DWG6A3WH',	'XXXX5',	'DELIZIA',	'MESIN CUCI PAKAIAN FRONT LOAD 800 RPM 6 KG',	'WASH & CLEAN',	'FREE-STANDING',	'WASHER',	'FRONT LOAD',	'',	'',	'',	'',	'6',	'KG',	'',	'',	'800',	'',	'',	'',	'',	'',	'FRONT LOAD',	'READY',	132000),
+('DWS1668.D14(IX)',	'XXXX4',	'DELIZIA',	'LEMARI PENYIMPAN WINE KAPASITAS 154 BOTOL STAINLESS-STEEL DUA ZONA PENDINGIN',	'COLD & PRESERVE',	'FREE-STANDING',	'WINE CELLAR',	'100 - 150 BOTTLES',	'STAINLESS-STEEL',	'',	'',	'',	'154',	'BOTOL',	'',	'',	'',	'',	'',	'',	'',	'',	'DUA ZONA PENDINGIN',	'READY',	225000),
+('F15A28-28CM',	'XXXX19',	'SUPOR',	'THERMOSPOT FRYPAN 28CM',	'COOKWARE ELECTRIC HOMEKEEPING',	'COOKWARE',	'FRY PANS & SKILLETS',	'NON STICK',	'',	'28',	'CM',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'READY',	111000),
+('F17A22IH-22CM',	'XXXX20',	'SUPOR',	'THERMOSPOT INDUCTION HOB FRYPAN 22CM',	'COOKWARE ELECTRIC HOMEKEEPING',	'COOKWARE',	'FRY PANS & SKILLETS',	'NON STICK',	'',	'22',	'CM',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'INDENT',	121000),
+('HER1206GMFEDCRT',	'XXXX9',	'BERTAZZONI',	'KOMPOR GAS BERDIRI 120 CM 6 TUNGKU CRAME COLOR ELECTRIC MULTIFUNCTION DOUBLE OVEN AND GRIDDLE',	'COOK & CUISINE',	'FREE-STANDING',	'COOKER',	'GAS AND ELECTRIC',	'',	'120',	'CM',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'CRAME COLOR',	'',	'ELECTRIC MULTIFUNCTION DOUBLE OVEN AND GRIDDLE',	'READY',	127000),
+('K100HERSNET',	'XXXX10',	'BERTAZZONI',	'TUDUNG HISAP 100 CM STAINLESS-STEEL + BLACK INTEGRATED',	'COOK & CUISINE',	'BUILT-IN',	'HOOD',	'WALL',	'STAINLESS-STEEL + BLACK INTEGRATED',	'100',	'CM',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'READY',	167000),
+('P64IT0N',	'XXXX12',	'LA GERMANIA',	'KOMPOR TANAM 60 CM 4 TUNGKU INDUCTION',	'COOK & CUISINE',	'BUILT-IN',	'HOB',	'INDUCTION',	'',	'60',	'CM',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'INCUSTION',	'READY',	253000),
+('P90CD9X',	'XXXX13',	'LA GERMANIA',	'KOMPOR TANAM 90 CM 5 ZONA PANAS KACA',	'COOK & CUISINE',	'BUILT-IN',	'HOB',	'VITRO CERAMIC',	'',	'90',	'CM',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'KACA',	'READY',	211000),
+('P9C01D9XT',	'XXXX11',	'LA GERMANIA',	'KOMPOR TANAM 90 CM 3 TUNGKU GAS STAINLESS STEEL',	'COOK & CUISINE',	'BUILT-IN',	'HOB',	'GAS',	'STAINLESS-STEEL',	'90',	'CM',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'READY',	234000),
+('PDMW38(MR)',	'XXXX22',	'ARISTON',	'MICROWAVE DOOR MIRROR. DIMENSIONS (WXH) 59.5X39.1 CM',	'ACCESSORIES',	'BUILT-IN',	'MICROWAVE',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'39.1',	'CM',	'',	'',	'59.9',	'MIRROR',	'READY',	77000),
+('PDMW45(ICE)',	'XXXX23',	'ARISTON',	'MICROWAVE DOOR ICE. DIMENSIONS (WXH) 595 X 461 MM',	'ACCESSORIES',	'BUILT-IN',	'MICROWAVE',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'461',	'MM',	'',	'',	'595',	'ICE',	'INDENT',	78000),
+('RCA2111(IX)',	'XXXX18',	'ROYAL',	'WATER DISPENSER HOT COLD AND NEUTRAL GALON BAWAH',	'COLD & PRESERVE',	'FREE-STANDING',	'WATER DISPENSER',	'BOTTOM LOAD',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'GALON BAWAH',	'INDENT',	132000),
+('RSM3006-SWH',	'XXXX17',	'ROYAL',	'DISPLAY COOLER 300LT 6 RAK WHITE',	'COLD & PRESERVE',	'FREE-STANDING',	'SHOWCASE',	'SINGLE DOOR',	'',	'',	'',	'300',	'',	'',	'',	'',	'',	'',	'',	'',	'WHITE',	'',	'6 RAK',	'READY',	87000),
+('XB960',	'XXXX21',	'ARISTON',	'SPLASH BACK STAINLESS-STEEL. DIMENSIONS (HXWXD): 60X90X2.5 CM',	'ACCESSORIES',	'BUILT-IN',	'HOB',	'',	'STAINLESS-STEEL',	'',	'',	'',	'',	'',	'',	'',	'',	'60',	'CM',	'2.5',	'',	'90',	'',	'INDENT',	145000),
+('XB975',	'XXXX2',	'ARISTON',	'SPLASH BACK STAINLESS-STEEL DIMENSION (HXWXD): 750 X 900 X 25 MM',	'ACCESSORIES',	'BUILT-IN',	'HOB',	'HOB',	'STAINLESS-STEEL',	'',	'',	'',	'',	'',	'',	'',	'',	'750',	'MM',	'25',	'',	'900',	'',	'READY',	105000);
 
 DROP TABLE IF EXISTS `m_status_reference`;
 CREATE TABLE `m_status_reference` (
@@ -394,7 +417,12 @@ INSERT INTO `m_status_reference` (`id_status`, `nama`, `deskripsi`) VALUES
 (1,	'Data Pribadi',	'Create Customer'),
 (2,	'Data Verifikasi 1',	'Create Customer'),
 (3,	'Data Verifikasi 2',	'Create Customer'),
-(4,	'Waiting Approval',	'Create Customer');
+(4,	'Waiting Approval',	'Create Customer'),
+(5,	'Customer',	'Sales Order'),
+(6,	'Product',	'Sales Order'),
+(7,	'Pengiriman',	'Sales Order'),
+(8,	'Update Data',	'Sales Order'),
+(9,	'Form Pemesanan',	'Sales Order');
 
 DROP TABLE IF EXISTS `m_user`;
 CREATE TABLE `m_user` (
@@ -413,38 +441,11 @@ INSERT INTO `m_user` (`id`, `nama`, `nik`, `username`, `password`, `created`) VA
 (3,	'Delivery',	'',	'delivery',	'240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9',	'2018-07-18 13:12:40'),
 (4,	'Sales',	'17080001',	'sales',	'240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9',	'2018-08-28 04:42:39');
 
-DROP TABLE IF EXISTS `tt_sales`;
-CREATE TABLE `tt_sales` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_invoice` varchar(255) NOT NULL,
-  `id_customer` int(11) NOT NULL,
-  `id_approval` int(5) NOT NULL,
-  `status_pembelian` int(5) NOT NULL,
-  `status_pembayaran` int(5) NOT NULL,
-  `subtotal` int(11) NOT NULL,
-  `ppn` int(11) NOT NULL,
-  `total_harga` int(11) NOT NULL,
-  `uang_muka` int(11) NOT NULL,
-  `sisa` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-DROP TABLE IF EXISTS `tt_sales_product`;
-CREATE TABLE `tt_sales_product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_invoice` varchar(255) NOT NULL,
-  `id_product` int(11) NOT NULL,
-  `qty` int(5) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
 DROP TABLE IF EXISTS `t_sales_order`;
 CREATE TABLE `t_sales_order` (
   `id_sales_order` int(11) NOT NULL AUTO_INCREMENT,
   `no_invoice` varchar(255) NOT NULL,
-  `id_sales` int(11) NOT NULL,
+  `nik` int(11) NOT NULL,
   `id_customer` int(11) NOT NULL,
   `id_approval` int(5) NOT NULL,
   `status_pembelian` varchar(50) NOT NULL,
@@ -458,9 +459,13 @@ CREATE TABLE `t_sales_order` (
   `discount_pembulatan` int(11) NOT NULL,
   `file_images` varchar(255) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id_sales_order`)
+  PRIMARY KEY (`id_sales_order`),
+  KEY `nik` (`nik`),
+  CONSTRAINT `t_sales_order_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `m_karyawan` (`nik`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `t_sales_order` (`id_sales_order`, `no_invoice`, `nik`, `id_customer`, `id_approval`, `status_pembelian`, `id_status`, `subtotal`, `ppn`, `total_harga`, `uang_muka`, `sisa_bayar`, `total_discount`, `discount_pembulatan`, `file_images`, `created_date`) VALUES
+(3,	'INV3570',	17080001,	4,	0,	'',	5,	811000,	0,	811000,	0,	811000,	0,	0,	'',	'2018-09-04 07:33:56');
 
 DROP TABLE IF EXISTS `t_sales_order_delivery`;
 CREATE TABLE `t_sales_order_delivery` (
@@ -479,18 +484,23 @@ CREATE TABLE `t_sales_order_delivery` (
 DROP TABLE IF EXISTS `t_sales_order_produk`;
 CREATE TABLE `t_sales_order_produk` (
   `id_sales_order` int(11) NOT NULL,
-  `kode_product` int(11) NOT NULL,
-  `jumlah` int(11) NOT NULL,
+  `product_code` varchar(50) NOT NULL,
+  `merek` varchar(50) NOT NULL,
+  `deskripsi` text NOT NULL,
   `pricelist` int(11) NOT NULL,
   `discount` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL,
   `keterangan_discount` varchar(255) NOT NULL,
   `harga_netto` int(11) NOT NULL,
   `status_produk` varchar(50) NOT NULL,
-  `deskripsi` text NOT NULL,
-  `merek` varchar(50) NOT NULL,
   `dibawa_langsung` varchar(50) NOT NULL,
-  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  KEY `product_code` (`product_code`),
+  CONSTRAINT `t_sales_order_produk_ibfk_1` FOREIGN KEY (`product_code`) REFERENCES `m_product` (`product_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `t_sales_order_produk` (`id_sales_order`, `product_code`, `merek`, `deskripsi`, `pricelist`, `discount`, `jumlah`, `keterangan_discount`, `harga_netto`, `status_produk`, `dibawa_langsung`, `created_date`) VALUES
+(3,	'6GD25DCXHS',	'WHIRLLPOOL',	'LEMARI ES SIDE BY SIDE 746 LITER NO FROST STAINLESS-STEEL',	246000,	0,	1,	'',	0,	'INDENT',	'',	'2018-09-04 07:33:51'),
+(3,	'DDWG12-3XFS',	'DELIZIA',	'MESIN PENCUCI PIRING AUTOMATIS KAPASITAS 12 PCS (FREE STANDING)',	110000,	0,	1,	'',	0,	'READY',	'',	'2018-09-04 07:33:56');
 
--- 2018-09-03 09:45:04
+-- 2018-09-04 09:06:05

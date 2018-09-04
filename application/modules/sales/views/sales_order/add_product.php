@@ -39,32 +39,33 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         <table class="table table-bordered table-striped" id="t_datatable">
                             <thead>
                             <tr>
+                                <th>No</th>
+                                <th>Product Code</th>
                                 <th>Brand</th>
                                 <th>Kategori</th>
-                                <th>Product Code</th>
-                                <th>Nama Barang</th>
-                                <th>Gudang</th>
+                                <th>Deskripsi</th>
                                 <th width="10%">Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php
                             if($data){
+                                $no = 1;
                                 foreach($data as $value){
                                     ?>
 
                                     <tr>
-
+                                        <td><?php echo $no;?></td>
+                                        <td><?php echo $value['product_code'];?></td>
                                         <td><?php echo $value['merek'];?></td>
                                         <td><?php echo $value['kategori'];?></td>
-                                        <td><?php echo $value['kode'];?></td>
-                                        <td><?php echo $value['nama_produk'];?></td>
                                         <td>
-                                            <?php echo $value['gudang'];?>
+                                            <?php echo $value['deskripsi'];?>
                                         </td>
-                                        <td width=""><a href="<?php echo base_url('/sales/sales_order/act_add_produk/'.$value['id_produk']);?>"><button type="button" data-dismiss="modal"><i class="fa fa-plus"> Add</i></button></a></td>
+                                        <td width=""><a href="<?php echo base_url('/sales/sales_order/act_add_produk/'.$value['product_code']);?>"><button type="button" data-dismiss="modal"><i class="fa fa-plus"> Add</i></button></a></td>
                                     </tr>
                             <?php
+                                    $no++;
                                 }
                             }
                             ?>

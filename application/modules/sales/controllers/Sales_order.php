@@ -22,42 +22,12 @@ class Sales_order extends My_Controller
         $this->cekLoginAdmin();
     }
 
-    public function cekPending($id_status = false){
-        $id_sales = $this->session->userdata('id');
-        $cekPending = $this->general->get_query_natural("select id_status from t_sales_order where id_sales = '$id_sales' AND id_status < 6");
-        if($cekPending){
-            if($cekPending['id_status'] == $id_status){
-                return true;
-            }else{
-                if($cekPending['id_status'] == '2'){
-                    redirect(base_url('sales/sales_order/product'));
-                }elseif($cekPending['id_status'] == '3'){
-                    redirect(base_url('sales/sales_order/data_pengiriman'));
-                }elseif($cekPending['id_status'] == '4'){
-                    redirect(base_url('sales/sales_order/product'));
-                }elseif($cekPending['id_status'] == '5'){
-                    redirect(base_url('sales/sales_order/form_pemesanan'));
-                }
-            }
 
-        }
-    }
-
-    public function getIdCustomer(){
-        $id_sales = $this->session->userdata('id');
-        $get = $this->general->get_query_natural("select id_customer from t_sales_order where id_sales = '$id_sales' AND id_status < 6");
-        if($get){
-            $id_customer = $get['id_customer'];
-        }else{
-            $id_customer = false;
-        }
-        return $id_customer;
-    }
 
     public function getIdSalesOrder(){
 
-        $id_sales = $this->session->userdata('id');
-        $getIdSalesOrder = $this->general->get_query_natural("select id_sales_order from t_sales_order where id_sales = '$id_sales' AND id_status < 6");
+        $nik = $this->session->userdata('nik');
+        $getIdSalesOrder = $this->general->get_query_natural("select id_sales_order from t_sales_order where nik = '$nik' AND id_status < 9");
 
         if($getIdSalesOrder){
             $id_sales_order =  $getIdSalesOrder['id_sales_order'];
@@ -67,11 +37,21 @@ class Sales_order extends My_Controller
         return $id_sales_order;
     }
 
+    public function getIdCustomer(){
+
+        $idSalesOrder = $this->getIdSalesOrder();
+        $get = $this->general->get_query_natural("select id_customer from t_sales_order where id_sales_order = '$idSalesOrder'");
+        if($get){
+            $id_customer = $get['id_customer'];
+        }else{
+            $id_customer = false;
+        }
+        return $id_customer;
+    }
+
 
     public function index()
     {
-        $id_status = '1';
-        $this->cekPending($id_status);
 
         $this->data['data'] = 'index';
         $this->data['menu_tab'] = '3';
@@ -102,25 +82,29 @@ class Sales_order extends My_Controller
 
     public function act_pilih_customer()
     {
-        $id_sales = $this->session->userdata('id');
+        #delete data temporary jika sebelum nya ada agar tidak duplikat
+        $idSalesOrder = $this->getIdSalesOrder();
+        $this->general->delete('t_sales_order',array('id_sales_order'=>$idSalesOrder));
+        $this->general->delete('t_sales_order_produk',array('id_sales_order'=>$idSalesOrder));
+        $this->general->delete('t_sales_order_delivery',array('id_sales_order'=>$idSalesOrder));
+        #
+
+        $nik = $this->session->userdata('nik');
 
           $id_customer = $this->input->post('id_customer');
           $no_invoice = "INV".rand(1000,9999);
 
-        $action = $this->general->create('t_sales_order', array('id_customer' => $id_customer,'id_sales' => $id_sales,'no_invoice' => $no_invoice,'id_status'=>2));
+        $action = $this->general->create('t_sales_order', array('id_customer' => $id_customer,'nik' => $nik,'no_invoice' => $no_invoice,'id_status'=>5));
 
         if ($action) {
 
-            echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/sales_order/product/')."';</script>");
+            echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/sales_order/product/')."';</script>");
         }
 
     }
 
     public function product()
     {
-        $id_status = '2';
-        $this->cekPending($id_status);
-
         $this->data['menu_tab'] = '2';
         $this->data['page_title'] = 'Detail Product';
 
@@ -147,7 +131,7 @@ class Sales_order extends My_Controller
     {
         $this->data['menu_tab'] = '2';
         $this->data['page_title'] = 'Add Product';
-        $this->data['data'] = $this->general->get('m_produk',1);
+        $this->data['data'] = $this->general->get('m_product',1);
         $this->data['main_view'] = 'sales_order/add_product';
         $this->load->view('template_content', $this->data);
     }
@@ -157,24 +141,27 @@ class Sales_order extends My_Controller
     {
         $id_sales_order = $this->getIdSalesOrder();
 
-        $getDataProduk = $this->general->getwhere('m_produk',array('id_produk'=>$id_produk));
+        $getDataProduk = $this->general->getwhere('m_product',array('product_code'=>$id_produk));
 
         $action = $this->general->create('t_sales_order_produk',
             array('id_sales_order' => $id_sales_order,
-                'id_produk' => $id_produk,
-                'pricelist'=>$getDataProduk['pricelist'],
-                'discount' => $getDataProduk['discount'],
-                'keterangan_discount' => $getDataProduk['keterangan_discount'],
-                'harga_netto' => $getDataProduk['harga_netto'],
-                'status_produk' => $getDataProduk['status_produk'],
-                'deskripsi' => $getDataProduk['deskripsi'],
+                'product_code' => $id_produk,
                 'merek' => $getDataProduk['merek'],
-                'tipe' => $getDataProduk['tipe'],
-                'kode' => $getDataProduk['kode']));
+                'pricelist'=>$getDataProduk['pricelist'],
+                'deskripsi' => $getDataProduk['deskripsi'],
+                'jumlah' => 1,
+                'status_produk' => $getDataProduk['status_produk']));
+        $getDataHarga = $this->general->getwhere('t_sales_order',array('id_sales_order'=>$id_sales_order));
 
-        if ($action) {
+        $subtotal = $getDataHarga['subtotal']+$getDataProduk['pricelist'];
+        $totalharga = $getDataHarga['total_harga']+$getDataProduk['pricelist'];
+        $sisabayar = $getDataHarga['sisa_bayar']+$getDataProduk['pricelist'];
 
-            echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/sales_order/product/')."';</script>");
+        $updateHarga = $this->general->update('t_sales_order',array('id_sales_order'=>$id_sales_order),array('subtotal'=>$subtotal,'total_harga'=>$totalharga,'sisa_bayar'=>$sisabayar));
+
+        if ($action && $updateHarga) {
+
+            echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/sales_order/product/')."';</script>");
         }
 
     }
@@ -185,9 +172,9 @@ class Sales_order extends My_Controller
     {
         $id_sales_order = $this->getIdSalesOrder();
 
-        $action = $this->general->delete('t_sales_order_produk', array('id_produk'=>$id_produk,'id_sales_order'=>$id_sales_order));
+        $action = $this->general->delete('t_sales_order_produk', array('product_code'=>$id_produk,'id_sales_order'=>$id_sales_order));
         if ($action) {
-            echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/sales_order/product')."';</script>");
+            echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/sales_order/product')."';</script>");
         }
 
     }
@@ -196,9 +183,9 @@ class Sales_order extends My_Controller
     {
         $id_sales_order = $this->getIdSalesOrder();
 
-        $action = $this->general->update('t_sales_order',array('id_sales_order' => $id_sales_order),array('id_status'=>'3'));
+        $action = $this->general->update('t_sales_order',array('id_sales_order' => $id_sales_order),array('id_status'=>'6'));
         if ($action) {
-            echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/sales_order/data_pengiriman')."';</script>");
+            echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/sales_order/data_pengiriman')."';</script>");
         }
 
     }
@@ -206,8 +193,7 @@ class Sales_order extends My_Controller
 
     public function data_pengiriman()
     {
-        $id_status = '3';
-        $this->cekPending($id_status);
+
         $id_sales_order = $this->getIdSalesOrder();
 
         $getDateOrder = $this->general->getwhere('t_sales_order',array('id_sales_order'=>$id_sales_order));
@@ -234,14 +220,14 @@ class Sales_order extends My_Controller
         $informasi_tambahan = $this->input->post('informasi_tambahan');
 
 
-        $idStatus = $this->general->update('t_sales_order', array('id_sales_order'=>$IdSalesOrder),array('id_status'=>'4'));
+        $idStatus = $this->general->update('t_sales_order', array('id_sales_order'=>$IdSalesOrder),array('id_status'=>'7'));
 
 
         $action = $this->general->create('t_sales_order_delivery', array('id_sales_order' => $IdSalesOrder,'tanggal_order' => $tanggal_order,'tanggal_kirim' => $tanggal_kirim,'alamat_kirim'=>$alamat_kirim,'pengiriman_via'=>$via,'kirim_invoice_ke'=>$kirim_invoice,'email_invoice'=>$email_invoice,'informasi_tambahan'=>$informasi_tambahan));
 
         if ($action && $idStatus) {
 
-            echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/sales_order/data_formulir/')."';</script>");
+            echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/sales_order/data_formulir/')."';</script>");
         }
 
     }
@@ -250,8 +236,7 @@ class Sales_order extends My_Controller
 
     public function data_formulir()
     {
-        $id_status = '4';
-        $this->cekPending($id_status);
+
         $id_sales_order = $this->getIdSalesOrder();
 
         $this->data['page_title'] = 'Data formulir';
@@ -274,11 +259,11 @@ class Sales_order extends My_Controller
 //        $informasi_tambahan = $this->input->post('informasi_tambahan');
 
 
-        $idStatus = $this->general->update('t_sales_order', array('id_sales_order'=>$IdSalesOrder),array('id_status'=>'5'));
+        $idStatus = $this->general->update('t_sales_order', array('id_sales_order'=>$IdSalesOrder),array('id_status'=>'8'));
 
         if ($idStatus) {
 
-            echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/sales_order/form_pemesanan')."';</script>");
+            echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/sales_order/form_pemesanan')."';</script>");
         }
 
     }
@@ -288,8 +273,7 @@ class Sales_order extends My_Controller
 
     public function form_pemesanan()
     {
-        $id_status = '5';
-        $this->cekPending($id_status);
+
         $id_sales_order = $this->getIdSalesOrder();
 
         $id_customer = $this->getIdCustomer();
@@ -299,12 +283,7 @@ class Sales_order extends My_Controller
         $nik = $getNIK['nik'];
 
 
-        $this->data['data_sales'] = $this->general->get_query_natural("select a.nama,b.nama as cabang,c.nama as level,d.nama as divisi,e.nama as exhibition,f.nama as showroom from m_karyawan a
-        left join m_karyawan_cabang b on a.id_cabang = b.id
-        left join m_karyawan_level c on a.id_karyawan_level = c.id
-        left join m_karyawan_divisi d on a.id_divisi = d.id
-        left join m_karyawan_exhibition e on a.id_exhibition= e.id
-        left join m_karyawan_showroom f on a.id_showroom = f.id where a.nik = '$nik'");
+        $this->data['data_sales'] = $this->general->get_query_natural("select * from m_karyawan where nik = '$nik'");
 
         $this->data['data_sales_order_produk'] = $this->general->get_query_natural("select * from t_sales_order_produk  where id_sales_order = '$id_sales_order'",1);
         $this->data['data_sales_order'] = $this->general->get_query_natural("select * from t_sales_order where id_sales_order = '$id_sales_order'");
@@ -321,14 +300,7 @@ class Sales_order extends My_Controller
     {
 
         $IdSalesOrder = $this->getIdSalesOrder();
-//
-//        $tanggal_order = $this->input->post('tanggal_order');
-//        $tanggal_kirim = $this->input->post('tanggal_kirim');
-//        $via = $this->input->post('via');
-//        $alamat_kirim = $this->input->post('alamat_kirim');
-//        $kirim_invoice = $this->input->post('kirim_invoice');
-//        $email_invoice = $this->input->post('email_invoice');
-//        $informasi_tambahan = $this->input->post('informasi_tambahan');
+
 
 
         $idStatus = $this->general->update('t_sales_order', array('id_sales_order'=>$IdSalesOrder),array('id_status'=>'6'));
@@ -450,42 +422,6 @@ class Sales_order extends My_Controller
             exit;
         }
 
-//        #upload Images 2
-//        if (!$this->upload->do_upload('images')) {
-//            $error = strip_tags($this->upload->display_errors());
-//
-//            #hapus images 1 yg berhasil di upload biar ga spam
-//            $path = $this->config->item('path_images_sales_order').$name_file1;
-//            unlink($path);
-//            #end
-//
-//            echo"<script>alert('{$error}');window.location.href='".base_url('sales/sales_order/upload')."'</script>";
-//            exit;
-//        }else{
-//            $name_file2 = $this->upload->data('file_name');
-//            $file_size2 = $this->upload->data('file_size');
-//
-//            if (!empty($name_file2)) {
-//
-//                $id_sales_order = $this->getIdSalesOrder();
-//                $insertMedia = $this->general->update('t_sales_order',array('id_sales_order'=>$id_sales_order) ,array('file_images' => $name_file2));
-//                if ($insertMedia) {
-//                    echo"<script>alert('Upload Berhasil');window.location.href='".base_url('sales/sales_order/upload')."'</script>";
-//                    exit;
-//                }
-//            } else {
-//
-//                #hapus images 1 yg berhasil di upload biar ga spam
-//                $path = $this->config->item('path_images_sales_order').$name_file1;
-//                unlink($path);
-//                #end
-//
-//                $path = $this->config->item('path_images_sales_order').$name_file2;
-//                unlink($path);
-//                echo"<script>alert('title harus diisi');window.location.href='".base_url('sales/sales_order/upload')."'</script>";
-//                exit;
-//            }
-//        }
 
 
     }
@@ -548,68 +484,6 @@ class Sales_order extends My_Controller
     }
 
 
-    #reference------------------------------------------
-
-
-//    public function delete($id = false)
-//    {
-//        $action = $this->general->delete('m_user', array('id'=>$id));
-//        if ($action) {
-//            echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('user')."';</script>");
-//        }
-//
-//    }
-//
-//
-//    #boy di bawah
-//    public function actInsertMedia(){
-//        $title = strip_tags($this->input->post('title'));
-//
-//        // config upload
-//        $config['upload_path'] = $this->config->item('path_images_customer');
-//        $config['allowed_types'] = 'jpg|png|pdf'; //sebenernya udah di filter lagi oleh mime.php bawaan ci to xss
-//        $config['max_size'] = '500'; // 1MB
-//        $config['encrypt_name'] = true; // to clean xss in name of file
-//        $this->load->library('upload', $config);
-//        //$this->upload->initialize($config);
-//
-//
-//        if (!$this->upload->do_upload('media')) {
-//            $error = strip_tags($this->upload->display_errors());
-//            echo"<script>alert('{$error}');window.location.href='".base_url('dashboard/media')."'</script>";
-//            exit;
-//        }else{
-//            $name_file = $this->upload->data('file_name');
-//            $file_size = $this->upload->data('file_size');
-//            if (!empty($title)) {
-//                $insertMedia = $this->dashboard->create('m_media', array('name_file' => $name_file,'size'=>$file_size, 'title' => $title));
-//                if ($insertMedia) {
-//                    echo"<script>alert('Upload Berhasil');window.location.href='".base_url('dashboard/media')."'</script>";
-//                    exit;
-//                }
-//            } else {
-//                $path = $this->config->item('path_images_media').$name_file;
-//                unlink($path);
-//                echo"<script>alert('title harus diisi');window.location.href='".base_url('dashboard/media')."'</script>";
-//                exit;
-//            }
-//        }
-//    }
-//
-//    public function actDeleteMedia($id = false, $name_file = false)
-//    {
-//        $delete = $this->dashboard->delete('m_media',array('id'=>$id));
-//
-//        if ($delete) {
-//            $path = $this->config->item('path_images_customer').$name_file;
-//            unlink($path);
-//            echo"<script>alert('Delete Success');window.location.href='".base_url('dashboard/media')."'</script>";
-//            exit;
-//        }else{
-//            echo"<script>alert('Delete failed');window.location.href='".base_url('dashboard/media')."'</script>";
-//            exit;
-//        }
-//    }
 
 }
 
