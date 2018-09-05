@@ -61,11 +61,11 @@
                             <td width="25%">No Form</td>
                             <td width="25%"></td>
                             <td width="25%">Date</td>
-                            <td></td>
+                            <td><?php echo date('d-m-Y', strtotime($data_sales_order['created_date']));?></td>
                         </tr>
                         <tr>
                             <td>Date</td>
-                            <td></td>
+                            <td>-</td>
                             <td>Branch Code</td>
                             <td><?php echo $data_sales['area_gudang'];?></td>
                         </tr>
@@ -73,7 +73,7 @@
                             <td>Document Name</td>
                             <td></td>
                             <td>Sales Type</td>
-                            <td><?php echo $data_sales['level'];?></td>
+                            <td><?php echo $data_sales['prosedur'];?></td>
                         </tr>
                         <tr>
                             <th colspan="2" style="background-color: #E0E0E0;text-align: center;">CONTRACT PROJECT</th>
@@ -166,7 +166,7 @@
                         <tr style="background-color: #E0E0E0">
                             <th colspan="4" style="text-align: center;">DELIVERY DATA</th>
                         </tr>
-                        <tr><td width="25%">DATE</td><td width="25%"></td><td width="25%">Delivery Address</td><td></td></tr>
+                        <tr><td width="25%">DATE</td><td width="25%"></td><td width="25%">Delivery Address</td><td><?php echo $data_sales_order_delivery['alamat_kirim'];?></td></tr>
                         <tr><td>Delivery</td><td><?php echo $data_sales_order_delivery['tanggal_kirim'];?></td><td>Recipient's Name</td><td></td></tr>
 
                         <tr><td></td><td></td><td>Contact Number</td><td></td></tr>

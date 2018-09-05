@@ -22,7 +22,7 @@
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
-                <?php $this->load->view('part/navigation_tab');?>
+
                 <div class="box">
                 <div class="box-body">
                 <div class="table-responsive"> <!-- table responsive -->
@@ -67,13 +67,13 @@
                             <td>Date</td>
                             <td></td>
                             <td>Branch Code</td>
-                            <td><?php echo $data_sales['cabang'];?></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>Document Name</td>
                             <td></td>
                             <td>Sales Type</td>
-                            <td><?php echo $data_sales['level'];?></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <th colspan="2" style="background-color: #E0E0E0;text-align: center;">CONTRACT PROJECT</th>
@@ -85,13 +85,13 @@
                             <td>No Contract</td>
                             <td></td>
                             <td>Showroom</td>
-                            <td><?php echo $data_sales['showroom'];?></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>Contract Doc</td>
                             <td></td>
                             <td>Exhibition</td>
-                            <td><?php echo $data_sales['exhibition'];?></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>DP(%)</td>
@@ -117,44 +117,44 @@
                             </tr>
                             <tr>
                                 <td>Name</td>
-                                <td><?php echo $data_customer['nama'];?></td>
+                                <td><?php echo $data_sales_order['nama'];?></td>
                                 <th colspan="2" style="background-color: #E0E0E0;text-align: center;">CONTACT</th>
 
                             </tr>
                             <tr>
                                 <td width="25%">ID (KTP / Passport)</td>
-                                <td width="25%"><?php echo $data_customer['no_ktp_passport'];?></td>
+                                <td width="25%"><?php echo $data_sales_order['no_ktp_passport'];?></td>
                                 <td width="25%">Office</td>
-                                <td width="25%"><?php echo $data_customer['no_kantor'];?></td>
+                                <td width="25%"><?php echo $data_sales_order['no_kantor'];?></td>
                             </tr>
                             <tr>
                                 <td>ID NPWP</td>
-                                <td><?php echo $data_customer['no_npwp'];?></td>
+                                <td><?php echo $data_sales_order['no_npwp'];?></td>
                                 <td>Home</td>
-                                <td><?php echo $data_customer['no_rumah'];?></td>
+                                <td><?php echo $data_sales_order['no_rumah'];?></td>
                             </tr>
                             <tr>
 
                                 <td>Address</td>
-                                <td><?php echo $data_customer['alamat'];?></td>
+                                <td><?php echo $data_sales_order['alamat'];?></td>
                                 <td>Handphone 1</td>
-                                <td><?php echo $data_customer['no_hp'];?></td>
+                                <td><?php echo $data_sales_order['no_hp'];?></td>
                             </tr>
                             <tr>
                                 <td>Kota</td>
-                                <td><?php echo $data_customer['kabupaten_kota'];?></td>
+                                <td><?php echo $data_sales_order['kabupaten_kota'];?></td>
                                 <td>Handphone 2</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td>Provinsi</td>
-                                <td><?php echo $data_customer['provinsi'];?></td>
+                                <td><?php echo $data_sales_order['provinsi'];?></td>
                                 <td>Email</td>
-                                <td><?php echo $data_customer['email'];?></td>
+                                <td><?php echo $data_sales_order['email'];?></td>
                             </tr>
                             <tr>
                                 <td>Kode Pos</td>
-                                <td><?php echo $data_customer['kode_pos'];?></td>
+                                <td><?php echo $data_sales_order['kode_pos'];?></td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -203,9 +203,9 @@
                                 ?>
                                 <tr>
                                     <td><?php echo $no;?></td>
-                                    <td><?php echo $value['id_produk'];?></td>
+                                    <td><?php echo $value['product_code'];?></td>
                                     <td><?php echo $value['merek'];?></td>
-                                    <td align = "left"><?php echo $value['tipe'];?></td>
+                                    <td align = "left"><?php echo $value['deskripsi'];?></td>
                                     <td><?php echo $value['status_produk'];?></td>
                                     <td><?php echo $value['jumlah'];?>  </td>
                                     <td><?php echo $value['pricelist'];?></td>

@@ -36,7 +36,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             <div class="box">
                 <div class="box-body">
                <?php
-               if($invoice){
+               if($id_sales_order){
                    ?>
 
 
@@ -126,6 +126,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                        <fieldset>
                            <legend> File Upload</legend>
 
+                           <input type="hidden" name="id_sales_order" value="<?php echo $id_sales_order;?>" />
                            <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
 
                            <div>
@@ -240,7 +241,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                     <?php } ?>
 
-               <?php if(!$invoice){?>
+               <?php if(!$id_sales_order){?>
                     <div class="table-responsive"> <!-- table responsive -->
                         <table class="table table-bordered table-striped" id="t_datatable">
                             <thead>
@@ -265,8 +266,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                         <td><?php echo $no;?></td>
                                         <td><?php echo $value['no_invoice'];?></td>
                                         <td><?php echo date("d/m/Y", strtotime($value['created_date']));?></td>
-                                        <td align = "left">-</td>
-                                        <td>-</td>
+                                        <td align = "left"><?php echo $value['nama'];?></td>
+                                        <td><?php echo $value['jumlah'];?></td>
 
                                         <td><?php echo $value['total_harga'];?>  </td>
                                         <td><?php echo $value['file_images'];?></td>

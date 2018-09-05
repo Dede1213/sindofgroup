@@ -97,8 +97,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                         <td><?php echo $no;?></td>
                                         <td><?php echo $value['no_invoice'];?></td>
                                         <td><?php echo date("d/m/Y", strtotime($value['created_date']));?></td>
-                                        <td align = "left">-</td>
-                                        <td>-</td>
+                                        <td align = "left"><?php echo $value['nama'];?></td>
+                                        <td><?php echo $value['jumlah'];?></td>
                                         <td><?php echo $value['total_harga'];?>  </td>
                                         <td width=""><a href="<?php echo base_url('sales/sales_order/print_cetak/'.$value['id_sales_order']);?>"> <button type="button"><i class="fa fa-check"></i> Pilih</button></a></td>
 

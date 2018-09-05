@@ -315,66 +315,56 @@ class Sales_order extends My_Controller
 
     public function printout($cat = false,$jenis = false)
     {
-        $id_sales = $this->session->userdata('id');
+        $nik = $this->session->userdata('nik');
 
         $this->data['page_title'] = 'Print Out';
         $this->data['cat'] = $cat;
         $this->data['jenis'] = $jenis;
-        $this->data['data_sales_order'] = $this->general->get_query_natural("select * from t_sales_order where id_sales = '$id_sales'",1);
+        $this->data['data_sales_order'] = $this->general->get_query_natural("select a.*,b.*,count(c.jumlah) as jumlah from t_sales_order a left join m_customer b on a.id_customer=b.id_customer left join t_sales_order_produk c on a.id_sales_order = c.id_sales_order where a.nik = '$nik'",1);
         $this->data['main_view'] = 'sales_order/print_out';
         $this->load->view('template_content', $this->data);
     }
 
-    public function print_cetak()
+    public function print_cetak($id_sales_order = false)
     {
-        $id_status = '6';
-        $this->cekPending($id_status);
-        $id_sales_order = $this->getIdSalesOrder();
-
-        $id_customer = $this->getIdCustomer();
-
-        $id_sales = $this->session->userdata('id');
-        $getNIK = $this->general->getwhere('m_user',array('id'=>$id_sales));
-        $nik = $getNIK['nik'];
 
 
-        $this->data['data_sales'] = $this->general->get_query_natural("select a.nama,b.nama as cabang,c.nama as level,d.nama as divisi,e.nama as exhibition,f.nama as showroom from m_karyawan a
-        left join m_karyawan_cabang b on a.id_cabang = b.id
-        left join m_karyawan_level c on a.id_karyawan_level = c.id
-        left join m_karyawan_divisi d on a.id_divisi = d.id
-        left join m_karyawan_exhibition e on a.id_exhibition= e.id
-        left join m_karyawan_showroom f on a.id_showroom = f.id where a.nik = '$nik'");
+        $nik = $this->session->userdata('nik');
+
+        $this->data['data_sales'] = $this->general->get_query_natural("select a.nama from m_karyawan a where a.nik = '$nik'");
 
         $this->data['data_sales_order_produk'] = $this->general->get_query_natural("select * from t_sales_order_produk  where id_sales_order = '$id_sales_order'",1);
-        $this->data['data_sales_order'] = $this->general->get_query_natural("select * from t_sales_order where id_sales_order = '$id_sales_order'");
-        $this->data['data_customer'] = $this->general->getwhere('m_customer',array('id_customer'=>$id_customer));
+        $this->data['data_sales_order'] = $this->general->get_query_natural("select a.*,b.* from t_sales_order a left join m_customer b on a.id_customer=b.id_customer where a.id_sales_order = '$id_sales_order'");
         $this->data['data_sales_order_delivery'] = $this->general->getwhere('t_sales_order_delivery',array('id_sales_order'=>$id_sales_order));
 
         $this->data['menu_tab'] = '5';
+
         $this->data['page_title'] = 'Cetak Form';
         $this->data['main_view'] = 'sales_order/form_pemesanan_cetak';
         $this->load->view('template_content', $this->data);
     }
 
-    public function upload($invoice = false)
+    public function upload($id_sales_order = false)
     {
-        $id_sales = $this->session->userdata('id');
+        $nik = $this->session->userdata('nik');
         $this->data['page_title'] = 'Print Out';
-        $this->data['invoice'] = $invoice;
+        $this->data['id_sales_order'] = $id_sales_order;
 
-        $this->data['data_sales_order'] = $this->general->get_query_natural("select * from t_sales_order where id_sales = '$id_sales'",1);
+        $this->data['data_sales_order'] = $this->general->get_query_natural("select a.*,b.*,count(c.jumlah) as jumlah from t_sales_order a left join m_customer b on a.id_customer=b.id_customer left join t_sales_order_produk c on a.id_sales_order = c.id_sales_order where a.nik = '$nik'",1);
 
         $this->data['main_view'] = 'sales_order/upload';
         $this->load->view('template_content', $this->data);
     }
 
     public function act_upload(){
-        $images = $this->input->post('images');
+
+
+        $id_sales_order = $this->input->post('id_sales_order');
 
         // config upload
         $config['upload_path'] = $this->config->item('path_images_sales_order');
         $config['allowed_types'] = 'jpg|png|pdf'; //sebenernya udah di filter lagi oleh mime.php bawaan ci to xss
-        $config['max_size'] = '5120000k'; // 5MB
+        $config['max_size'] = '5120000'; // 5MB
         $config['encrypt_name'] = true; // to clean xss in name of file
         $this->load->library('upload', $config);
         //$this->upload->initialize($config);
@@ -390,10 +380,10 @@ class Sales_order extends My_Controller
             $name_file1 = $this->upload->data('file_name');
             $file_size1 = $this->upload->data('file_size');
 
-            if (!empty($name_file)) {
+            if (!empty($name_file1)) {
 
-                $id_sales_order = $this->getIdSalesOrder();
-                $insertMedia = $this->general->update('t_sales_order',array('id_sales_order'=>$id_sales_order) ,array('file_images' => $name_file));
+
+                $insertMedia = $this->general->update('t_sales_order',array('id_sales_order'=>$id_sales_order) ,array('file_images' => $name_file1));
                 if ($insertMedia) {
                     echo"<script>alert('Upload Berhasil');window.location.href='".base_url('sales/sales_order/upload')."'</script>";
                     exit;
@@ -401,7 +391,7 @@ class Sales_order extends My_Controller
             } else {
                 $path = $this->config->item('path_images_sales_order').$name_file1;
                 unlink($path);
-                echo"<script>alert('title harus diisi');window.location.href='".base_url('sales/sales_order/upload')."'</script>";
+                echo"<script>alert('nama tidak ditemukan');window.location.href='".base_url('sales/sales_order/upload')."'</script>";
                 exit;
             }
         }
