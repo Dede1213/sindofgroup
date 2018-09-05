@@ -166,7 +166,7 @@ CREATE TABLE `m_karyawan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `m_karyawan` (`nik`, `nama`, `level`, `lokasi`, `lokasi_detail`, `divisi`, `showroom`, `area_gudang`, `prosedur`, `bisnis_unit`, `created_date`) VALUES
-(17080001,	'Dede Sales Credit',	'',	'',	'',	'',	'',	'Gudang Jakarta',	'',	'',	'2018-09-04 04:53:39');
+(17080001,	'Dede Sales Credit',	'',	'',	'',	'',	'',	'Gudang Jakarta',	'credit',	'',	'2018-09-05 08:17:44');
 
 DROP TABLE IF EXISTS `m_karyawan_area_gudang`;
 CREATE TABLE `m_karyawan_area_gudang` (
@@ -465,7 +465,7 @@ CREATE TABLE `t_sales_order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `t_sales_order` (`id_sales_order`, `no_invoice`, `nik`, `id_customer`, `id_approval`, `status_pembelian`, `id_status`, `subtotal`, `ppn`, `total_harga`, `uang_muka`, `sisa_bayar`, `total_discount`, `discount_pembulatan`, `file_images`, `created_date`) VALUES
-(3,	'INV3570',	17080001,	4,	0,	'',	5,	811000,	0,	811000,	0,	811000,	0,	0,	'',	'2018-09-04 07:33:56');
+(4,	'INV9940',	17080001,	4,	0,	'',	6,	317000,	0,	317000,	0,	317000,	0,	0,	'eabb4ea9180c1b73e1aa8c4fa3bc6e2f.jpg',	'2018-09-05 09:39:27');
 
 DROP TABLE IF EXISTS `t_sales_order_delivery`;
 CREATE TABLE `t_sales_order_delivery` (
@@ -480,6 +480,8 @@ CREATE TABLE `t_sales_order_delivery` (
   PRIMARY KEY (`id_sales_order`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `t_sales_order_delivery` (`id_sales_order`, `tanggal_order`, `tanggal_kirim`, `alamat_kirim`, `pengiriman_via`, `kirim_invoice_ke`, `email_invoice`, `informasi_tambahan`) VALUES
+(4,	'0000-00-00',	'2018-09-06',	'sesuai_domisili_pc',	'kurir',	'on',	'dede@gmail.com',	'tambahan');
 
 DROP TABLE IF EXISTS `t_sales_order_produk`;
 CREATE TABLE `t_sales_order_produk` (
@@ -500,7 +502,7 @@ CREATE TABLE `t_sales_order_produk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `t_sales_order_produk` (`id_sales_order`, `product_code`, `merek`, `deskripsi`, `pricelist`, `discount`, `jumlah`, `keterangan_discount`, `harga_netto`, `status_produk`, `dibawa_langsung`, `created_date`) VALUES
-(3,	'6GD25DCXHS',	'WHIRLLPOOL',	'LEMARI ES SIDE BY SIDE 746 LITER NO FROST STAINLESS-STEEL',	246000,	0,	1,	'',	0,	'INDENT',	'',	'2018-09-04 07:33:51'),
-(3,	'DDWG12-3XFS',	'DELIZIA',	'MESIN PENCUCI PIRING AUTOMATIS KAPASITAS 12 PCS (FREE STANDING)',	110000,	0,	1,	'',	0,	'READY',	'',	'2018-09-04 07:33:56');
+(4,	'3XWED5705SW',	'WHIRLLPOOL',	'MESIN PENGERING PAKAIAN (LISTRIK)',	97000,	0,	1,	'',	0,	'READY',	'',	'2018-09-05 07:58:04'),
+(4,	'AQM9D49U.EX',	'ARISTON',	'MESIN CUCI DAN PENGERING FRONT-LOAD 1400 RPM 9 KG CUCI 5 KG PENGERING',	123000,	0,	1,	'',	0,	'READY',	'',	'2018-09-05 07:58:09');
 
--- 2018-09-04 09:06:05
+-- 2018-09-05 09:43:01
