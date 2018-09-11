@@ -51,30 +51,32 @@
         <td style="border: 1px solid #000;padding: 1%;" colspan="2">
         <table>
             <tr><td colspan="3"><b>Data Toko</b></td></tr>
-            <tr><td width="25%">Nama Toko</td><td width="2%">:</td><td><?php echo $data_store['nama']?></td></tr>
-            <tr><td>Alamat</td><td width="2%">:</td><td><?php echo $data_store['alamat']?></td></tr>
-            <tr><td>Phone</td><td width="2%">:</td><td><?php echo $data_store['no_hp']?></td></tr>
-            <tr><td>Faxs</td><td width="2%">:</td><td><?php echo $data_store['no_fax']?></td></tr>
-            <tr><td>Status Toko</td><td width="2%">:</td><td><?php echo $data_store['status_store']?></td></tr>
-            <tr><td>Luas Toko</td><td width="2%">:</td><td><?php echo $data_store['panjang']?> x <?php echo $data_store['lebar']?></td></tr>
-            <tr><td>Karyawan &nbsp&nbsp&nbsp&nbsp&nbsp Seluruhnya &nbsp&nbsp&nbsp</td><td width="2%">:</td><td><?php echo $data_store['jumlah_karyawan']?>  Orang</td></tr>
-            <tr><td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Teknisi</td><td width="2%">:</td><td><?php echo $data_store['jumlah_teknisi']?>  Orang</td></tr>
-
+            <tr><td width="35%" colspan="2">Nama Toko</td><td width="10%"><center>:</center></td><td><?php echo $data_store['nama']?></td></tr>
+            <tr><td colspan="2">Alamat</td><td width="10%"><center>:</center></td><td><?php echo $data_store['alamat']?></td></tr>
+            <tr><td colspan="2">Phone</td><td width="10%"><center>:</center></td><td><?php echo $data_store['no_hp']?></td></tr>
+            <tr><td colspan="2">Faxs</td><td width="10%"><center>:</center></td><td><?php echo $data_store['no_fax']?></td></tr>
+            <tr><td colspan="2">Status Toko</td><td width="10%"><center>:</center></td><td><?php echo $data_store['status_store']?></td></tr>
+            <tr><td colspan="2">Luas Toko</td><td width="10%"><center>:</center></td><td><?php echo $data_store['panjang']?> x <?php echo $data_store['lebar']?></td></tr>
+            <tr><td rowspan="3">Karyawan</td></tr>
+            <tr><td width="15%">Seluruhnya</td><td width="10%"><center>:</center></td><td><?php echo $data_store['jumlah_karyawan']?>  Orang</td></tr>
+            <tr><td> Teknisi</td><td width="10%"><center>:</center></td><td><?php echo $data_store['jumlah_teknisi']?>  Orang</td></tr>
+            <!--&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-->
         </table>
             </td></tr>
             <tr>
                 <td style="border: 1px solid #000;padding: 1%;" colspan="2">
             <table>
                 <tr><td colspan="3"><b>Data Pribadi</b></td></tr>
-                <tr><td width="25%">Nama</td><td width="2%">:</td><td><?php echo $data_customer['nama']?></td></tr>
-                <tr><td>Alamat</td><td width="2%">:</td><td><?php echo $data_customer['alamat']?></td></tr>
-                <tr><td>No.KTP</td><td width="2%">:</td><td><?php echo $data_customer['no_ktp_passport']?></td></tr>
-                <tr><td>NPWP</td><td width="2%">:</td><td><?php echo $data_customer['no_npwp']?></td></tr>
-                <tr><td>Phone</td><td width="2%">:</td><td><?php echo $data_customer['no_hp']?></td></tr>
-                <tr><td>Faxs</td><td width="2%">:</td><td><?php echo $data_customer['no_kantor']?></td></tr>
-                <tr><td>Email</td><td width="2%">:</td><td><?php echo $data_customer['email']?></td></tr>
-                <tr><td>Status Rumah &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td><td width="2%">:</td><td><?php echo $data_customer['status_rumah']?></td></tr>
-
+                <tr><td width="25%" colspan="2">Nama</td><td width="10%"><center>:</center></td><td><?php echo $data_customer['nama']?></td></tr>
+                <tr><td colspan="2">Alamat</td><td width="10%"><center>:</center></td><td><?php echo $data_customer['alamat']?></td></tr>
+                <tr><td colspan="2">No.KTP</td><td width="10%"><center>:</center></td><td><?php echo $data_customer['no_ktp_passport']?></td></tr>
+                <tr><td colspan="2">NPWP</td><td width="10%"><center>:</center></td><td><?php echo $data_customer['no_npwp']?></td></tr>
+                <tr><td colspan="2">Phone</td><td width="10%"><center>:</center></td><td><?php echo $data_customer['no_hp']?></td></tr>
+                <tr><td colspan="2">Faxs</td><td width="10%"><center>:</center></td><td><?php echo $data_customer['no_kantor']?></td></tr>
+                <tr><td colspan="2">Email</td><td width="10%"><center>:</center></td><td><?php echo $data_customer['email']?></td></tr>
+                <tr><td rowspan="2">Status</td></tr>
+                <tr><td width="25%">Rumah</td><td width="10%"><center>:</center></td><td><?php echo $data_customer['status_rumah']?></td></tr>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             </table>
         </td>
     </tr>
@@ -84,7 +86,7 @@
             Penjualan
             <table border="1" width="50%">
                 <tr>
-                    <th>No</th><th>Produk</th><th>%</th>
+                    <th><center>No</center></th><th><center>Produk</center></th><th><center>%</center></th>
                 </tr>
                 <?php
 					if($data_penjualan){
@@ -107,7 +109,7 @@
             Bank <br>
             <table border="1" width="50%">
                 <tr>
-                    <th>No</th><th>Nama Bank</th><th>No.Rekening</th>
+                    <th><center>No</center></th><th><center>Nama Bank</center></th><th><center>No.Rekening</center></th>
                 </tr>
                 <?php
 					if($data_bank){
@@ -169,9 +171,9 @@
     <tr>
         <td style="border: 1px solid #000;padding: 1%;" colspan="2">
             <center>Untuk Kepentingan Perusahaan</center> <br>
-            Distribution Channel : ...................... <br>
-            Credit Limit : .......................... <br>
-            Term Of Payment : ......................... <br>
+            Distribution Channel                                                                          &nbsp&nbsp&nbsp          :  <br>
+            Credit Limit &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp :  <br>
+            Term Of Payment                                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp     :  <br>
         </td>
     </tr>
     <tr>

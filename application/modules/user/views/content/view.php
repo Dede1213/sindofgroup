@@ -41,7 +41,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <tr>
                                 <th width="5%">No</th>
                                 <th>Nama</th>
-                                <th>Level</th>
+                                <th>NIK</th>
                                 <th>Username</th>
                                 <th>Password</th>
                                 <th>Action</th>
@@ -57,7 +57,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     <tr>
                                         <td><?php echo $i;?></td>
                                         <td><?php echo $value['nama'];?></td>
-                                        <td><?php echo $value['id_level'];?></td>
+                                        <td><?php echo $value['nik'];?></td>
                                         <td><?php echo $value['username'];?></td>
                                         <td><?php echo $value['password'];?></td>
 

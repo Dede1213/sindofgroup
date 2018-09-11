@@ -113,6 +113,18 @@ $(document).ready(function() {
         });
     });
 
+    //$("#btn-modal-qty").click(function () {
+    //
+    //    var term = $('#btn-modal-qty').attr('id');
+    //    $("#product_code").val(term);
+    //   // $('#modalJumlah').modal('show');
+    //});
+
+    $("#checkppn").change(function() {
+        if(this.checked) {
+            //Do stuff
+        }
+    });
 
 
 
@@ -355,17 +367,55 @@ $(document).ready(function() {
         }
     });
 
-    $(".kirim").hide();
+    $(".sesuai_tujuan").hide();
 
-    $("#sesuai_tujuan_kirim").change(function() {
+    $("#sesuai_tujuan").change(function() {
         if(this.checked) {
-            $(".kirim").show();
+            $(".sesuai_tujuan").show();
         }
     });
 
-    $("#sesuai_domisili_kirim").change(function() {
+    $("#sesuai_domisili").change(function() {
         if(this.checked) {
-            $(".kirim").hide();
+            $(".sesuai_tujuan").hide();
+        }
+    });
+
+    $(".nama_kurir").hide();
+
+    $("#kurir").change(function() {
+        if(this.checked) {
+            $(".nama_kurir").show();
+        }
+    });
+
+    $("#armada").change(function() {
+        if(this.checked) {
+            $(".nama_kurir").hide();
+        }
+    });
+
+    $(".email_invoice").hide();
+
+    $("#via_email").change(function() {
+        if(this.checked) {
+            $(".email_invoice").show();
+        }
+    });
+
+    $("#no_email1").change(function() {
+        if(this.checked) {
+            $(".email_invoice").hide();
+        }
+    });
+    $("#no_email2").change(function() {
+        if(this.checked) {
+            $(".email_invoice").hide();
+        }
+    });
+    $("#no_email3").change(function() {
+        if(this.checked) {
+            $(".email_invoice").hide();
         }
     });
 

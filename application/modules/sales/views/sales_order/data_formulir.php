@@ -44,39 +44,47 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 <!-- text input -->
                                 <div class="form-group">
                                     <label>Nomor Form</label>
-                                    <input type="text" name="title" id="title" class="form-control" placeholder="please write something">
+                                    <input type="text" name="nomor_form" id="title" class="form-control" placeholder="please write something">
                                 </div>
                                 <div class="form-group">
                                     <label>Tanggal Order</label>
-                                    <input type="date" name="title" id="title" class="form-control" placeholder="please write something">
+                                    <input type="date" name="tanggal_order" id="title" class="form-control" placeholder="please write something">
                                 </div>
                                 <div class="form-group">
                                     <label>Upload File Photo/Scaner FP</label>
-                                    <input type="file" name="title" id="title" class="form-control" placeholder="please write something">
+                                    <input type="file" name="foto" id="title" class="form-control" placeholder="please write something">
                                 </div>
                             </fieldset>
-                            <br><br>
-                            <fieldset>
-                                <legend>PROJECT</legend>
-                                <!-- text input -->
-                                <div class="form-group">
-                                    <label>Input Nomor Kontrak</label>
-                                    <input type="text" name="title" id="title" class="form-control" placeholder="please write something" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label>Upload Photo/Scaner Kontrak</label>
-                                    <input type="file" name="title" id="title" class="form-control" placeholder="please write something" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label> Downpayment (%) </label>
-                                    <input type="text" name="title" id="title" class="form-control" placeholder="please write something" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label>Retensi (%)</label>
-                                    <input type="text" name="title" id="title" class="form-control" >
-                                </div>
-                            </fieldset>
-                            <br><br>
+                            <?php
+                            $sales_type = $this->session->userdata('prosedur');
+                            if($sales_type == 'project') {
+                                ?>
+                                <fieldset>
+                                    <legend>PROJECT</legend>
+                                    <!-- text input -->
+                                    <div class="form-group">
+                                        <label>Input Nomor Kontrak</label>
+                                        <input type="text" name="title" id="title" class="form-control"
+                                               placeholder="please write something">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Upload Photo/Scaner Kontrak</label>
+                                        <input type="file" name="title" id="title" class="form-control"
+                                               placeholder="please write something">
+                                    </div>
+                                    <div class="form-group">
+                                        <label> Downpayment (%) </label>
+                                        <input type="text" name="title" id="title" class="form-control"
+                                               placeholder="please write something">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Retensi (%)</label>
+                                        <input type="text" name="title" id="title" class="form-control">
+                                    </div>
+                                </fieldset>
+                            <?php
+                            }
+                            ?>
                             <fieldset>
                                 <legend>Purchase Order</legend>
                                 <div class="form-group">

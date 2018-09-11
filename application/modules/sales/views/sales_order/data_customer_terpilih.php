@@ -44,12 +44,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                             <!-- text input -->
                             <div class="form-group">
-                                <label>ID Pelanggan Induk</label>
+                                <label>ID Pelanggan</label>
                                 <input type="text" name="id_customer" id="title" class="form-control" value="<?php echo $data['id_customer'];?>" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>ID Pelanggan Sub</label>
-                                <input type="text" name="id_pelanggan_sub" id="title" class="form-control" value="" readonly>
                             </div>
                             <div class="form-group">
                                 <label>Nama</label>
@@ -57,7 +53,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             </div>
 
                             <div class="form-group">
-                                <label>ID KTP/Passport/NPWP</label>
+                                <label>ID KTP/Passport</label>
                                <input type="text" name="no_ktp_passport" id="title" class="form-control" value="<?php echo $data['no_ktp_passport'];?>" readonly>
                             </div>
 

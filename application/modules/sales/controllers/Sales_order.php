@@ -63,8 +63,9 @@ class Sales_order extends My_Controller
     public function act_search_customer()
     {
         $nama = $this->input->post('nama');
+        $nik = $this->session->userdata('nik');
 
-        $this->data['data'] = $this->general->get_query_natural("select a.*,b.credit_limit from m_customer a left join m_customer_verifikasi b on a.id_customer=b.id_customer where a.nama like '%$nama%' ",1);
+        $this->data['data'] = $this->general->get_query_natural("select a.*,b.credit_limit from m_customer a left join m_customer_verifikasi b on a.id_customer=b.id_customer where a.nik = '$nik' and a.nama like '%$nama%' ",1);
         $this->data['menu_tab'] = '3';
         $this->data['page_title'] = 'Data Customer';
         $this->data['main_view'] = 'sales_order/data_customer';
@@ -137,32 +138,165 @@ class Sales_order extends My_Controller
     }
 
 
-    public function act_add_produk($id_produk = false)
+    public function act_add_produk($product_code = false)
     {
         $id_sales_order = $this->getIdSalesOrder();
+        $qty = 1;
 
-        $getDataProduk = $this->general->getwhere('m_product',array('product_code'=>$id_produk));
+        $getDataProduk = $this->general->getwhere('m_product',array('product_code'=>$product_code));
+        $getDataProdukDiscount = $this->general->getwhere('m_product_discount',array('product_code'=>$product_code));
+        $hargadiskon = $getDataProduk['pricelist'] * $getDataProdukDiscount['discount']/100;
+
+        $pricelist = $getDataProduk['pricelist'] - $hargadiskon;
+
+        $hitungNetto = $pricelist * $qty;
 
         $action = $this->general->create('t_sales_order_produk',
             array('id_sales_order' => $id_sales_order,
-                'product_code' => $id_produk,
+                'product_code' => $product_code,
                 'merek' => $getDataProduk['merek'],
                 'pricelist'=>$getDataProduk['pricelist'],
                 'deskripsi' => $getDataProduk['deskripsi'],
-                'jumlah' => 1,
+                'harga_netto'=>$hitungNetto,
+                'jumlah' => $qty,
+                'discount' => $getDataProdukDiscount['discount'],
+                'keterangan_discount'=>$getDataProdukDiscount['keterangan'],
                 'status_produk' => $getDataProduk['status_produk']));
-        $getDataHarga = $this->general->getwhere('t_sales_order',array('id_sales_order'=>$id_sales_order));
 
-        $subtotal = $getDataHarga['subtotal']+$getDataProduk['pricelist'];
-        $totalharga = $getDataHarga['total_harga']+$getDataProduk['pricelist'];
-        $sisabayar = $getDataHarga['sisa_bayar']+$getDataProduk['pricelist'];
+        $this->hitungHargaSalesOrder();
 
-        $updateHarga = $this->general->update('t_sales_order',array('id_sales_order'=>$id_sales_order),array('subtotal'=>$subtotal,'total_harga'=>$totalharga,'sisa_bayar'=>$sisabayar));
-
-        if ($action && $updateHarga) {
+        if ($action) {
 
             echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/sales_order/product/')."';</script>");
         }
+
+    }
+
+
+
+    public function act_ubah_qty()
+    {
+        $product_code = $this->input->post('product_code');
+        $qty = $this->input->post('qty');
+
+        $id_sales_order = $this->getIdSalesOrder();
+
+        $getDataProduk = $this->general->getwhere('m_product',array('product_code'=>$product_code));
+        $getDataProdukDiscount = $this->general->getwhere('m_product_discount',array('product_code'=>$product_code));
+        $hargadiskon = $getDataProduk['pricelist'] * $getDataProdukDiscount['discount']/100;
+
+        $pricelist = $getDataProduk['pricelist'] - $hargadiskon;
+
+        $hitungNetto = $pricelist * $qty;
+        $action = $this->general->update('t_sales_order_produk',array('id_sales_order' => $id_sales_order,'product_code'=>$product_code),
+            array('jumlah' => $qty,'harga_netto'=>$hitungNetto));
+
+        $this->hitungHargaSalesOrder();
+
+        if ($action) {
+
+            echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/sales_order/product/')."';</script>");
+        }
+
+    }
+
+    public function act_dibawa_langsung()
+    {
+        $product_code = $this->input->post('product_code');
+        $dibawaLangsung = $this->input->post('dibawa_langsung');
+
+        $id_sales_order = $this->getIdSalesOrder();
+
+
+        $action = $this->general->update('t_sales_order_produk',array('id_sales_order' => $id_sales_order,'product_code'=>$product_code),
+            array('dibawa_langsung' => $dibawaLangsung));
+
+
+
+        if ($action) {
+
+            echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/sales_order/product/')."';</script>");
+        }
+
+    }
+
+    public function act_pembulatan()
+    {
+        $pembulatan = $this->input->post('pembulatan');
+        $keterangan = $this->input->post('keterangan');
+
+        $id_sales_order = $this->getIdSalesOrder();
+
+
+        $action = $this->general->update('t_sales_order',array('id_sales_order' => $id_sales_order),
+            array('discount_pembulatan' => $pembulatan,'keterangan_pembulatan'=>$keterangan));
+
+
+        $this->hitungHargaSalesOrder();
+
+        if ($action) {
+
+            echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/sales_order/product/')."';</script>");
+        }
+
+    }
+
+    public function act_exc_ppn($param = false)
+    {
+        $id_sales_order = $this->getIdSalesOrder();
+
+
+        $action = $this->general->update('t_sales_order',array('id_sales_order' => $id_sales_order),
+            array('ppn_exc' => $param));
+
+        $this->hitungHargaSalesOrder();
+
+        if ($action) {
+
+            echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/sales_order/product/')."';</script>");
+        }
+
+    }
+
+
+    function hitungHargaSalesOrder(){
+
+        $id_sales_order = $this->getIdSalesOrder();
+        $getDataSO = $this->general->getwhere('t_sales_order',array('id_sales_order'=>$id_sales_order));
+
+        #Hitung SubTotal
+        $subtotal = '';
+        //$totalDiscount = '';
+        $getDataProduct = $this->general->getwhere('t_sales_order_produk',array('id_sales_order'=>$id_sales_order),1);
+        if($getDataProduct){
+            foreach($getDataProduct as $value){
+                $subtotal += $value['harga_netto'];
+
+            }
+        }
+
+        #Hitung PPN
+        if($getDataSO['ppn_exc'] == 'true'){
+            $ppn = 10;//%
+            $hargaPpn = $subtotal*$ppn/100;
+        }else{
+            $hargaPpn = 0;
+        }
+
+
+        #Total Harga
+        $totalHarga = $subtotal - $hargaPpn;
+
+        #Sisa Harga
+        $sisa = $totalHarga - $getDataSO['uang_muka'] - $getDataSO['discount_pembulatan'];
+
+        #hitung total discount
+
+        $updateHarga = $this->general->update('t_sales_order',array('id_sales_order'=>$id_sales_order),
+            array('subtotal'=>$subtotal,
+                'total_harga'=>$totalHarga,
+                'sisa_bayar'=>$sisa,
+                'ppn_value'=>$hargaPpn));
 
     }
 
@@ -211,10 +345,22 @@ class Sales_order extends My_Controller
 
         $IdSalesOrder = $this->getIdSalesOrder();
 
-        $tanggal_order = $this->input->post('tanggal_order');
+        $tanggal_order = date('Y-m-d', strtotime($this->input->post('tanggal_order')));
         $tanggal_kirim = $this->input->post('tanggal_kirim');
-        $via = $this->input->post('via');
+
         $alamat_kirim = $this->input->post('alamat_kirim');
+        $nama_gedung = $this->input->post('nama_gedung');
+        $provinsi = $this->input->post('provinsi');
+        $kabupaten = $this->input->post('kabupaten');
+        $alamat = $this->input->post('alamat');
+        $kode_pos = $this->input->post('kode_pos');
+        $nama_penerima = $this->input->post('nama_penerima');
+        $no_hp_penerima = $this->input->post('no_hp_penerima');
+        $pic = $this->input->post('pic');
+        $email = $this->input->post('email');
+
+        $pengiriman_via = $this->input->post('pengiriman_via');
+        $nama_kurir = $this->input->post('nama_kurir');
         $kirim_invoice = $this->input->post('kirim_invoice');
         $email_invoice = $this->input->post('email_invoice');
         $informasi_tambahan = $this->input->post('informasi_tambahan');
@@ -222,8 +368,25 @@ class Sales_order extends My_Controller
 
         $idStatus = $this->general->update('t_sales_order', array('id_sales_order'=>$IdSalesOrder),array('id_status'=>'7'));
 
-
-        $action = $this->general->create('t_sales_order_delivery', array('id_sales_order' => $IdSalesOrder,'tanggal_order' => $tanggal_order,'tanggal_kirim' => $tanggal_kirim,'alamat_kirim'=>$alamat_kirim,'pengiriman_via'=>$via,'kirim_invoice_ke'=>$kirim_invoice,'email_invoice'=>$email_invoice,'informasi_tambahan'=>$informasi_tambahan));
+        $data = array('id_sales_order' => $IdSalesOrder,
+            'tanggal_order' => $tanggal_order,
+            'tanggal_kirim' => $tanggal_kirim,
+            'pic' => $pic,
+            'email' => $email,
+            'alamat_kirim' => $alamat_kirim,
+            'nama_gedung' => $nama_gedung,
+            'provinsi' => $provinsi,
+            'kabupaten' => $kabupaten,
+            'alamat' => $alamat,
+            'kode_pos' => $kode_pos,
+            'nama_penerima' => $nama_penerima,
+            'no_hp_penerima' => $no_hp_penerima,
+            'pengiriman_via' => $pengiriman_via,
+            'nama_kurir' => $nama_kurir,
+            'kirim_invoice_ke' => $kirim_invoice,
+            'email_invoice' => $email_invoice,
+            'informasi_tambahan' => $informasi_tambahan);
+        $action = $this->general->create('t_sales_order_delivery', $data);
 
         if ($action && $idStatus) {
 
@@ -278,9 +441,7 @@ class Sales_order extends My_Controller
 
         $id_customer = $this->getIdCustomer();
 
-        $id_sales = $this->session->userdata('id');
-        $getNIK = $this->general->getwhere('m_user',array('id'=>$id_sales));
-        $nik = $getNIK['nik'];
+        $nik = $this->session->userdata('nik');
 
 
         $this->data['data_sales'] = $this->general->get_query_natural("select * from m_karyawan where nik = '$nik'");
@@ -289,6 +450,8 @@ class Sales_order extends My_Controller
         $this->data['data_sales_order'] = $this->general->get_query_natural("select * from t_sales_order where id_sales_order = '$id_sales_order'");
         $this->data['data_customer'] = $this->general->getwhere('m_customer',array('id_customer'=>$id_customer));
         $this->data['data_sales_order_delivery'] = $this->general->getwhere('t_sales_order_delivery',array('id_sales_order'=>$id_sales_order));
+        $this->data['data_sales_order_produk_discount'] = $this->general->get_query_natural("select * from t_sales_order_produk where id_sales_order = '$id_sales_order' and keterangan_discount <> '' group by keterangan_discount",1);
+
 
         $this->data['menu_tab'] = '5';
         $this->data['page_title'] = 'Form Pemesanan';
@@ -331,11 +494,12 @@ class Sales_order extends My_Controller
 
         $nik = $this->session->userdata('nik');
 
-        $this->data['data_sales'] = $this->general->get_query_natural("select a.nama from m_karyawan a where a.nik = '$nik'");
+        $this->data['data_sales'] = $this->general->get_query_natural("select * from m_karyawan a where a.nik = '$nik'");
 
         $this->data['data_sales_order_produk'] = $this->general->get_query_natural("select * from t_sales_order_produk  where id_sales_order = '$id_sales_order'",1);
         $this->data['data_sales_order'] = $this->general->get_query_natural("select a.*,b.* from t_sales_order a left join m_customer b on a.id_customer=b.id_customer where a.id_sales_order = '$id_sales_order'");
         $this->data['data_sales_order_delivery'] = $this->general->getwhere('t_sales_order_delivery',array('id_sales_order'=>$id_sales_order));
+        $this->data['data_sales_order_produk_discount'] = $this->general->get_query_natural("select * from t_sales_order_produk where id_sales_order = '$id_sales_order' and keterangan_discount <> '' group by keterangan_discount",1);
 
         $this->data['menu_tab'] = '5';
 

@@ -53,6 +53,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                     <br>
                     <hr>
                     <?php if($data !='index'){?>
+                    <a href = "<?php echo base_url('sales/customer/add_customer'); ?>"><button class = "btn btn-success">Add Customer</button></a><br><br><br>
                     <div class="table-responsive"> <!-- table responsive -->
                         <table class="table table-bordered table-striped" id="t_datatable">
                             <thead>

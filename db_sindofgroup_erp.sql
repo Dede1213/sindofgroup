@@ -30,7 +30,9 @@ CREATE TABLE `m_customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `m_customer` (`id_customer`, `nik`, `no_ktp_passport`, `no_npwp`, `nama`, `alamat`, `kelurahan`, `kecamatan`, `kabupaten_kota`, `provinsi`, `kode_pos`, `no_hp`, `no_kantor`, `no_rumah`, `email`, `status_rumah`, `sewa_berakhir`, `id_status`, `created_date`) VALUES
-(4,	17080001,	'999995289304',	'234567890',	'Dede Irawan',	'tester alamat',	'Suradita',	'Cisauk',	'Kab.tangerang',	'Banten',	'12312',	'089832989328',	'021999999',	'09809809',	'dede.irawan1213',	'Milik Sendiri',	'0000-00-00',	4,	'2018-09-02 14:33:44');
+(4,	17080001,	'999995289304',	'234567890',	'Dede Irawan',	'tester alamat',	'Suradita',	'Cisauk',	'Kab.tangerang',	'Banten',	'12312',	'089832989328',	'021999999',	'09809809',	'dede.irawan1213',	'Milik Sendiri',	'0000-00-00',	4,	'2018-09-02 14:33:44'),
+(5,	17080003,	'999995289304',	'234567890',	'customer project',	'tester alamat',	'Suradita',	'Cisauk',	'Kab.tangerang',	'Banten',	'12312',	'089832989328',	'021999999',	'09809809',	'dede.irawan1213',	'Milik Sendiri',	'0000-00-00',	4,	'2018-09-11 14:31:31'),
+(7,	17080002,	'999995289304',	'234567890',	'Sales Order',	'ahsghjagsjgh',	'Suradita',	'Cisauk',	'Kab.tangerang',	'Banten',	'12312',	'089832989328',	'021999999',	'09809809',	'dede.irawan1213',	'Milik yang diag',	'0000-00-00',	4,	'2018-09-11 14:44:12');
 
 DROP TABLE IF EXISTS `m_customer_bank`;
 CREATE TABLE `m_customer_bank` (
@@ -44,7 +46,8 @@ CREATE TABLE `m_customer_bank` (
 
 INSERT INTO `m_customer_bank` (`id_bank`, `id_customer`, `nama`, `no_rekening`, `created_date`) VALUES
 (3,	4,	'BCA',	'7888888772',	'2018-09-02 13:59:25'),
-(4,	4,	'MANDIRI',	'123123',	'2018-09-02 14:03:54');
+(4,	4,	'MANDIRI',	'123123',	'2018-09-02 14:03:54'),
+(5,	5,	'BCA',	'7888888772',	'2018-09-11 14:31:18');
 
 DROP TABLE IF EXISTS `m_customer_gudang`;
 CREATE TABLE `m_customer_gudang` (
@@ -67,7 +70,8 @@ CREATE TABLE `m_customer_gudang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `m_customer_gudang` (`id_gudang`, `id_customer`, `nama`, `pic`, `created_date`, `alamat`, `rt`, `rw`, `kelurahan`, `kecamatan`, `kabupaten_kota`, `provinsi`, `kode_pos`, `no_hp`, `no_fax`) VALUES
-(2,	4,	'0',	'Gudang 1',	'2018-09-02 14:21:34',	'alamat gudang',	'rt gudang',	'Gudang 1',	'Suradita',	'Cisauk',	'Tangerang',	'Banten',	'kodepos gudam',	'08928982',	'032132822');
+(2,	4,	'0',	'Gudang 1',	'2018-09-02 14:21:34',	'alamat gudang',	'rt gudang',	'Gudang 1',	'Suradita',	'Cisauk',	'Tangerang',	'Banten',	'kodepos gudam',	'08928982',	'032132822'),
+(5,	5,	'Gudang 1',	'DEDE',	'2018-09-11 14:31:23',	'alamat gudang',	'rt gudang',	'Gudang 1',	'Suradita',	'Cisauk',	'Tangerang',	'Banten',	'kodepos gudam',	'08928982',	'032132822');
 
 DROP TABLE IF EXISTS `m_customer_img`;
 CREATE TABLE `m_customer_img` (
@@ -99,7 +103,8 @@ CREATE TABLE `m_customer_penjualan` (
 
 INSERT INTO `m_customer_penjualan` (`id_penjualan`, `id_customer`, `produk`, `presentase`, `created_date`) VALUES
 (4,	4,	'produk 1',	'10%',	'2018-09-02 14:03:29'),
-(5,	4,	'produk 2',	'10%',	'2018-09-02 14:03:41');
+(5,	4,	'produk 2',	'10%',	'2018-09-02 14:03:41'),
+(6,	5,	'1',	'10',	'2018-09-11 14:31:07');
 
 DROP TABLE IF EXISTS `m_customer_store`;
 CREATE TABLE `m_customer_store` (
@@ -126,7 +131,8 @@ CREATE TABLE `m_customer_store` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `m_customer_store` (`id_store`, `id_customer`, `nama`, `alamat`, `rt`, `rw`, `kelurahan`, `kecamatan`, `kabupaten_kota`, `provinsi`, `no_hp`, `no_fax`, `status_store`, `sewa_berakhir`, `panjang`, `lebar`, `jumlah_karyawan`, `jumlah_teknisi`, `created_date`) VALUES
-(4,	4,	'Toko 1',	'Alamat Toko 1',	'rt to',	'rw to',	'Suradita',	'Cisauk',	'Tangerang',	'Banten',	'0897737373',	'029282828',	'Milik Sendiri',	'0000-00-00',	'10',	'10',	'100',	'3',	'2018-09-02 14:18:20');
+(4,	4,	'Toko 1',	'Alamat Toko 1',	'rt to',	'rw to',	'Suradita',	'Cisauk',	'Tangerang',	'Banten',	'0897737373',	'029282828',	'Milik Sendiri',	'0000-00-00',	'10',	'10',	'100',	'3',	'2018-09-02 14:18:20'),
+(7,	5,	'Toko 1',	'Alamat Toko 1',	'rt to',	'rw to',	'Suradita',	'Cisauk',	'Tangerang',	'Banten',	'0897737373',	'029282828',	'Milik Sendiri',	'0000-00-00',	'10',	'10',	'100',	'3',	'2018-09-11 14:31:22');
 
 DROP TABLE IF EXISTS `m_customer_verifikasi`;
 CREATE TABLE `m_customer_verifikasi` (
@@ -147,6 +153,7 @@ CREATE TABLE `m_customer_verifikasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `m_customer_verifikasi` (`no_verifikasi`, `nik`, `id_customer`, `tgl_create`, `tgl_survei`, `tgl_pengajuan`, `tgl_disetujui`, `nm_approval`, `distribution_chanel`, `credit_limit`, `top`, `catatan`, `created_date`) VALUES
+('FV2547',	17080003,	5,	'2018-09-11',	'2018-09-12',	'2018-09-12',	'0000-00-00',	'',	'',	0,	'',	'',	'2018-09-11 14:31:30'),
 ('VP2990',	17080001,	4,	'2018-09-03',	'2018-09-03',	'2018-09-03',	'2018-09-03',	'Awan',	'Retail',	0,	'',	'',	'2018-09-02 14:34:53');
 
 DROP TABLE IF EXISTS `m_karyawan`;
@@ -155,7 +162,7 @@ CREATE TABLE `m_karyawan` (
   `nama` varchar(50) NOT NULL,
   `level` varchar(50) NOT NULL,
   `lokasi` varchar(50) NOT NULL,
-  `lokasi_detail` varchar(50) NOT NULL,
+  `branch_code` varchar(50) NOT NULL,
   `divisi` varchar(50) NOT NULL,
   `showroom` varchar(50) NOT NULL,
   `area_gudang` varchar(50) NOT NULL,
@@ -165,8 +172,10 @@ CREATE TABLE `m_karyawan` (
   PRIMARY KEY (`nik`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `m_karyawan` (`nik`, `nama`, `level`, `lokasi`, `lokasi_detail`, `divisi`, `showroom`, `area_gudang`, `prosedur`, `bisnis_unit`, `created_date`) VALUES
-(17080001,	'Dede Sales Credit',	'',	'',	'',	'',	'',	'Gudang Jakarta',	'credit',	'',	'2018-09-05 08:17:44');
+INSERT INTO `m_karyawan` (`nik`, `nama`, `level`, `lokasi`, `branch_code`, `divisi`, `showroom`, `area_gudang`, `prosedur`, `bisnis_unit`, `created_date`) VALUES
+(17080001,	'Dede Sales Credit',	'',	'',	'JKT001',	'',	'',	'Gudang Jakarta',	'credit',	'',	'2018-09-11 14:02:29'),
+(17080002,	'Dede Sales Cash',	'',	'',	'JKT001',	'',	'',	'Gudang Jakarta',	'cash',	'',	'2018-09-11 14:02:29'),
+(17080003,	'Dede Sales Project',	'',	'',	'JKT001',	'',	'',	'Gudang Jakarta',	'project',	'',	'2018-09-11 14:02:29');
 
 DROP TABLE IF EXISTS `m_karyawan_area_gudang`;
 CREATE TABLE `m_karyawan_area_gudang` (
@@ -225,15 +234,16 @@ INSERT INTO `m_karyawan_lokasi` (`lokasi`) VALUES
 
 DROP TABLE IF EXISTS `m_karyawan_lokasi_detail`;
 CREATE TABLE `m_karyawan_lokasi_detail` (
+  `branch_code` varchar(50) NOT NULL,
   `lokasi_detail` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `m_karyawan_lokasi_detail` (`lokasi_detail`) VALUES
-('Jakarta'),
-('Bogor'),
-('Depok'),
-('Tangerang'),
-('Bekasi');
+INSERT INTO `m_karyawan_lokasi_detail` (`branch_code`, `lokasi_detail`) VALUES
+('JKT001',	'Jakarta'),
+('BGR001',	'Bogor'),
+('DPK001',	'Depok'),
+('TNG001',	'Tangerang'),
+('BKS001',	'Bekasi');
 
 DROP TABLE IF EXISTS `m_karyawan_prosedur`;
 CREATE TABLE `m_karyawan_prosedur` (
@@ -350,7 +360,53 @@ INSERT INTO `m_menu_user` (`id`, `id_menu`, `id_user`, `created`) VALUES
 (184,	'29',	'4',	'2018-08-26 06:08:28'),
 (185,	'31',	'4',	'2018-08-26 06:08:28'),
 (186,	'34',	'4',	'2018-08-26 06:08:28'),
-(187,	'51',	'4',	'2018-08-26 06:08:28');
+(187,	'51',	'4',	'2018-08-26 06:08:28'),
+(237,	'9',	'5',	'2018-09-11 14:26:47'),
+(238,	'10',	'5',	'2018-09-11 14:26:47'),
+(239,	'11',	'5',	'2018-09-11 14:26:47'),
+(240,	'12',	'5',	'2018-09-11 14:26:48'),
+(241,	'13',	'5',	'2018-09-11 14:26:48'),
+(242,	'14',	'5',	'2018-09-11 14:26:48'),
+(243,	'16',	'5',	'2018-09-11 14:26:48'),
+(244,	'17',	'5',	'2018-09-11 14:26:48'),
+(245,	'18',	'5',	'2018-09-11 14:26:48'),
+(246,	'19',	'5',	'2018-09-11 14:26:48'),
+(247,	'20',	'5',	'2018-09-11 14:26:48'),
+(248,	'22',	'5',	'2018-09-11 14:26:48'),
+(249,	'23',	'5',	'2018-09-11 14:26:48'),
+(250,	'24',	'5',	'2018-09-11 14:26:48'),
+(251,	'25',	'5',	'2018-09-11 14:26:48'),
+(252,	'26',	'5',	'2018-09-11 14:26:48'),
+(253,	'27',	'5',	'2018-09-11 14:26:48'),
+(254,	'28',	'5',	'2018-09-11 14:26:48'),
+(255,	'29',	'5',	'2018-09-11 14:26:48'),
+(256,	'31',	'5',	'2018-09-11 14:26:48'),
+(257,	'34',	'5',	'2018-09-11 14:26:48'),
+(258,	'35',	'5',	'2018-09-11 14:26:49'),
+(259,	'51',	'5',	'2018-09-11 14:26:49'),
+(260,	'9',	'6',	'2018-09-11 14:27:21'),
+(261,	'10',	'6',	'2018-09-11 14:27:22'),
+(262,	'11',	'6',	'2018-09-11 14:27:22'),
+(263,	'12',	'6',	'2018-09-11 14:27:22'),
+(264,	'13',	'6',	'2018-09-11 14:27:22'),
+(265,	'14',	'6',	'2018-09-11 14:27:22'),
+(266,	'16',	'6',	'2018-09-11 14:27:22'),
+(267,	'17',	'6',	'2018-09-11 14:27:22'),
+(268,	'18',	'6',	'2018-09-11 14:27:22'),
+(269,	'19',	'6',	'2018-09-11 14:27:22'),
+(270,	'20',	'6',	'2018-09-11 14:27:22'),
+(271,	'22',	'6',	'2018-09-11 14:27:22'),
+(272,	'23',	'6',	'2018-09-11 14:27:22'),
+(273,	'24',	'6',	'2018-09-11 14:27:22'),
+(274,	'25',	'6',	'2018-09-11 14:27:22'),
+(275,	'26',	'6',	'2018-09-11 14:27:22'),
+(276,	'27',	'6',	'2018-09-11 14:27:22'),
+(277,	'28',	'6',	'2018-09-11 14:27:23'),
+(278,	'29',	'6',	'2018-09-11 14:27:23'),
+(279,	'31',	'6',	'2018-09-11 14:27:23'),
+(280,	'34',	'6',	'2018-09-11 14:27:23'),
+(281,	'35',	'6',	'2018-09-11 14:27:23'),
+(282,	'51',	'6',	'2018-09-11 14:27:23');
 
 DROP TABLE IF EXISTS `m_product`;
 CREATE TABLE `m_product` (
@@ -405,6 +461,20 @@ INSERT INTO `m_product` (`product_code`, `home_code`, `merek`, `deskripsi`, `kat
 ('XB960',	'XXXX21',	'ARISTON',	'SPLASH BACK STAINLESS-STEEL. DIMENSIONS (HXWXD): 60X90X2.5 CM',	'ACCESSORIES',	'BUILT-IN',	'HOB',	'',	'STAINLESS-STEEL',	'',	'',	'',	'',	'',	'',	'',	'',	'60',	'CM',	'2.5',	'',	'90',	'',	'INDENT',	145000),
 ('XB975',	'XXXX2',	'ARISTON',	'SPLASH BACK STAINLESS-STEEL DIMENSION (HXWXD): 750 X 900 X 25 MM',	'ACCESSORIES',	'BUILT-IN',	'HOB',	'HOB',	'STAINLESS-STEEL',	'',	'',	'',	'',	'',	'',	'',	'',	'750',	'MM',	'25',	'',	'900',	'',	'READY',	105000);
 
+DROP TABLE IF EXISTS `m_product_discount`;
+CREATE TABLE `m_product_discount` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_code` varchar(255) NOT NULL,
+  `discount` int(11) NOT NULL,
+  `keterangan` text NOT NULL,
+  `tanggal_mulai` date NOT NULL,
+  `tanggal_akhir` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `m_product_discount` (`id`, `product_code`, `discount`, `keterangan`, `tanggal_mulai`, `tanggal_akhir`) VALUES
+(1,	'3XWED5705SW',	10,	'uji coba discount pada product',	'0000-00-00',	'0000-00-00');
+
 DROP TABLE IF EXISTS `m_status_reference`;
 CREATE TABLE `m_status_reference` (
   `id_status` int(11) NOT NULL AUTO_INCREMENT,
@@ -439,7 +509,9 @@ INSERT INTO `m_user` (`id`, `nama`, `nik`, `username`, `password`, `created`) VA
 (1,	'Super Admin',	'',	'admin',	'240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9',	'2018-04-28 15:01:18'),
 (2,	'Finance',	'',	'finance',	'240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9',	'2018-08-22 04:33:56'),
 (3,	'Delivery',	'',	'delivery',	'240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9',	'2018-07-18 13:12:40'),
-(4,	'Sales',	'17080001',	'sales',	'240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9',	'2018-08-28 04:42:39');
+(4,	'Sales',	'17080001',	'sales_credit',	'240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9',	'2018-09-11 14:22:37'),
+(5,	'Sales',	'17080002',	'sales_cash',	'240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9',	'2018-09-11 14:22:37'),
+(6,	'Sales',	'17080003',	'sales_project',	'240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9',	'2018-09-11 14:23:09');
 
 DROP TABLE IF EXISTS `t_sales_order`;
 CREATE TABLE `t_sales_order` (
@@ -451,12 +523,14 @@ CREATE TABLE `t_sales_order` (
   `status_pembelian` varchar(50) NOT NULL,
   `id_status` int(5) NOT NULL,
   `subtotal` int(11) NOT NULL,
-  `ppn` int(11) NOT NULL,
+  `ppn_value` int(11) NOT NULL,
+  `ppn_exc` varchar(5) NOT NULL,
   `total_harga` int(11) NOT NULL,
   `uang_muka` int(11) NOT NULL,
   `sisa_bayar` int(11) NOT NULL,
   `total_discount` int(11) NOT NULL,
   `discount_pembulatan` int(11) NOT NULL,
+  `keterangan_pembulatan` text NOT NULL,
   `file_images` varchar(255) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_sales_order`),
@@ -464,24 +538,38 @@ CREATE TABLE `t_sales_order` (
   CONSTRAINT `t_sales_order_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `m_karyawan` (`nik`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `t_sales_order` (`id_sales_order`, `no_invoice`, `nik`, `id_customer`, `id_approval`, `status_pembelian`, `id_status`, `subtotal`, `ppn`, `total_harga`, `uang_muka`, `sisa_bayar`, `total_discount`, `discount_pembulatan`, `file_images`, `created_date`) VALUES
-(4,	'INV9940',	17080001,	4,	0,	'',	6,	317000,	0,	317000,	0,	317000,	0,	0,	'eabb4ea9180c1b73e1aa8c4fa3bc6e2f.jpg',	'2018-09-05 09:39:27');
+INSERT INTO `t_sales_order` (`id_sales_order`, `no_invoice`, `nik`, `id_customer`, `id_approval`, `status_pembelian`, `id_status`, `subtotal`, `ppn_value`, `ppn_exc`, `total_harga`, `uang_muka`, `sisa_bayar`, `total_discount`, `discount_pembulatan`, `keterangan_pembulatan`, `file_images`, `created_date`) VALUES
+(5,	'INV3839',	17080001,	4,	0,	'',	6,	666600,	66660,	'true',	599940,	0,	500000,	0,	99940,	'biar pas',	'',	'2018-09-11 14:15:05'),
+(6,	'INV1510',	17080003,	5,	0,	'',	8,	87300,	8730,	'true',	78570,	0,	78000,	0,	570,	'nanggung',	'',	'2018-09-11 14:38:17'),
+(7,	'INV9408',	17080002,	7,	0,	'',	8,	87300,	8730,	'true',	78570,	0,	78000,	0,	570,	'ehem',	'',	'2018-09-11 14:46:13');
 
 DROP TABLE IF EXISTS `t_sales_order_delivery`;
 CREATE TABLE `t_sales_order_delivery` (
   `id_sales_order` int(11) NOT NULL AUTO_INCREMENT,
   `tanggal_order` date DEFAULT NULL,
   `tanggal_kirim` date DEFAULT NULL,
+  `pic` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
   `alamat_kirim` text,
+  `nama_gedung` varchar(255) DEFAULT NULL,
+  `provinsi` varchar(255) DEFAULT NULL,
+  `kabupaten` varchar(255) DEFAULT NULL,
+  `alamat` varchar(255) DEFAULT NULL,
+  `kode_pos` varchar(255) DEFAULT NULL,
+  `nama_penerima` varchar(255) DEFAULT NULL,
+  `no_hp_penerima` varchar(255) DEFAULT NULL,
   `pengiriman_via` varchar(50) DEFAULT NULL,
+  `nama_kurir` varchar(50) DEFAULT NULL,
   `kirim_invoice_ke` text,
   `email_invoice` varchar(100) DEFAULT NULL,
   `informasi_tambahan` text,
   PRIMARY KEY (`id_sales_order`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `t_sales_order_delivery` (`id_sales_order`, `tanggal_order`, `tanggal_kirim`, `alamat_kirim`, `pengiriman_via`, `kirim_invoice_ke`, `email_invoice`, `informasi_tambahan`) VALUES
-(4,	'0000-00-00',	'2018-09-06',	'sesuai_domisili_pc',	'kurir',	'on',	'dede@gmail.com',	'tambahan');
+INSERT INTO `t_sales_order_delivery` (`id_sales_order`, `tanggal_order`, `tanggal_kirim`, `pic`, `email`, `alamat_kirim`, `nama_gedung`, `provinsi`, `kabupaten`, `alamat`, `kode_pos`, `nama_penerima`, `no_hp_penerima`, `pengiriman_via`, `nama_kurir`, `kirim_invoice_ke`, `email_invoice`, `informasi_tambahan`) VALUES
+(5,	'2018-11-09',	'2018-09-12',	'DEDE',	'dede.irawan1213@gmail.com',	'sesuai_tujuan',	'geduang a',	'banten',	'tangerang',	'tester alamat',	'15535',	'',	'',	'kurir',	'nama kurir',	'on',	'email invoice',	'info tambahan'),
+(6,	'2018-11-09',	'2018-09-12',	'',	'',	'sesuai_domisili',	'',	'',	'',	'',	'',	'',	'',	'kurir',	'nama kurir',	'Tidak Perlu Dikirim',	'',	'info tambahan'),
+(7,	'2018-11-09',	'2018-09-12',	'',	'',	'sesuai domisili',	'',	'',	'',	'',	'',	'',	'',	'kurir',	'nama kurir',	'Tidak Perlu Dikirim',	'',	'info tambahan');
 
 DROP TABLE IF EXISTS `t_sales_order_produk`;
 CREATE TABLE `t_sales_order_produk` (
@@ -502,7 +590,21 @@ CREATE TABLE `t_sales_order_produk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `t_sales_order_produk` (`id_sales_order`, `product_code`, `merek`, `deskripsi`, `pricelist`, `discount`, `jumlah`, `keterangan_discount`, `harga_netto`, `status_produk`, `dibawa_langsung`, `created_date`) VALUES
-(4,	'3XWED5705SW',	'WHIRLLPOOL',	'MESIN PENGERING PAKAIAN (LISTRIK)',	97000,	0,	1,	'',	0,	'READY',	'',	'2018-09-05 07:58:04'),
-(4,	'AQM9D49U.EX',	'ARISTON',	'MESIN CUCI DAN PENGERING FRONT-LOAD 1400 RPM 9 KG CUCI 5 KG PENGERING',	123000,	0,	1,	'',	0,	'READY',	'',	'2018-09-05 07:58:09');
+(5,	'6GD25DCXHS',	'WHIRLLPOOL',	'LEMARI ES SIDE BY SIDE 746 LITER NO FROST STAINLESS-STEEL',	246000,	0,	2,	'',	492000,	'INDENT',	'Tidak',	'2018-09-11 03:33:31'),
+(5,	'3XWED5705SW',	'WHIRLLPOOL',	'MESIN PENGERING PAKAIAN (LISTRIK)',	97000,	10,	2,	'uji coba discount pada product',	174600,	'READY',	'Ya',	'2018-09-11 03:33:35'),
+(6,	'3XWED5705SW',	'WHIRLLPOOL',	'MESIN PENGERING PAKAIAN (LISTRIK)',	97000,	10,	1,	'uji coba discount pada product',	87300,	'READY',	'',	'2018-09-11 14:36:27'),
+(7,	'3XWED5705SW',	'WHIRLLPOOL',	'MESIN PENGERING PAKAIAN (LISTRIK)',	97000,	10,	1,	'uji coba discount pada product',	87300,	'READY',	'',	'2018-09-11 14:44:57');
 
--- 2018-09-05 09:43:01
+DROP TABLE IF EXISTS `t_sales_order_update`;
+CREATE TABLE `t_sales_order_update` (
+  `id_sales_order` varchar(255) NOT NULL,
+  `nomor_form` varchar(255) NOT NULL,
+  `tanggal_order` date NOT NULL,
+  `foto_fp` varchar(255) NOT NULL,
+  `nomor_po` varchar(255) NOT NULL,
+  `foto_po` varchar(255) NOT NULL,
+  `showroom` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- 2018-09-11 14:46:31

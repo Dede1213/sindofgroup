@@ -38,7 +38,8 @@ class Customer extends My_Controller
     {
         $this->data['page_title'] = 'List Customer';
         $this->data['main_view'] = 'customer/list_customer';
-        $this->data['data'] = $this->general->getwhere('m_customer',array('id_status'=>'4'),'1',false,false,array('param'=>'id_customer','by'=>'asc'));
+        $nik = $this->session->userdata('nik');
+        $this->data['data'] = $this->general->getwhere('m_customer',array('id_status'=>'4','nik'=>$nik),'1',false,false,array('param'=>'id_customer','by'=>'asc'));
        $this->load->view('template_content', $this->data);
     }
 
@@ -68,6 +69,7 @@ class Customer extends My_Controller
     {
 
         $nik = $this->session->userdata('nik');
+        $getSalesType = $this->general->getwhere('m_karyawan',array('nik'=>$nik));
 
         $nama = $this->input->post('nama');
         $ktp_pass = $this->input->post('ktp_pass');
@@ -86,8 +88,14 @@ class Customer extends My_Controller
         $berakhir= $this->input->post('berakhir');
 
 
-
-        $data = array('id_status' => 2,
+        if($getSalesType['prosedur'] == 'cash'){
+            $id_status = 4;
+            $link = 'sales/customer/';
+        }else{
+            $id_status = 2;
+            $link = 'sales/customer/data_verifikasi1/';
+        }
+        $data = array('id_status' => $id_status,
             'nik' => $nik,
             'no_ktp_passport' => $ktp_pass,
             'no_npwp' => $npwp,
@@ -107,7 +115,7 @@ class Customer extends My_Controller
         $action = $this->general->create('m_customer', $data);
 
         if ($action) {
-            echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url('sales/customer/data_verifikasi1/')."';</script>");
+            echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url($link)."';</script>");
             //echo ("<script LANGUAGE='JavaScript'>window.alert('Succesfully');window.location.href='".base_url('sales/customer/data_verifikasi1/')."';</script>");
         }
 

@@ -18,7 +18,13 @@ class Login_model extends CI_Model
             //end
 
             $row = $query->row_array();
-            $data = array('id' => $row['id'],'username' => $row['username'],'nik' => $row['nik'],'login' => TRUE );
+
+            $query2 = $this->db->get_where('m_karyawan', array('nik'=>$row['nik']),1);
+            $row2 = $query2->row_array();
+
+
+            $data = array('id' => $row['id'],'username' => $row['username'],'nik' => $row['nik'],'prosedur'=>$row2['prosedur'],'login' => TRUE );
+
 
             $this->session->set_userdata($data);
             //Insert or update id_session untuk single device
